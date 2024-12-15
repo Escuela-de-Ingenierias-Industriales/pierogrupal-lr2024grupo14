@@ -1,18 +1,19 @@
-PIERO - Robot Móvil Autónomo DIY
-Presentacion
-	Somos el grupo 14 de la asignatura de Laboratorio de robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. Este proyecto combina diseño, montaje, programación e integración de sistemas para crear una plataforma capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
+# PIERO - Robot Móvil Autónomo DIY
+## Presentacion
+  
+  Somos el grupo 14 de la asignatura de Laboratorio de robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. Este proyecto combina diseño, montaje, programación e integración de sistemas para crear una plataforma capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
 
-Introducción
+## Introducción
 En esta asignatura, se nos planteó el desafío de construir y programar un robot móvil llamado PIERO, diseñado para desplazarse de manera autónoma y evitar obstáculos. Este proyecto busca aplicar conceptos de robótica, integración de hardware y desarrollo de software en un entorno práctico.
 PIERO es una plataforma de tracción diferencial equipada con dos motores eléctricos y sensores que le permiten interpretar el entorno. Nuestra tarea consistió en caracterizar sus componentes, desarrollar el software necesario para que pueda seguir consignas de velocidad lineal y angular, y probar su capacidad para resolver un reto concreto: partiendo de un punto determinado, salir del laboratorio evitando obstáculos.
 
 
-# Estudio de las Partes del Robot PIERO: Dispositivos y Cableado
+## Estudio de las Partes del Robot PIERO: Dispositivos y Cableado
 
-###  En esta etapa inicial de la investigación sobre el robot PIERO, nos hemos dedicado a explorar de manera detallada los elementos fundamentales y la instalación del cableado requerido para ensamblar y operar el robot. Impresiona ver cómo cada uno de los dispositivos que conforman al Piero es crucial para el correcto movimiento e interacción del este con su entorno, y de cómo, a pesar de la aparente complejidad del modelo visto en clase, su cableado y conexión son bastante sencillos.
+  En esta etapa inicial de la investigación sobre el robot PIERO, nos hemos dedicado a explorar de manera detallada los elementos fundamentales y la instalación del cableado requerido para ensamblar y operar el robot. Impresiona ver cómo cada uno de los dispositivos que conforman al Piero es crucial para el correcto movimiento e interacción del este con su entorno, y de cómo, a pesar de la aparente complejidad del modelo visto en clase, su cableado y conexión son bastante sencillos.
 
 El siguiente listado contiene los componentes usados 
-## Componentes Principales del Robot PIERO
+### Componentes Principales del Robot PIERO
 ![motor con rueda](https://github.com/user-attachments/assets/fc06e6f1-2265-43b0-b6dc-e3e6b4f56709)
 
 **-Motores con Ruedas (x2)**: Los motores son de corriente continua de 12V y 170 RPM. Estos motores son fundamentales para el desplazamiento del robot y conforman la base de su sistema de movimiento.  Además contamos con una rueda caster para estabilizar su base.
@@ -26,7 +27,6 @@ El siguiente listado contiene los componentes usados
 **-Driver de Potencia L298N**: Este elemento tiene la responsabilidad de manejar los motores. Actúa como un puente H que proporciona control de velocidad y rotación del motor mediante PWM (modulación de ancho de pulso).
 
 ![sensor ultrasonidos](https://github.com/user-attachments/assets/48ce2882-181b-4222-862f-62d08f6ef41d)
-![sensor de distancia laser](https://github.com/user-attachments/assets/0381ffe2-8f17-41a1-b2cb-b42ef269cf76)
 
 
 **-Sensores de Distancia Ultrasonidos**: Los sensores de distancia son esenciales para detectar obstáculos y prevenir colisiones durante el desplazamiento del robot. Los sensores de ultrasonido ofrecen una cobertura amplia pero poca precisión.
@@ -54,39 +54,60 @@ El siguiente listado contiene los componentes usados
 
 Una vez entendidas las funciones de cada componente y habiendo estudiado su conexionado nos dispusimos a montarlo por nuestra cuenta sobre un túper de plástico:
 
---Foto 1
-Lo primero fui idear donde colocar cada dispositivo. Los motores y la caster fueron los primeros en añadirse. Utilizamos tornillos de diámetro 5 para la caster u como no pudimos conseguir los tornillos de diámetro 4 y longitud mínima para los motores utilizamos bridas que posteriormente se cortarían.
---Foto 2	
+![Foto 1](https://github.com/user-attachments/assets/7dcbb292-c408-4090-8af7-696aa969e9ce)
+
+Lo primero fue idear donde colocar cada dispositivo. Los motores y la caster fueron los primeros en añadirse. Utilizamos tornillos de diámetro 5 para la caster u como no pudimos conseguir los tornillos de diámetro 4 y longitud mínima para los motores utilizamos bridas que posteriormente se cortarían.
+
+![Foto 2](https://github.com/user-attachments/assets/795fa7de-bc00-4727-bda8-6a95b4cdf083)
+	
 Ya con los motores, lo siguiente fue poner al Arduino, porta baterías, driver y protoboard donde mejor se pudieran manejar, aun así, en la imagen se puede apreciar que estaban de forma temporal para poder probar distintos lugares y ver cómo se manejaban en estos.
---Foto 3
+
+![Foto 3](https://github.com/user-attachments/assets/44ea9486-413e-4977-b52c-203c5a792e92)
+
 El siguiente paso fue idear donde sería mejor poner los sensores de ultrasonidos y también ponerlos de forma temporal con alambres.
---Foto 4
+
+![Foto 4](https://github.com/user-attachments/assets/a067525a-b45b-4e66-91af-381737e7e4de)
+
 Y por último, antes de pasar al cableado, fue distribuir y poner los distintos leds que usaríamos. 
---Fotos 5 y 6
 
-Cableado e interconexionado.
+![Foto 5](https://github.com/user-attachments/assets/1ca3f5e6-371b-4c1c-b586-75649f501777)
+![Foto 6](https://github.com/user-attachments/assets/8a3e72e0-4c24-4a54-8106-12fd81642d62)
 
-	Para esta parte empezaos haciendo un Excel que nos serviría de guía para saber que pines del Arduino ya estábamos usando y para que se utilizaban. Este Excel se tuvo que cambiar a lo largo del proyecto un par de veces debido a fallos del propio Arduino.
+
+## Interconexionado.
+
+Para esta parte empezaos haciendo un Excel que nos serviría de guía para saber que pines del Arduino ya estábamos usando y para que se utilizaban. Este Excel se tuvo que cambiar a lo largo del proyecto un par de veces debido a fallos del propio Arduino.
 
 --Foto del excel
 
 Así, pudimos empezar con el conexionado.
---conexionado 1
---conexionado 2
---conexionado 3
+
+![Conexionado 1](https://github.com/user-attachments/assets/a553416c-72b7-4060-9b21-a6164f28e597)
+![conexionado 2](https://github.com/user-attachments/assets/b4d016d5-d037-4014-aaea-2c029640bd24)
+![Conexionado 3](https://github.com/user-attachments/assets/ad38c3d4-b7dd-4d28-aa11-24efd3594903)
 
  Aunque, a decir verdad, esta fue la parte en la que tuvimos más problemas, el mayor causante de estos fueron los cable que venían por defecto en los componentes que pedimos, estos cables eran muy frágiles y con mala conducción, es por eso que tuvimos que quitar algunos y sustituirlos por otros cables de nuestra elección, empalmar unos cables con otros e incluso utilizar celo para que no se desconectaran.
---conexionado 4
-Una vez llegaron los nuevos cables ya pudimos soldarlos y empalmarlos correctamente
---conexionado 5
---conexionado 6
-Ya con estos cables conseguimos un prototipo precario al Piero que buscábamos, todavía nos daba fallos en conexiones y por eso tuvimos un estancamiento largo en esta parte.
---conexionado 7
-Fue con este conexionado, en las pruebas con el código, que pudimos ver que una de las ruedas no giraba, y que no era fallo del código. Es por eso que desconectamos todo y lo volvimos a rehacer para ver que pines no estaban funcionando como debian
---conexionado 8, 9 y 10
-Y al fin conseguimos que todo estuviera bien cableado.
---Conexionado 11
+ 
+![conexionado 4](https://github.com/user-attachments/assets/92601a6c-eba4-436c-9877-da2651aa6569)
 
+Una vez llegaron los nuevos cables ya pudimos soldarlos y empalmarlos correctamente
+
+![conexionado 5](https://github.com/user-attachments/assets/b89ed0cb-19db-45fa-9c05-f4854520a7d9)
+![conexionado6](https://github.com/user-attachments/assets/52d61136-9872-4759-a25c-204c8c8fa5d7)
+
+Ya con estos cables conseguimos un prototipo precario al Piero que buscábamos, todavía nos daba fallos en conexiones y por eso tuvimos un estancamiento largo en esta parte.
+
+![conexionado 7](https://github.com/user-attachments/assets/8834bb77-62a1-4729-9757-7464b78d31ef)
+
+Fue con este conexionado, en las pruebas con el código, que pudimos ver que una de las ruedas no giraba, y que no era fallo del código. Es por eso que desconectamos todo y lo volvimos a rehacer para ver que pines no estaban funcionando como debian
+
+![conexionado 8](https://github.com/user-attachments/assets/f596e851-56ee-4958-b1ab-bdf04dd6aa27)
+![conexionado 9](https://github.com/user-attachments/assets/56b57d6a-1880-47e4-964d-289ad4dc6a52)
+![conexionado 10](https://github.com/user-attachments/assets/754d84b9-d4f4-48e0-8c8a-5bdae4b4c528)
+
+Y al fin conseguimos que todo estuviera bien cableado.
+
+![conexionado 11](https://github.com/user-attachments/assets/c16be8fc-df80-4a7a-8ead-c76eff1c19ca)
 
 ***
 
@@ -139,8 +160,9 @@ Otras funcionas interesantes para la gestión de interrupciones son:
 
 
 ***
-# Estudio del Arduino Mega 2560 para su programación con Simulink: librería y entorno específico
-## Lectura, escritura y análisis de datos de los sensores de Arduino
+## Estudios previos para el desarrollo del código
+### Estudio del Arduino Mega 2560 para su programación con Simulink: librería y entorno específico
+#### Lectura, escritura y análisis de datos de los sensores de Arduino
 El [paquete de soporte de MATLAB para Arduino](https://es.mathworks.com/hardware-support/arduino.html) permite escribir programas de MATLAB que leen y escriben datos en los dispositivos Arduino y otros dispositivos conectados, tales como Adafruit Motor Shield, I2C y SPI.
 
 Ventajas del uso de MATLAB para la programación en Arduino:
@@ -158,7 +180,7 @@ Ventajas del uso de Simulink para la programación en Arduino:
 * Modificación fácil de algoritmos para su ejecución en otras plataformas de hardware comerciales de bajo coste
 
 
-# Programación en Arduino Mediante Matlab y Simulink
+### Programación en Arduino Mediante Matlab y Simulink
 Para empezar a operar nuestro Arduino en el software de Matlab deberemos instalarnos dos paquetes de soporte. Para ello realizaremos los tres siguientes pasos.
 1. Abriremos el software Matlab
 2. Accederemos a “Home”  > "Adds-Ons" > "Get Adds-Ons"
@@ -174,7 +196,7 @@ a = arduino('COM3','Uno'). Se utilizara si el hardware no es oficial. ## “COM3
 Los comandos que nos dan los “adds-ons” instalados son los siguientes
  
 
-## Simmulink
+### Simmulink
 Para establecer la conexión entre Simulink y nuestra placa deberemos pulsar el botón “Model Configuration Parameters Button”
  
 Una vez dentro, accedemos a la pestaña “Hardware Implementation” y rellenamos el hueco de “Hardware Board” con el nombre de nuestra placa.
@@ -183,33 +205,36 @@ Para simular nuestro proyecto en Simulink deberemos elegir el modo de simulació
  
 Para transferir nuestro código a la placa Arduino (evitando la necesidad de que la placa no tenga que estar siempre conectada a Simulink)
  
-Desarrollo del código.
+## Desarrollo del código.
 Ya con los fundamentos sobre como usar las interrupciones, el Matlab y el simulink empezamos a desarrollar todo el código necesario para lograr la navegación reactiva.
 Al principio, lo primero que hicimos fueran las actividades del Test de motores, de leds y de sensores. Para estos test seguimos un poco la idea del profe, pero los que usamos finalmente en el Piero fueron ligeramente distintos.
-***
-Test Luces:
-	El primero del que voy a hablar es del Test Luces en models, este es uno de los test de luces, ya que hemos implementado dos lógicas dependiendo de la funcionalidad del led,  que actualmente se encuentra en la carpeta basura porque lo que nos interesa es el subprograma que se utiliza ahí, todos, los subprogramas se encuentran en la carpeta lib y se irán hablando de ellos debido a que se utilizan a lo largo de los distintos modelos. 
-	El subprograma Leds 1 es bastante distinto al dado por el profesor en clase, ya que se utilizará para el estado de la batería. La idea de este es coger la entrada dada por el sensor de voltaje y compararla con una constante calculada. Esta constante es para 11V == 450 y para 11,2== 458. De esta forma, dependiendo del dato que nos llegue del sensor de voltaje, distinguimos tres situaciones: Que nuestras baterías tengan más de 11,2V, en ese caso nada nos tiene que preocupar y el led se encenderá con una luz azul. El siguiente caso es para cuando ha bajado de 11,2 pero no de 11, lo cual hace que el led se mantenga en un color rojo fijo. Pero en cambio cuando ya ha bajado de 11 V, el led nos avisará de que lo tenemos que cargar por un brillo intermitente en rojo. Toda esta lógica se consigue implementar gracias a puetas lógicas and, or y not, a los comparadores de constantes, al pulse generator y a los bloques de digital write de la librería de Arduino.
 
-	El segundo subprograma de Leds se prueba en el subsistema llamado Sistema_Anticolision ubicado en lib, que a su vez, se utiliza en el TestTotal, este subsistema llamado Leds_Colision servirá para indicar de qué sensor se está recibiendo datos de un obstáculo. Aquí dividimos 4 respuestas: La primera, que se pongan verde si no recibe ni de la derecha ni de la izquierda, es decir, no hay obstáculos. Si se recibe de la izquierda se pone azul y si se recibe de la derecha en rojo. Por último, si se recibe de los dos lados se pondrá en rojo intermitente. Esta lógica utiliza los mismos bloques que el anterior subsistema.
+### Test Luces:
 
+El primero del que voy a hablar es del Test Luces en models, este es uno de los test de luces, ya que hemos implementado dos lógicas dependiendo de la funcionalidad del led,  que actualmente se encuentra en la carpeta basura porque lo que nos interesa es el subprograma que se utiliza ahí, todos, los subprogramas se encuentran en la carpeta lib y se irán hablando de ellos debido a que se utilizan a lo largo de los distintos modelos. 
 
-El siguiente modelo del que se hablará será del TestMotores, bastante distinto al visto en clase. 
+El subprograma Leds 1 es bastante distinto al dado por el profesor en clase, ya que se utilizará para el estado de la batería. La idea de este es coger la entrada dada por el sensor de voltaje y compararla con una constante calculada. Esta constante es para 11V == 450 y para 11,2== 458. De esta forma, dependiendo del dato que nos llegue del sensor de voltaje, distinguimos tres situaciones: Que nuestras baterías tengan más de 11,2V, en ese caso nada nos tiene que preocupar y el led se encenderá con una luz azul. El siguiente caso es para cuando ha bajado de 11,2 pero no de 11, lo cual hace que el led se mantenga en un color rojo fijo. Pero en cambio cuando ya ha bajado de 11 V, el led nos avisará de que lo tenemos que cargar por un brillo intermitente en rojo. Toda esta lógica se consigue implementar gracias a puetas lógicas and, or y not, a los comparadores de constantes, al pulse generator y a los bloques de digital write de la librería de Arduino.
 
-Test Encoders
-
-TestTotal
+El segundo subprograma de Leds se prueba en el subsistema llamado Sistema_Anticolision ubicado en lib, que a su vez, se utiliza en el TestTotal, este subsistema llamado Leds_Colision servirá para indicar de qué sensor se está recibiendo datos de un obstáculo. Aquí dividimos 4 respuestas: La primera, que se pongan verde si no recibe ni de la derecha ni de la izquierda, es decir, no hay obstáculos. Si se recibe de la izquierda se pone azul y si se recibe de la derecha en rojo. Por último, si se recibe de los dos lados se pondrá en rojo intermitente. Esta lógica utiliza los mismos bloques que el anterior subsistema.
 
 
+ 
 
- Resultados prácticos:
+### Test Encoders
+El siguiente modelo del que se hablará será del TestMotores, bastante distinto al visto en clase.
+
+### TestTotal
+
+
+
+## Resultados prácticos:
 •	Desempeño del robot en pruebas reales.
 •	Comparación entre simulación y realidad.
 •	Fotos, vídeos y gráficos relevantes.
-Conclusiones:
+## Conclusiones:
 •	Reflexión sobre los logros.
 •	Impacto del aprendizaje.
 •	Propuestas para mejorar el robot en el futuro.
-Autoevaluación (opcional):
+## Autoevaluación:
 •	Desempeño grupal o individual.
 •	Justificación de la nota asignada.
