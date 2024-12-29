@@ -218,17 +218,17 @@ Este bloque juega un papel crucial en la navegación del robot, ya que traduce l
 
 Para lograr este objetivo, el bloque recibe las siguientes entradas:
 
-- Waypoints: Una matriz donde cada fila representa las coordenadas(x,y) de un waypoint al que el robot debe dirigirse.
-- Umbral_Trajectoria: Una distancia umbral que determina cuándo el robot se considera lo suficientemente cerca de un waypoint para avanzar al siguiente.
-- Pose: La posición actual del robot, especificada en un vector [x,y].
-- V_in: La velocidad de entrada actual del robot.
-- i_act: El índice del waypoint actual que está siguiendo el robot.
+- **Waypoints**: Una matriz donde cada fila representa las coordenadas(x,y) de un waypoint al que el robot debe dirigirse.
+- **Umbral_Trajectoria**: Una distancia umbral que determina cuándo el robot se considera lo suficientemente cerca de un waypoint para avanzar al siguiente.
+- **Pose**: La posición actual del robot, especificada en un vector [x,y].
+- **V_in**: La velocidad de entrada actual del robot.
+- **i_act**: El índice del waypoint actual que está siguiendo el robot.
 
 Con esta información, el bloque calcula y actualiza las siguientes salidas:
 
-- V_out: La velocidad del robot después de procesar la trayectoria.
-- o: La orientación del robot, calculada para dirigirse al siguiente waypoint.
-- i_prox: El índice actualizado del siguiente waypoint al que debe dirigirse el robot.
+- **V_out**: La velocidad del robot después de procesar la trayectoria.
+- **o**: La orientación del robot, calculada para dirigirse al siguiente waypoint.
+- **i_prox**: El índice actualizado del siguiente waypoint al que debe dirigirse el robot.
 
 El funcionamiento interno del bloque toma como punto de partida la posición actual del robot (Pose) y el siguiente waypoint en la lista (Waypoints[iprox]). 
 Primero, se calcula la distancia entre ambas posiciones mediante la fórmula euclidiana. 
@@ -253,15 +253,15 @@ Este bloque ajusta la velocidad y la orientación del robot en tiempo real, bas�
 
 Para cumplir este objetivo, el bloque "Sistema_Anticolision" recibe las siguientes entradas:
 
-- Velocidad: La velocidad lineal actual del robot, que puede modificarse en función de las condiciones detectadas.
-- UmbralFrontal: Distancia mínima al frente que, si se supera, se considera que hay riesgo de colisión frontal.
-- UmbralLateral: Distancia mínima a los lados que, si se supera, indica riesgo de colisión lateral.
-- UmbralCaida: Distancia mínima hacia abajo que, si se supera, identifica un posible riesgo de caída.
+- **Velocidad**: La velocidad lineal actual del robot, que puede modificarse en función de las condiciones detectadas.
+- **UmbralFrontal**: Distancia mínima al frente que, si se supera, se considera que hay riesgo de colisión frontal.
+- **UmbralLateral**: Distancia mínima a los lados que, si se supera, indica riesgo de colisión lateral.
+- **UmbralCaida**: Distancia mínima hacia abajo que, si se supera, identifica un posible riesgo de caída.
 
 Con esta información, el bloque genera las siguientes salidas:
 
-- V (Velocidad Lineal): La velocidad lineal ajustada del robot tras procesar las condiciones de riesgo.
-- W (Velocidad Angular): La velocidad angular ajustada para modificar la orientación del robot y evitar colisiones o caídas.
+- **V (Velocidad Lineal)**: La velocidad lineal ajustada del robot tras procesar las condiciones de riesgo.
+- **W (Velocidad Angular)**: La velocidad angular ajustada para modificar la orientación del robot y evitar colisiones o caídas.
 
 El bloque "Sistema_Anticolision" está formado por varios subbloques que trabajan juntos para analizar las condiciones del entorno y tomar las decisiones necesarias:
 
@@ -340,13 +340,13 @@ Este bloque es realmente necesario si queremos que el Piero siga la trayectoria 
 
 Para lograr esto, el bloque recibe las siguientes entradas:
 
-- m/s_control: Un vector que contiene la velocidad lineal y angular del robot, calculadas en el bloque anterior (Control_Velocidad).
-- L: La distancia entre las ruedas izquierda y derecha del robot, necesaria para los cálculos cinemáticos.
+- **m/s_control**: Un vector que contiene la velocidad lineal y angular del robot, calculadas en el bloque anterior (Control_Velocidad).
+- **L**: La distancia entre las ruedas izquierda y derecha del robot, necesaria para los cálculos cinemáticos.
 
 Con esta información, el bloque genera las siguientes salidas:
 
-- x, y: Las coordenadas globales del robot en el plano.
-- o: La orientación del robot en radianes, relativa al sistema global de coordenadas.
+- **x, y**: Las coordenadas globales del robot en el plano.
+- **o**: La orientación del robot en radianes, relativa al sistema global de coordenadas.
 
 El funcionamiento interno del bloque se basa en el modelo cinemático del robot. 
 En primer lugar, las velocidades lineales y angulares se utilizan para calcular las velocidades globales (Vx, Vy, W) mediante transformaciones trigonométricas que tienen en cuenta la orientación actual del robot (o).
@@ -363,19 +363,19 @@ Finalmente, el bloque incluye una representación visual mediante un gráfico XY
 
 ### Bluetooth_Total
 El bloque Bluetooth_Total es el encargado de gestionar la comunicación entre el robot y un dispositivo externo mediante Bluetooth. Es la funcionalidad adicional que le hemos metido a la idea base del Piero. 
-Su objetivo principal es procesar la información recibida a través del canal Bluetooth y traducirla en los parámetros de control que se utilizan en todo el proyecto, como umbrales, velocidades, trayectorias y comandos específicos. 
+Su objetivo principal es procesar la información recibida a través del canal Bluetooth y traducirla en los parámetros de control que se utilizan en todo el proyecto, como umbrales, velocidades y waypoints. 
 
 Para lograr este objetivo, el bloque recibe las siguientes entradas:
 
-- Entradas de datos Bluetooth: Señales digitales representadas por valores binarios provenientes del módulo Bluetooth.
-- Señal de habilitación (Enable): Un indicador que activa o desactiva el procesamiento del bloque.
+- **Entradas de datos Bluetooth**: Señales digitales representadas por valores binarios provenientes del módulo Bluetooth.
+- **Señal de habilitación (Enable)**: Un indicador que activa o desactiva el procesamiento del bloque.
 
 Con esta información, el bloque calcula y actualiza las siguientes salidas:
 
-- Umbral_Lateral, Umbral_Frontal, Umbral_Abajo y Umbral_Trajectoria**: Parámetros ajustables que definen las distancias críticas para evitar colisiones y guiar el movimiento.
-- V y W: Velocidades lineales y angulares para el control dinámico del robot.
-- Waypoints: Lista de puntos de paso que el robot debe seguir en su trayectoria.
-- Comandos adicionales: Señales específicas que modifican otros aspectos del comportamiento del robot.
+- **Umbral_Lateral, Umbral_Frontal, Umbral_Abajo y Umbral_Trajectoria**: Parámetros ajustables que definen las distancias críticas para evitar colisiones y guiar el movimiento.
+- **V y W**: Velocidades lineales y angulares para el control dinámico del robot.
+- **Waypoints**: Lista de puntos de paso que el robot debe seguir en su trayectoria.
+- **Movimiento trayectoria**: Señales específicas que modifican otros aspectos del comportamiento del robot.
 
 Dentro del bloque Bluetooth_Total, la información se organiza y procesa en 4 subbloques principales. 
 El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
@@ -389,42 +389,41 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 
 
 
+### **Programa General del Piero**
+Ya hemos explicado cada uno de los bloques que conforman nuestro código, todos ellos juntos, logran hacer que el robot tenga un control eficiente de su navegación reactiva, su velocidad y comunicación. 
+Para unir estos subbloques explicados y dar una idea general y completa del código, podemos da las siguiente explicación del flujo: 
 
+1. Entrada de Datos y Configuración:
+El modelo comienza con las entradas generales del sistema, que incluyen:
+- **Waypoints:** Representan la lista de coordenadas que el robot debe seguir.
+- **Umbrales:** Parámetros para evitar colisiones y ajustar el comportamiento en función de la proximidad a obstáculos.
+- **Señal de habilitación:** Activa el funcionamiento general del sistema.
+Las cuales se pueden introducir o manualmente antes de cargar el código en el piero o por bluetooth desde el dispositivo móvil.
 
+2. Bloques Principales
+El modelo está compuesto por varios bloques que trabajan de manera coordinada para cumplir los objetivos de navegación y control del robot:
+- Bluetooth_Total: Procesa la información recibida desde el módulo Bluetooth, permitiendo la comunicación entre el robot y un dispositivo externo. Es responsable de traducir los comandos en datos que el sistema pueda usar, como umbrales, velocidades y waypoints. 
+- Trayectoria: Toma como entrada los waypoints, la posición actual del robot y los umbrales, y calcula la trayectoria óptima hacia el siguiente punto. Determina la velocidad y orientación necesarias para que el robot alcance cada waypoint en secuencia.
+- Control_Velocidad: Ajusta la velocidad de las ruedas del robot para que siga las instrucciones definidas por el bloque de trayectoria. Utiliza controladores internos para garantizar que la velocidad sea precisa y adaptada a las necesidades del robot.
+- Odometría: A partir de la velocidad de las ruedas, calcula la posición y orientación actual del robot. Proporciona información clave para el bloque de trayectoria y para cualquier monitoreo del robot.
+- Salida de Motores: Convierte las instrucciones generadas por el bloque de control de velocidad en señales PWM que controlan directamente los motores del robot.
 
-
-
-
-
-
-Para estos test seguimos un poco la idea del profe, pero los que usamos finalmente en el Piero fueron ligeramente distintos.
-
-### Test Luces:
-
-El primero del que voy a hablar es del Test Luces en models, este es uno de los test de luces, ya que hemos implementado dos lógicas dependiendo de la funcionalidad del led,  que actualmente se encuentra en la carpeta basura porque lo que nos interesa es el subprograma que se utiliza ahí, todos, los subprogramas se encuentran en la carpeta lib y se irán hablando de ellos debido a que se utilizan a lo largo de los distintos modelos. 
-
-El subprograma Leds 1 es bastante distinto al dado por el profesor en clase, ya que se utilizará para el estado de la batería. La idea de este es coger la entrada dada por el sensor de voltaje y compararla con una constante calculada. Esta constante es para 11V == 450 y para 11,2== 458. De esta forma, dependiendo del dato que nos llegue del sensor de voltaje, distinguimos tres situaciones: Que nuestras baterías tengan más de 11,2V, en ese caso nada nos tiene que preocupar y el led se encenderá con una luz azul. El siguiente caso es para cuando ha bajado de 11,2 pero no de 11, lo cual hace que el led se mantenga en un color rojo fijo. Pero en cambio cuando ya ha bajado de 11 V, el led nos avisará de que lo tenemos que cargar por un brillo intermitente en rojo. Toda esta lógica se consigue implementar gracias a puetas lógicas and, or y not, a los comparadores de constantes, al pulse generator y a los bloques de digital write de la librería de Arduino.
-
-El segundo subprograma de Leds se prueba en el subsistema llamado Sistema_Anticolision ubicado en lib, que a su vez, se utiliza en el TestTotal, este subsistema llamado Leds_Colision servirá para indicar de qué sensor se está recibiendo datos de un obstáculo. Aquí dividimos 4 respuestas: La primera, que se pongan verde si no recibe ni de la derecha ni de la izquierda, es decir, no hay obstáculos. Si se recibe de la izquierda se pone azul y si se recibe de la derecha en rojo. Por último, si se recibe de los dos lados se pondrá en rojo intermitente. Esta lógica utiliza los mismos bloques que el anterior subsistema.
-
-
- 
-
-### Test Encoders
-El siguiente modelo del que se hablará será del TestMotores, bastante distinto al visto en clase.
-
-### TestTotal
+Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga y esquive los obstaculos que se le crucen por el camino de la manera más precisa posible. 
 
 
 
 ## Resultados prácticos:
-•	Desempeño del robot en pruebas reales.
-•	Comparación entre simulación y realidad.
-•	Fotos, vídeos y gráficos relevantes.
+Una vez implementado el código nos dispusimos a comprobar su funcionamiento. 
+Los resultados de estas pruebas, despúes de todos los inconvenientes encontrados y despues de todos los errores cometidos, son muy satisfasctorios. 
+El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
+
+--insertar video--
+
 ## Conclusiones:
 •	Reflexión sobre los logros.
-•	Impacto del aprendizaje.
-•	Propuestas para mejorar el robot en el futuro.
+A pesar de haber sido un trabajo un tanto tedioso, ya sea por el manejo de los cables, sus uniones y empalmes, o por los ajustes del codigo para que lograra hacer lo que se suponía que tenía que hacer, hemos aprendido bastante al poner en practica lo que hemos estado viendo teóricamente en la asignatura. 
+Si tuviesemos que cambiar algo simplemente sería el software de diseño de código ya que, al utilizar arduino mega lo más eficiente es utilizar el Arduino IDE para generar todo el código ya que está optimizxzado para la placa utilizada.
+
 ## Autoevaluación:
-•	Desempeño grupal o individual.
-•	Justificación de la nota asignada.
+Como grupo consideramos que hemos trabajado de la forma más equitativa posible. Hemos intentado siempre estar juntos para trabajar a la vez en todos los ambitos, ya sea en el Readme, montando el Piero o escribiendo el código, es por esto que a los tres nos damos el mismo porcentaje de nota un 33,33%. 
+Teniendo todo lo explicado en el Readme en cuenta,como proyecto le pondriamos a nuestro Piero un 8, ya que pensamos que hay cosas que se pueden mejorear, no es perfecto, pero sí hemos logrado muy bien el objetivo y hemos aprendido de nuestros errores.
