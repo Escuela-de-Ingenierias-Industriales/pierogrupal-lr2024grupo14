@@ -246,9 +246,49 @@ Finalmente, actualiza las salidas Vout y o para controlar el movimiento del robo
 Si no quedan más waypoints, la función garantiza que el robot se detenga, asignando cero a la velocidad y la orientación.
 
 
+### Sistema_Anticolision
+El bloque "Sistema_Anticolision" es una parte clave del sistema de navegación del robot. 
+Su propósito es garantizar que el robot pueda moverse de forma segura, reaccionando rápidamente a posibles colisiones o caídas. 
+Este bloque ajusta la velocidad y la orientación del robot en tiempo real, basándose en los datos de los sensores y en ciertos umbrales predefinidos que indican riesgos.
 
+Para cumplir este objetivo, el bloque "Sistema_Anticolision" recibe las siguientes entradas:
 
+- Velocidad: La velocidad lineal actual del robot, que puede modificarse en función de las condiciones detectadas.
+- UmbralFrontal: Distancia mínima al frente que, si se supera, se considera que hay riesgo de colisión frontal.
+- UmbralLateral: Distancia mínima a los lados que, si se supera, indica riesgo de colisión lateral.
+- UmbralCaida: Distancia mínima hacia abajo que, si se supera, identifica un posible riesgo de caída.
 
+Con esta información, el bloque genera las siguientes salidas:
+
+- V (Velocidad Lineal): La velocidad lineal ajustada del robot tras procesar las condiciones de riesgo.
+- W (Velocidad Angular): La velocidad angular ajustada para modificar la orientación del robot y evitar colisiones o caídas.
+
+El bloque "Sistema_Anticolision" está formado por varios subbloques que trabajan juntos para analizar las condiciones del entorno y tomar las decisiones necesarias:
+
+#### Subbloque "Bits_Colision"
+Este subbloque toma los datos de los sensores y los compara con los valores de los umbrales establecidos (UmbralFrontal,UmbralLateral,UmbralCaida). 
+Básicamente, convierte las lecturas continuas de los sensores en señales binarias (0 o 1) que indican la presencia o ausencia de riesgo. Por ejemplo:
+
+- Un valor 1 en "Collision Frontal" indica que la distancia medida por el sensor frontal es menor o igual al UmbralFrontal, es decir, hay un riesgo de colisión frontal.
+- Un valor 0 indica que no hay riesgo de colisión en esa dirección.
+
+De esta forma, las señales binarias son un resumen claro y directo del estado del entorno, lo que facilita la toma de decisiones en los siguientes subbloques.
+
+#### Subbloque "ME_Colision"
+El subbloque "ME_Colision" utiliza un diagrama de estados implementado con la herramienta Stateflow para traducir las señales binarias de "Bits_Colision" en acciones concretas. 
+Este diagrama define una serie de estados y transiciones que controlan cómo el robot responde ante riesgos detectados:
+
+- Si se detecta un obstáculo frontal, el robot puede girar a la izquierda o derecha, o incluso retroceder, dependiendo de la lectura de los otros sensores.
+- Si se detecta riesgo de caída, el robot detiene su movimiento y ejecuta maniobras de recuperación.
+
+Por ejemplo, un estado como "GiroIzquierda" se activa si hay un obstáculo frontal y lateral derecho, y el diagrama lo acompaña de las velocidades lineal y angular necesarias para ejecutar el giro. 
+Las transiciones entre estados se activan según condiciones específicas, como Choque==1 o Caida==1.
+
+#### Subbloque "Leds_Colision"
+El subbloque "Leds_Colision" es el encargado de gestionar los LEDs RGB del robot para proporcionar una señal visual del estado actual. 
+Los pines 40, 38 y 42 del Arduino están conectados a los colores rojo (R), verde (G) y azul (B) del LED respectivamente, y están configurados en cortocircuito para operar como un único LED RGB. 
+
+Este diseño permite que el sistema informe visualmente sobre posibles riesgos o eventos importantes en tiempo real, lo que resulta útil tanto para la supervisión externa durante pruebas como para mejorar la interacción con el entorno.
 
 
 
