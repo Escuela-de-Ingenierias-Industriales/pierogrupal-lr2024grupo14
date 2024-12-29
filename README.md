@@ -211,27 +211,30 @@ Al principio, lo primero que hicimos fueran las actividades del Test de motores,
 Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en el repositorio, nos centraremos unicaente en los que utilizamos finalmente en nuestro proyecto.
 Hablaremos  ahora, de nuestro testTotal, un test que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos que puedan haber en su recorrido, con el añadido de que, gracias a un componente bluetooth, se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas desempeñando una funcion vital para el perfecto desempeño del Piero.
-Empezaremos hablando de la libreria
-- El bloque "Trayectoria" se encarga de calcular y supervisar el movimiento del robot entre una serie de puntos de paso o waypoints. 
+### Trayectoria
+El bloque "Trayectoria" se encarga de calcular y supervisar el movimiento del robot entre una serie de puntos de paso o waypoints. 
 Su objetivo principal es determinar la velocidad y orientación necesarias para que el robot se dirija al siguiente waypoint en la secuencia hasta que se alcancen todos ellos. 
 Este bloque juega un papel crucial en la navegación del robot, ya que traduce la información sobre la posición actual del robot y los objetivos definidos en una trayectoria eficiente y controlada.
 
 Para lograr este objetivo, el bloque recibe las siguientes entradas:
 
-Waypoints: Una matriz donde cada fila representa las coordenadas(x,y) de un waypoint al que el robot debe dirigirse.
-Umbral_Trajectoria: Una distancia umbral que determina cuándo el robot se considera lo suficientemente cerca de un waypoint para avanzar al siguiente.
-Pose: La posición actual del robot, especificada en un vector [x,y].
-V_in: La velocidad de entrada actual del robot.
-i_act: El índice del waypoint actual que está siguiendo el robot.
+- Waypoints: Una matriz donde cada fila representa las coordenadas(x,y) de un waypoint al que el robot debe dirigirse.
+- Umbral_Trajectoria: Una distancia umbral que determina cuándo el robot se considera lo suficientemente cerca de un waypoint para avanzar al siguiente.
+- Pose: La posición actual del robot, especificada en un vector [x,y].
+- V_in: La velocidad de entrada actual del robot.
+- i_act: El índice del waypoint actual que está siguiendo el robot.
+
 Con esta información, el bloque calcula y actualiza las siguientes salidas:
 
-V_out: La velocidad del robot después de procesar la trayectoria.
-o: La orientación del robot, calculada para dirigirse al siguiente waypoint.
-i_prox: El índice actualizado del siguiente waypoint al que debe dirigirse el robot.
+- V_out: La velocidad del robot después de procesar la trayectoria.
+- o: La orientación del robot, calculada para dirigirse al siguiente waypoint.
+- i_prox: El índice actualizado del siguiente waypoint al que debe dirigirse el robot.
+
 El funcionamiento interno del bloque toma como punto de partida la posición actual del robot (Pose) y el siguiente waypoint en la lista (Waypoints[iprox]). 
 Primero, se calcula la distancia entre ambas posiciones mediante la fórmula euclidiana. 
 Con esta distancia, se evalúa si el robot se encuentra lo suficientemente cerca del waypoint (es decir, si está dentro del umbral definido por Umbral_Trajectoria). 
 Si la distancia supera el umbral, el bloque calcula la orientación necesaria para que el robot avance hacia el waypoint y ajusta la velocidad de salida (Vout) en función de la velocidad de entrada (Vin). 
+
 Cuando el robot alcanza el waypoint (distancia menor o igual al umbral), el índice del waypoint actual (iprox) se actualiza para dirigir al robot hacia el siguiente objetivo en la lista. 
 Si no quedan más waypoints por alcanzar, el bloque detiene el movimiento del robot, asignando cero a la velocidad y la orientación.
 Dentro del bloque, el cálculo de las transformaciones de las entradas a las salidas se realiza principalmente a través de una función MATLAB. 
