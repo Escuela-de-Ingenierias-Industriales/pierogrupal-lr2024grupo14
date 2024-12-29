@@ -1,5 +1,30 @@
 # PIERO - Robot Móvil Autónomo DIY
-## Presentacion
+---
+## Índice
+1. [Presentación](#presentación)
+2. [Introducción](#introducción)
+3. [Estudio de las Partes del Robot PIERO: Dispositivos y Cableado](#estudio-de-las-partes-del-robot-piero-dispositivos-y-cableado)
+    - [Componentes Principales](#componentes-principales-del-robot-piero)
+    - [Cableado del Robot PIERO](#cableado-del-robot-piero)
+4. [Interconexionado](#interconexionado)
+5. [Estudio de la Programación IDE del Arduino Mega](#estudio-de-la-programación-ide-del-arduino-mega)
+    - [Función ISR](#función-isr)
+    - [Creación de Interrupciones en Arduino](#creación-de-interrupciones-en-arduino)
+6. [Estudios Previos para el Desarrollo del Código](#estudios-previos-para-el-desarrollo-del-código)
+    - [Estudio del Arduino Mega 2560 para su Programación con Simulink](#estudio-del-arduino-mega-2560-para-su-programación-con-simulink)
+    - [Programación en Arduino mediante MATLAB y Simulink](#programación-en-arduino-mediante-matlab-y-simulink)
+7. [Desarrollo del Código](#desarrollo-del-código)
+    - [Trayectoria](#trayectoria)
+    - [Sistema Anticolisión](#sistema-anticolisión)
+    - [Control de Velocidad](#control-velocidad)
+    - [Odometría](#odometría)
+    - [Bluetooth Total](#bluetooth-total)
+8. [Programa General del Piero](#programa-general-del-piero)
+9. [Resultados Prácticos](#resultados-prácticos)
+10. [Conclusiones](#conclusiones)
+11. [Autoevaluación](#autoevaluación)
+
+## Presentación
   
   Somos el grupo 14 de la asignatura de Laboratorio de robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. Este proyecto combina diseño, montaje, programación e integración de sistemas para crear una plataforma capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
 
@@ -12,121 +37,150 @@ PIERO es una plataforma de tracción diferencial equipada con dos motores eléct
 
   En esta etapa inicial de la investigación sobre el robot PIERO, nos hemos dedicado a explorar de manera detallada los elementos fundamentales y la instalación del cableado requerido para ensamblar y operar el robot. Impresiona ver cómo cada uno de los dispositivos que conforman al Piero es crucial para el correcto movimiento e interacción del este con su entorno, y de cómo, a pesar de la aparente complejidad del modelo visto en clase, su cableado y conexión son bastante sencillos.
 
-El siguiente listado contiene los componentes usados 
 ### Componentes Principales del Robot PIERO
-![motor con rueda](https://github.com/user-attachments/assets/fc06e6f1-2265-43b0-b6dc-e3e6b4f56709)
 
-**-Motores con Ruedas (x2)**: Los motores son de corriente continua de 12V y 170 RPM. Estos motores son fundamentales para el desplazamiento del robot y conforman la base de su sistema de movimiento.  Además contamos con una rueda caster para estabilizar su base.
+<p align="center">
+	<img src="https://github.com/user-attachments/assets/fc06e6f1-2265-43b0-b6dc-e3e6b4f56709" alt="motor con rueda" width="200"/>
+</p>
 
-![lca1010a](https://github.com/user-attachments/assets/0c6cc2c1-5139-4d9e-a8e4-08744dde88be)
+- **Motores con Ruedas (x2)**: Los motores son de corriente continua de 12V y 170 RPM. Estos motores son fundamentales para el desplazamiento del robot y conforman la base de su sistema de movimiento.  Además contamos con una rueda caster para estabilizar su base. <br><br>
 
-**-Arduino Mega 2560**:  Es el cerebro del robot. La característica más destacada del Arduino Mega 2560 es su habilidad para controlar numerosas entradas y salidas gracias al gran abanico de pines con los que cuenta. Esto posibilita la conexión sin dificultades de múltiples sensores y actuadores. 
+<p align="center">
+	<img src="https://github.com/user-attachments/assets/0c6cc2c1-5139-4d9e-a8e4-08744dde88be" alt="lca1010a" width="200"/>
+</p>
 
-![driver](https://github.com/user-attachments/assets/97a91e1a-5f60-451e-8ca8-12479732a0c2)
+- **Arduino Mega 2560**:  Es el cerebro del robot. La característica más destacada del Arduino Mega 2560 es su habilidad para controlar numerosas entradas y salidas gracias al gran abanico de pines con los que cuenta. Esto posibilita la conexión sin dificultades de múltiples sensores y actuadores.<br><br>
 
-**-Driver de Potencia L298N**: Este elemento tiene la responsabilidad de manejar los motores. Actúa como un puente H que proporciona control de velocidad y rotación del motor mediante PWM (modulación de ancho de pulso).
+<p align="center">
+<img src="https://github.com/user-attachments/assets/97a91e1a-5f60-451e-8ca8-12479732a0c2" alt="driver" width="200"/>
+</p>
 
-![sensor ultrasonidos](https://github.com/user-attachments/assets/48ce2882-181b-4222-862f-62d08f6ef41d)
+- **Driver de Potencia L298N**: Este elemento tiene la responsabilidad de manejar los motores. Actúa como un puente H que proporciona control de velocidad y rotación del motor mediante PWM (modulación de ancho de pulso).<br><br>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/48ce2882-181b-4222-862f-62d08f6ef41d" alt="sensor ultrasonidos" width="200"/>
+</p>
 
 
-**-Sensores de Distancia Ultrasonidos**: Los sensores de distancia son esenciales para detectar obstáculos y prevenir colisiones durante el desplazamiento del robot. Los sensores de ultrasonido ofrecen una cobertura amplia pero poca precisión.
+- **Sensores de Distancia Ultrasonidos**: Los sensores de distancia son esenciales para detectar obstáculos y prevenir colisiones durante el desplazamiento del robot. Los sensores de ultrasonido ofrecen una cobertura amplia pero poca precisión.<br><br>
 
-![pack-de-2-baterias-li-ion-18650-2400mah-37v](https://github.com/user-attachments/assets/630676de-b5b8-4d26-be37-59a526c30c9f)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/630676de-b5b8-4d26-be37-59a526c30c9f" alt="pack baterías" width="200"/>
+</p>
 
-**-Baterías y Porta Baterías**: Para el suministro de energía, se emplean baterías del tipo 18650, las cuales son recargables y presentan una adecuada combinación entre capacidad y tamaño. El soporte de baterías facilita una instalación segura y organizada, conectándose al Arduino mediante un interruptor para regular el encendido y apagado del sistema.
+- **Baterías y Porta Baterías**: Para el suministro de energía, se emplean baterías del tipo 18650, las cuales son recargables y presentan una adecuada combinación entre capacidad y tamaño. El soporte de baterías facilita una instalación segura y organizada, conectándose al Arduino mediante un interruptor para regular el encendido y apagado del sistema.<br><br>
 
-![voltimetro](https://github.com/user-attachments/assets/1efdb843-4632-4274-a111-10ac87f57a30)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/1efdb843-4632-4274-a111-10ac87f57a30" alt="voltímetro" width="200"/>
+</p>
 
-**-Voltímetro**: Es un elemento pequeño pero imprescindible para supervisar la descarga de la batería en tiempo real. 
+- **Voltímetro**: Es un elemento pequeño pero imprescindible para supervisar la descarga de la batería en tiempo real. <br><br>
 
-![cables-dupont-macho-macho-40-cm-40-unidades](https://github.com/user-attachments/assets/2c65bff1-1a82-42d9-8c63-773507afdd6f)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/2c65bff1-1a82-42d9-8c63-773507afdd6f" alt="cables dupont" width="200"/>
+</p>
 
-**-Cables Du Pont y Conexiones**: El cableado correcto es esencial en el proceso de montaje. El uso de cables Du Pont hace que sea más fácil conectar los diferentes módulos al Arduino. 
+- **Cables Du Pont y Conexiones**: El cableado correcto es esencial en el proceso de montaje. El uso de cables Du Pont hace que sea más fácil conectar los diferentes módulos al Arduino.<br> 
 
 ## Cableado del Robot PIERO
 ### El cableado del robot es una de las partes más cruciales que demanda mayor concentración. Garantizar la adecuada conexión de las piezas es clave para el correcto funcionamiento del robot. A continuación, se resaltan algunos puntos clave:
 
-**-Conexión de los Motores al Driver L298N**: Los motores se enlazan al controlador a través de las clavijas de salida del motor del L298N. Este controlador también se conecta a los pines de control del Arduino (generalmente pines digitales).Asimismo, es necesario enlazar el módulo de alimentación para asegurar que los motores cuenten con la cantidad adecuada de energía.
+- **Conexión de los Motores al Driver L298N**: Los motores se enlazan al controlador a través de las clavijas de salida del motor del L298N. Este controlador también se conecta a los pines de control del Arduino (generalmente pines digitales).Asimismo, es necesario enlazar el módulo de alimentación para asegurar que los motores cuenten con la cantidad adecuada de energía.
 
-**-Conexión de Sensores**: Los sensores de ultrasonido son conectados a los pines digitales del Arduino. Configurar adecuadamente los pines de entrada y salida y programar Arduino de forma eficiente es crucial para la lectura de datos.
+- **Conexión de Sensores**: Los sensores de ultrasonido son conectados a los pines digitales del Arduino. Configurar adecuadamente los pines de entrada y salida y programar Arduino de forma eficiente es crucial para la lectura de datos.
 
-**-Baterías y Sistema de Alimentación**: Se conectan las baterías al Arduino y a los motores mediante un sistema de distribución de energía que cuenta con un interruptor y un voltímetro. Esto no solo hace más sencillo encender y apagar al robot, sino que también permite vigilar constantemente el estado de la batería.
+- **Baterías y Sistema de Alimentación**: Se conectan las baterías al Arduino y a los motores mediante un sistema de distribución de energía que cuenta con un interruptor y un voltímetro. Esto no solo hace más sencillo encender y apagar al robot, sino que también permite vigilar constantemente el estado de la batería.
 
 Una vez entendidas las funciones de cada componente y habiendo estudiado su conexionado nos dispusimos a montarlo por nuestra cuenta sobre un túper de plástico:
 
-![Foto 1](https://github.com/user-attachments/assets/7dcbb292-c408-4090-8af7-696aa969e9ce)
+<img src="https://github.com/user-attachments/assets/7dcbb292-c408-4090-8af7-696aa969e9ce" alt="Foto 1" width="200"/>
+<br><br>
 
 Lo primero fue idear donde colocar cada dispositivo. Los motores y la caster fueron los primeros en añadirse. Utilizamos tornillos de diámetro 5 para la caster u como no pudimos conseguir los tornillos de diámetro 4 y longitud mínima para los motores utilizamos bridas que posteriormente se cortarían.
 
-![Foto 2](https://github.com/user-attachments/assets/795fa7de-bc00-4727-bda8-6a95b4cdf083)
-	
+<img src="https://github.com/user-attachments/assets/795fa7de-bc00-4727-bda8-6a95b4cdf083" alt="Foto 2" width="200"/>
+<br><br>
+
 Ya con los motores, lo siguiente fue poner al Arduino, porta baterías, driver y protoboard donde mejor se pudieran manejar, aun así, en la imagen se puede apreciar que estaban de forma temporal para poder probar distintos lugares y ver cómo se manejaban en estos.
 
-![Foto 3](https://github.com/user-attachments/assets/44ea9486-413e-4977-b52c-203c5a792e92)
+<img src="https://github.com/user-attachments/assets/44ea9486-413e-4977-b52c-203c5a792e92" alt="Foto 3" width="200"/>
+<br><br>
 
 El siguiente paso fue idear donde sería mejor poner los sensores de ultrasonidos y también ponerlos de forma temporal con alambres.
 
-![Foto 4](https://github.com/user-attachments/assets/a067525a-b45b-4e66-91af-381737e7e4de)
+<img src="https://github.com/user-attachments/assets/a067525a-b45b-4e66-91af-381737e7e4de" alt="Foto 4" width="200"/>
+<br><br>
 
 Y por último, antes de pasar al cableado, fue distribuir y poner los distintos leds que usaríamos. 
 
-![Foto 5](https://github.com/user-attachments/assets/1ca3f5e6-371b-4c1c-b586-75649f501777)
-![Foto 6](https://github.com/user-attachments/assets/8a3e72e0-4c24-4a54-8106-12fd81642d62)
-
+<img src="https://github.com/user-attachments/assets/1ca3f5e6-371b-4c1c-b586-75649f501777" alt="Foto 5" width="200"/>
+<br><br>
 
 ## Interconexionado.
 
-Para esta parte empezaos haciendo un Excel que nos serviría de guía para saber que pines del Arduino ya estábamos usando y para que se utilizaban. Este Excel se tuvo que cambiar a lo largo del proyecto un par de veces debido a fallos del propio Arduino.
-
---Foto del excel
+Para esta parte empezaos haciendo un Excel que nos serviría de guía para saber quéƒ pines del Arduino ya estábamos usando y para que se utilizaban. Este Excel se tuvo que cambiar a lo largo del proyecto un par de veces debido a fallos del propio Arduino.
+<br>
+<p align="center">
+	<img src="https://github.com/user-attachments/assets/f9117647-93f7-4d72-912f-2c43e8f36339" alt="pinouts" width="800"/>
+</p>
 
 Así, pudimos empezar con el conexionado.
 
-![Conexionado 1](https://github.com/user-attachments/assets/a553416c-72b7-4060-9b21-a6164f28e597)
-![conexionado 2](https://github.com/user-attachments/assets/b4d016d5-d037-4014-aaea-2c029640bd24)
-![Conexionado 3](https://github.com/user-attachments/assets/ad38c3d4-b7dd-4d28-aa11-24efd3594903)
+<img src="https://github.com/user-attachments/assets/a553416c-72b7-4060-9b21-a6164f28e597" alt="Conexionado 1" width="200"/>
 
- Aunque, a decir verdad, esta fue la parte en la que tuvimos más problemas, el mayor causante de estos fueron los cable que venían por defecto en los componentes que pedimos, estos cables eran muy frágiles y con mala conducción, es por eso que tuvimos que quitar algunos y sustituirlos por otros cables de nuestra elección, empalmar unos cables con otros e incluso utilizar celo para que no se desconectaran.
+<img src="https://github.com/user-attachments/assets/b4d016d5-d037-4014-aaea-2c029640bd24" alt="Conexionado 2" width="200"/>
+
+<img src="https://github.com/user-attachments/assets/ad38c3d4-b7dd-4d28-aa11-24efd3594903" alt="Conexionado 3" width="200"/>
+<br><br>
+
+Aunque, a decir verdad, esta fue la parte en la que tuvimos más problemas, el mayor causante de estos fueron los cable que venían por defecto en los componentes que pedimos, estos cables eran muy frágiles y con mala conducción, es por eso que tuvimos que quitar algunos y sustituirlos por otros cables de nuestra elección, empalmar unos cables con otros e incluso utilizar celo para que no se desconectaran.
  
-![conexionado 4](https://github.com/user-attachments/assets/92601a6c-eba4-436c-9877-da2651aa6569)
+<img src="https://github.com/user-attachments/assets/92601a6c-eba4-436c-9877-da2651aa6569" alt="Conexionado 4" width="200"/>
+<br><br>
 
 Una vez llegaron los nuevos cables ya pudimos soldarlos y empalmarlos correctamente
 
-![conexionado 5](https://github.com/user-attachments/assets/b89ed0cb-19db-45fa-9c05-f4854520a7d9)
-![conexionado6](https://github.com/user-attachments/assets/52d61136-9872-4759-a25c-204c8c8fa5d7)
+<img src="https://github.com/user-attachments/assets/b89ed0cb-19db-45fa-9c05-f4854520a7d9" alt="Conexionado 5" width="200"/>
+
+<img src="https://github.com/user-attachments/assets/52d61136-9872-4759-a25c-204c8c8fa5d7" alt="Conexionado 6" width="200"/>
+<br><br>
 
 Ya con estos cables conseguimos un prototipo precario al Piero que buscábamos, todavía nos daba fallos en conexiones y por eso tuvimos un estancamiento largo en esta parte.
 
-![conexionado 7](https://github.com/user-attachments/assets/8834bb77-62a1-4729-9757-7464b78d31ef)
+<img src="https://github.com/user-attachments/assets/8834bb77-62a1-4729-9757-7464b78d31ef" alt="Conexionado 7" width="200"/>
+<br><br>
 
 Fue con este conexionado, en las pruebas con el código, que pudimos ver que una de las ruedas no giraba, y que no era fallo del código. Es por eso que desconectamos todo y lo volvimos a rehacer para ver que pines no estaban funcionando como debian
 
-![conexionado 8](https://github.com/user-attachments/assets/f596e851-56ee-4958-b1ab-bdf04dd6aa27)
-![conexionado 9](https://github.com/user-attachments/assets/56b57d6a-1880-47e4-964d-289ad4dc6a52)
-![conexionado 10](https://github.com/user-attachments/assets/754d84b9-d4f4-48e0-8c8a-5bdae4b4c528)
+<img src="https://github.com/user-attachments/assets/f596e851-56ee-4958-b1ab-bdf04dd6aa27" alt="Conexionado 8" width="200"/>
+
+<img src="https://github.com/user-attachments/assets/56b57d6a-1880-47e4-964d-289ad4dc6a52" alt="Conexionado 9" width="200"/>
+
+<img src="https://github.com/user-attachments/assets/754d84b9-d4f4-48e0-8c8a-5bdae4b4c528" alt="Conexionado 10" width="200"/>
+<br><br>
 
 Y al fin conseguimos que todo estuviera bien cableado.
 
-![conexionado 11](https://github.com/user-attachments/assets/c16be8fc-df80-4a7a-8ead-c76eff1c19ca)
+<img src="https://github.com/user-attachments/assets/c16be8fc-df80-4a7a-8ead-c76eff1c19ca" alt="Conexionado 11" width="200"/>
+<br><br>
 
 ***
 
-# Estudio de la programación IDE del Arduino Mega (Interrupciones, lectura encoders)
+# Estudio de la programación IDE del Arduino Mega
 ### Arduino dispone de dos tipos de eventos en los que definir interrupciones. Por un lado tenemos las interrupciones de timers. Por otro lado, tenemos las interrupciones de hardware, que responden a eventos ocurridos en ciertos pines físicos.
 
 Dentro de las interrupciones de hardware, que son las que nos ocupan en esta entrada, Arduino es capaz de detectar los siguientes eventos.
 
-* <RISING>, ocurre en el flanco de subida de <LOW> a <HIGH>
-* <FALLING>, ocurre en el flanco de bajada de <HIGH> a <LOW>
-* <CHANGING>, ocurre cuando el pin cambia de estado (rising + falling)
-* <LOW>, se ejecuta continuamente mientras está en estado <LOW>
+* `RISING`, ocurre en el flanco de subida de `LOW` a `HIGH`.
+* `FALLING`, ocurre en el flanco de bajada de `HIGH` a `LOW `.
+* `CHANGING`, ocurre cuando el pin cambia de estado (`rising` + `falling`)
+* `LOW`, se ejecuta continuamente mientras está en estado `LOW`.
 
 Los pines susceptibles de generar interrupciones varían en función del modelo de Arduino. El Arduino Mega dispone de 6 interrupciones, en los pines 2, 3, 21, 20, 19 y 18 respectivamente.
 
-![Arduino-Mega-Pinout](https://github.com/user-attachments/assets/f010aa3b-ab0f-4f4c-bba4-5fd6604493bb)
+<img src="https://github.com/user-attachments/assets/f010aa3b-ab0f-4f4c-bba4-5fd6604493bb" alt="Arduino-Mega-Pinout" width="700"/>
 
-
-![Captura de pantalla 2024-09-20 115055](https://github.com/user-attachments/assets/7a1aa8af-6413-42d4-9da1-ab5a1161969c)
+<img src="https://github.com/user-attachments/assets/7a1aa8af-6413-42d4-9da1-ab5a1161969c" alt="Captura de pantalla 2024-09-20 115055" width="300"/>
 
 
 ## Función ISR
@@ -137,31 +191,30 @@ Frecuentemente la función de la ISR se limitará a activar un flag, incrementar
 Para poder modificar una variable externa a la ISR dentro de la misma debemos declararla como “volatile”. El indicador “volatile” indica al compilador que la variable tiene que ser consultada siempre antes de ser usada, dado que puede haber sido modificada de forma ajena al flujo normal del programa.
 
 Las interrupciones tienen efectos en la medición del tiempo de Arduino, tanto fuera como dentro de la ISR, porque Arduino emplea interrupciones de tipo Timer para actualizar la medición del tiempo.
-Durante la ejecución de una interrupción Arduino no actualiza el valor de la función millis y micros.
+Durante la ejecución de una interrupción Arduino no actualiza el valor de la función `millis` y `micros`.
 
 Dentro de la ISR el resto de interrupciones están desactivadas. Esto supone:
-* La función millis no actualiza su valor, por lo que no podemos utilizarla para medir el tiempo dentro de la ISR. 
-* Como consecuencia, la función delay() no funciona, ya que basa su funcionamiento en la función millis().
-* La función micros() actualiza su valor dentro de una ISR, pero empieza a dar mediciones de tiempo inexactas pasado el rango de 500us.
-* En consecuencia, la función <delayMicroseconds> funciona en ese rango de tiempo, aunque debemos evitar su uso porque no deberíamos introducir esperas dentro de una ISR.
+* La función `millis` no actualiza su valor, por lo que no podemos utilizarla para medir el tiempo dentro de la ISR. 
+* Como consecuencia, la función delay() no funciona, ya que basa su funcionamiento en la función `millis()`.
+* La función `micros()` actualiza su valor dentro de una ISR, pero empieza a dar mediciones de tiempo inexactas pasado el rango de 500us.
+* En consecuencia, la función `delayMicroseconds` funciona en ese rango de tiempo, aunque debemos evitar su uso porque no deberíamos introducir esperas dentro de una ISR.
 
 ## Creación de interrupciones en Arduino
 Para definir una interrupción en Arduino usamos la función:
-<attachInterrupt(interrupt, ISR, mode);>
+`attachInterrupt(interrupt, ISR, mode);`
 
 Donde interrupt es el número de la interrupción que estamos definiendo, ISR la función de callback asociada, y mode una de las opciones disponibles (FALLING, RISING, CHANGE y LOW).
 No obstante, es más limpio emplear la función digitalPinToInterrupt(), que convierte un Pin a la interrupción equivalente.
-<attachInterrupt(digitalPinToInterrupt(pin), ISR, mode);>
+`attachInterrupt(digitalPinToInterrupt(pin), ISR, mode);`
 
 Otras funcionas interesantes para la gestión de interrupciones son:
-* <DetachInterrupt(interrupt)>, anula la interrupción.
-* <NoInterrupts()>, desactiva la ejecución de interrupciones hasta nueva orde.
-* <Interrupts()>, reactiva las interrupciones.
+* `DetachInterrupt(interrupt)`, anula la interrupción.
+* `NoInterrupts()`, desactiva la ejecución de interrupciones hasta nueva orde.
+* `Interrupts()`, reactiva las interrupciones.
 
 
-***
 ## Estudios previos para el desarrollo del código
-### Estudio del Arduino Mega 2560 para su programación con Simulink: librería y entorno específico
+### Estudio del Arduino Mega 2560 para su programación con Simulink
 #### Lectura, escritura y análisis de datos de los sensores de Arduino
 El [paquete de soporte de MATLAB para Arduino](https://es.mathworks.com/hardware-support/arduino.html) permite escribir programas de MATLAB que leen y escriben datos en los dispositivos Arduino y otros dispositivos conectados, tales como Adafruit Motor Shield, I2C y SPI.
 
@@ -188,10 +241,11 @@ Para empezar a operar nuestro Arduino en el software de Matlab deberemos instala
  
 Una vez instalados, separaremos la configuración de nuestro Arduino dependiendo de si utilizamos Matlab o Simulink
 Matlab
-Para establecer la conexión entre Matlab y nuestra placa deberemos poner el siguiente comando: 
-a = arduino()  Se utilizará si hemos conectado al ordenador un hardware Arduino oficial
+Para establecer la conexión entre Matlab y nuestra placa deberemos poner el siguiente comando:
 
-a = arduino('COM3','Uno'). Se utilizara si el hardware no es oficial. ## “COM3” es el puerto del ordenador y “Uno” es el modelo del hardware.
+`a = arduino()`. Se utilizará si hemos conectado al ordenador un hardware Arduino oficial
+
+`a = arduino('COM3','Uno')`. Se utilizara si el hardware no es oficial. “COM3” es el puerto del ordenador y “Uno” es el modelo del hardware.
 
 Los comandos que nos dan los “adds-ons” instalados son los siguientes
  
@@ -206,8 +260,9 @@ Para simular nuestro proyecto en Simulink deberemos elegir el modo de simulació
 Para transferir nuestro código a la placa Arduino (evitando la necesidad de que la placa no tenga que estar siempre conectada a Simulink)
  
 ## Desarrollo del código.
+---
 Ya con los fundamentos sobre como usar las interrupciones, el Matlab y el simulink empezamos a desarrollar todo el código necesario para lograr la navegación reactiva.
-Al principio, lo primero que hicimos fueran las actividades del Test de motores, de leds y de sensores. 
+Al principio, lo primero que hicimos fueron las actividades del test de motores, de LEDs y de sensores. 
 Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en el repositorio, nos centraremos unicaente en los que utilizamos finalmente en nuestro proyecto.
 Hablaremos  ahora, de nuestro testTotal, un test que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos que puedan haber en su recorrido, con el añadido de que, gracias a un componente bluetooth, se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas desempeñando una funcion vital para el perfecto desempeño del Piero.
@@ -246,7 +301,7 @@ Finalmente, actualiza las salidas Vout y o para controlar el movimiento del robo
 Si no quedan más waypoints, la función garantiza que el robot se detenga, asignando cero a la velocidad y la orientación.
 
 
-### Sistema_Anticolision
+- ### Sistema Anticolisión
 El bloque "Sistema_Anticolision" es una parte clave del sistema de navegación del robot. 
 Su propósito es garantizar que el robot pueda moverse de forma segura, reaccionando rápidamente a posibles colisiones o caídas. 
 Este bloque ajusta la velocidad y la orientación del robot en tiempo real, basándose en los datos de los sensores y en ciertos umbrales predefinidos que indican riesgos.
@@ -292,7 +347,7 @@ Este diseño permite que el sistema informe visualmente sobre posibles riesgos o
 
 
 
-### Control_Velocidad
+- ### Control Velocidad
 El bloque Control_Velocidad se encarga de calcular y ajustar las velocidades necesarias para que el robot pueda moverse correctamente. 
 Para ello, utiliza como entradas la velocidad lineal (V), la velocidad angular (W) y la distancia entre las ruedas (L). 
 Este bloque está formado por dos partes principales: Vel_Ruedas, que calcula la velocidad de cada rueda (izquierda y derecha), y Controlador_BC, que ajusta estas velocidades usando un controlador PID y envía las señales necesarias para que los motores funcionen correctamente.
@@ -305,8 +360,8 @@ Esto permite que el sistema sea preciso y funcione bien en todo momento.
 El subbloque Vel_Ruedas es el encargado de calcular las velocidades individuales de las ruedas izquierda (V_Left) y derecha (V_Right) a partir de los datos de entrada: la velocidad lineal del robot (V), la velocidad angular (W), y la distancia entre ruedas (L). 
 Este cálculo se realiza mediante las siguientes fórmulas, basadas en el modelo cinemático diferencial del robot:
 
-- V_Left = V − (W⋅L)/2
-- V_Right = V + (W⋅L)/2
+- V_{Left} = V − \frac{(W⋅L)}{2}
+- V_{Right} = V + \frac{(W⋅L)}{2}
 ​
 ​
 La lógica del subbloque toma V como base para ambas ruedas y luego ajusta cada una según la velocidad angular y la distancia entre las ruedas. 
@@ -329,11 +384,11 @@ Cada PID compara la velocidad deseada con la velocidad actual, calculando la dif
 
 - PierroHW: Conecta las señales de control con el hardware del robot.
 
--- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
--- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
+	- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
+	- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
 
 
-### Odometria
+- ### Odometría
 El bloque "Odometría" es el encargado de estimar la posición y orientación del robot en el espacio global mientras este se desplaza. 
 Su objetivo principal es calcular las coordenadas globales (x,y) y la orientación (o) del robot basándose en su velocidad y orientación actuales. 
 Este bloque es realmente necesario si queremos que el Piero siga la trayectoria de la forma más precisa posible.
@@ -361,7 +416,7 @@ Dentro del bloque, para facilitar el diseño y la comprensión se encuentra el s
 Finalmente, el bloque incluye una representación visual mediante un gráfico XY Graph, que muestra en tiempo real la trayectoria del robot en el plano. Esto permite monitorear y analizar el movimiento del robot de manera intuitiva.
 
 
-### Bluetooth_Total
+- ### Bluetooth Total
 El bloque Bluetooth_Total es el encargado de gestionar la comunicación entre el robot y un dispositivo externo mediante Bluetooth. Es la funcionalidad adicional que le hemos metido a la idea base del Piero. 
 Su objetivo principal es procesar la información recibida a través del canal Bluetooth y traducirla en los parámetros de control que se utilizan en todo el proyecto, como umbrales, velocidades y waypoints. 
 
@@ -389,7 +444,8 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 
 
 
-### **Programa General del Piero**
+- ### **Programa General del Piero**
+
 Ya hemos explicado cada uno de los bloques que conforman nuestro código, todos ellos juntos, logran hacer que el robot tenga un control eficiente de su navegación reactiva, su velocidad y comunicación. 
 Para unir estos subbloques explicados y dar una idea general y completa del código, podemos da las siguiente explicación del flujo: 
 
@@ -402,28 +458,30 @@ Las cuales se pueden introducir o manualmente antes de cargar el código en el p
 
 2. Bloques Principales
 El modelo está compuesto por varios bloques que trabajan de manera coordinada para cumplir los objetivos de navegación y control del robot:
-- Bluetooth_Total: Procesa la información recibida desde el módulo Bluetooth, permitiendo la comunicación entre el robot y un dispositivo externo. Es responsable de traducir los comandos en datos que el sistema pueda usar, como umbrales, velocidades y waypoints. 
-- Trayectoria: Toma como entrada los waypoints, la posición actual del robot y los umbrales, y calcula la trayectoria óptima hacia el siguiente punto. Determina la velocidad y orientación necesarias para que el robot alcance cada waypoint en secuencia.
-- Control_Velocidad: Ajusta la velocidad de las ruedas del robot para que siga las instrucciones definidas por el bloque de trayectoria. Utiliza controladores internos para garantizar que la velocidad sea precisa y adaptada a las necesidades del robot.
-- Odometría: A partir de la velocidad de las ruedas, calcula la posición y orientación actual del robot. Proporciona información clave para el bloque de trayectoria y para cualquier monitoreo del robot.
-- Salida de Motores: Convierte las instrucciones generadas por el bloque de control de velocidad en señales PWM que controlan directamente los motores del robot.
+	- Bluetooth_Total: Procesa la información recibida desde el módulo Bluetooth, permitiendo la comunicación entre el robot y un dispositivo externo. Es responsable de traducir los comandos en datos que el sistema pueda usar, como umbrales, velocidades y waypoints. 
+	- Trayectoria: Toma como entrada los waypoints, la posición actual del robot y los umbrales, y calcula la trayectoria óptima hacia el siguiente punto. Determina la velocidad y orientación necesarias para que el robot alcance cada waypoint en secuencia.
+	- Control_Velocidad: Ajusta la velocidad de las ruedas del robot para que siga las instrucciones definidas por el bloque de trayectoria. Utiliza controladores internos para garantizar que la velocidad sea precisa y adaptada a las necesidades del robot.
+	- Odometría: A partir de la velocidad de las ruedas, calcula la posición y orientación actual del robot. Proporciona información clave para el bloque de trayectoria y para cualquier monitoreo del robot.
+	- Salida de Motores: Convierte las instrucciones generadas por el bloque de control de velocidad en señales PWM que controlan directamente los motores del robot.
 
 Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga y esquive los obstaculos que se le crucen por el camino de la manera más precisa posible. 
 
 
 
 ## Resultados prácticos:
+
 Una vez implementado el código nos dispusimos a comprobar su funcionamiento. 
-Los resultados de estas pruebas, despúes de todos los inconvenientes encontrados y despues de todos los errores cometidos, son muy satisfasctorios. 
+Los resultados de estas pruebas, después de todos los inconvenientes encontrados y despues de todos los errores cometidos, son muy satisfasctorios. 
 El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
 
 --insertar video--
 
 ## Conclusiones:
-•	Reflexión sobre los logros.
+
 A pesar de haber sido un trabajo un tanto tedioso, ya sea por el manejo de los cables, sus uniones y empalmes, o por los ajustes del codigo para que lograra hacer lo que se suponía que tenía que hacer, hemos aprendido bastante al poner en practica lo que hemos estado viendo teóricamente en la asignatura. 
-Si tuviesemos que cambiar algo simplemente sería el software de diseño de código ya que, al utilizar arduino mega lo más eficiente es utilizar el Arduino IDE para generar todo el código ya que está optimizxzado para la placa utilizada.
+Si tuviésemos que cambiar algo, simplemente sería el software de diseño de código ya que, al utilizar arduino mega lo más eficiente es utilizar el Arduino IDE para generar todo el código ya que está optimizado para la placa utilizada.
 
 ## Autoevaluación:
+
 Como grupo consideramos que hemos trabajado de la forma más equitativa posible. Hemos intentado siempre estar juntos para trabajar a la vez en todos los ambitos, ya sea en el Readme, montando el Piero o escribiendo el código, es por esto que a los tres nos damos el mismo porcentaje de nota un 33,33%. 
-Teniendo todo lo explicado en el Readme en cuenta,como proyecto le pondriamos a nuestro Piero un 8, ya que pensamos que hay cosas que se pueden mejorear, no es perfecto, pero sí hemos logrado muy bien el objetivo y hemos aprendido de nuestros errores.
+Teniendo todo lo explicado en el Readme en cuenta,como proyecto, le pondríamos a nuestro Piero un 8, ya que pensamos que hay cosas que se pueden mejorar, no es perfecto, pero sí hemos logrado muy bien el objetivo y hemos aprendido de nuestros errores.
