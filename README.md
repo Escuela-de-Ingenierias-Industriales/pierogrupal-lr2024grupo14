@@ -292,6 +292,55 @@ Este diseño permite que el sistema informe visualmente sobre posibles riesgos o
 
 
 
+### Control_Velocidad
+El bloque Control_Velocidad se encarga de calcular y ajustar las velocidades necesarias para que el robot pueda moverse correctamente. 
+Para ello, utiliza como entradas la velocidad lineal (V), la velocidad angular (W) y la distancia entre las ruedas (L). 
+Este bloque está formado por dos partes principales: Vel_Ruedas, que calcula la velocidad de cada rueda (izquierda y derecha), y Controlador_BC, que ajusta estas velocidades usando un controlador PID y envía las señales necesarias para que los motores funcionen correctamente.
+
+Dentro del Controlador_BC, también se encuentra el modelo del robot, que conecta los motores y los sensores (encoders) para medir la distancia recorrida. 
+Esto permite que el sistema sea preciso y funcione bien en todo momento.
+
+
+#### Vel_Ruedas
+El subbloque Vel_Ruedas es el encargado de calcular las velocidades individuales de las ruedas izquierda (V_Left) y derecha (V_Right) a partir de los datos de entrada: la velocidad lineal del robot (V), la velocidad angular (W), y la distancia entre ruedas (L). 
+Este cálculo se realiza mediante las siguientes fórmulas, basadas en el modelo cinemático diferencial del robot:
+
+- V_Left = V − (W⋅L)/2
+- V_Right = V + (W⋅L)/2
+​
+​
+La lógica del subbloque toma V como base para ambas ruedas y luego ajusta cada una según la velocidad angular y la distancia entre las ruedas. 
+Este cálculo permite que el robot pueda girar y avanzar de manera precisa.
+
+El resultado de este subbloque son las velocidades independientes para cada rueda, que se envían al siguiente subbloque para ser ajustadas y ejecutadas.
+
+#### Controlador_BC
+El subbloque Controlador_BC ajusta las velocidades calculadas en Vel_Ruedas mediante un controlador PID, asegurando que el robot alcance la velocidad deseada de forma estable y precisa. 
+Este ajuste se realiza generando señales PWM (modulación por ancho de pulso) que controlan la potencia de los motores. Dentro de este subbloque encontramos:
+
+1. PID: Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
+Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error.
+
+- Los parámetros del PID (proporcional, integral y derivativo) están configurados para obtener un control suave y eficiente.
+
+2. Mi_Piero: Este bloque modela el comportamiento físico del robot, simulando cómo los motores convierten las señales PWM en movimiento. Contiene:
+
+- FTs_Piero: Modela la dinámica de los motores a través de funciones de transferencia específicas para cada rueda (izquierda y derecha), transformando las señales PWM en velocidades lineales simuladas.
+
+- PierroHW: Conecta las señales de control con el hardware del robot.
+
+-- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
+-- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
+
+
+
+
+
+
+
+
+
+
 
 
 
