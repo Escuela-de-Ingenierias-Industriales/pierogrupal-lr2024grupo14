@@ -333,6 +333,33 @@ Cada PID compara la velocidad deseada con la velocidad actual, calculando la dif
 -- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
 
 
+### Odometria
+El bloque "Odometría" es el encargado de estimar la posición y orientación del robot en el espacio global mientras este se desplaza. 
+Su objetivo principal es calcular las coordenadas globales (x,y) y la orientación (o) del robot basándose en su velocidad y orientación actuales. 
+Este bloque es realmente necesario si queremos que el Piero siga la trayectoria de la forma más precisa posible.
+
+Para lograr esto, el bloque recibe las siguientes entradas:
+
+- m/s_control: Un vector que contiene la velocidad lineal y angular del robot, calculadas en el bloque anterior (Control_Velocidad).
+- L: La distancia entre las ruedas izquierda y derecha del robot, necesaria para los cálculos cinemáticos.
+
+Con esta información, el bloque genera las siguientes salidas:
+
+- x, y: Las coordenadas globales del robot en el plano.
+- o: La orientación del robot en radianes, relativa al sistema global de coordenadas.
+
+El funcionamiento interno del bloque se basa en el modelo cinemático del robot. 
+En primer lugar, las velocidades lineales y angulares se utilizan para calcular las velocidades globales (Vx, Vy, W) mediante transformaciones trigonométricas que tienen en cuenta la orientación actual del robot (o).
+Estas velocidades globales se integran a lo largo del tiempo para actualizar la posición y orientación global del robot:
+
+1. Cálculo de las velocidades globales: Se realiza una conversión de las velocidades locales a velocidades globales utilizando funciones trigonométricas (cos y sin).
+2. Integración de las velocidades: Las velocidades globales se integran para calcular los incrementos en las coordenadas x e y, así como los cambios en la orientación o.
+3. Actualización de las coordenadas globales: Los valores calculados se suman a la posición previa para obtener la nueva posición global.
+
+Dentro del bloque, para facilitar el diseño y la comprensión se encuentra el subbloque MCD (Modelo Cinemático Directo). Este subbloque realiza la transformación de velocidades locales a globales utilizando las entradas m/s_control y L.
+
+Finalmente, el bloque incluye una representación visual mediante un gráfico XY Graph, que muestra en tiempo real la trayectoria del robot en el plano. Esto permite monitorear y analizar el movimiento del robot de manera intuitiva.
+
 
 
 
