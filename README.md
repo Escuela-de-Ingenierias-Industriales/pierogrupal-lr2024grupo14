@@ -344,6 +344,7 @@ Cada PID compara la velocidad deseada con la velocidad actual, calculando la dif
 
 
 
+
 Para estos test seguimos un poco la idea del profe, pero los que usamos finalmente en el Piero fueron ligeramente distintos.
 
 ### Test Luces:
