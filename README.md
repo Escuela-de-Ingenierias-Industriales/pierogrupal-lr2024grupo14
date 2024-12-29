@@ -361,6 +361,31 @@ Dentro del bloque, para facilitar el diseño y la comprensión se encuentra el s
 Finalmente, el bloque incluye una representación visual mediante un gráfico XY Graph, que muestra en tiempo real la trayectoria del robot en el plano. Esto permite monitorear y analizar el movimiento del robot de manera intuitiva.
 
 
+### Bluetooth_Total
+El bloque Bluetooth_Total es el encargado de gestionar la comunicación entre el robot y un dispositivo externo mediante Bluetooth. Es la funcionalidad adicional que le hemos metido a la idea base del Piero. 
+Su objetivo principal es procesar la información recibida a través del canal Bluetooth y traducirla en los parámetros de control que se utilizan en todo el proyecto, como umbrales, velocidades, trayectorias y comandos específicos. 
+
+Para lograr este objetivo, el bloque recibe las siguientes entradas:
+
+- Entradas de datos Bluetooth: Señales digitales representadas por valores binarios provenientes del módulo Bluetooth.
+- Señal de habilitación (Enable): Un indicador que activa o desactiva el procesamiento del bloque.
+
+Con esta información, el bloque calcula y actualiza las siguientes salidas:
+
+- Umbral_Lateral, Umbral_Frontal, Umbral_Abajo y Umbral_Trajectoria**: Parámetros ajustables que definen las distancias críticas para evitar colisiones y guiar el movimiento.
+- V y W: Velocidades lineales y angulares para el control dinámico del robot.
+- Waypoints: Lista de puntos de paso que el robot debe seguir en su trayectoria.
+- Comandos adicionales: Señales específicas que modifican otros aspectos del comportamiento del robot.
+
+Dentro del bloque Bluetooth_Total, la información se organiza y procesa en 4 subbloques principales. 
+El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
+- Bluetooth_Datos sirve como nodo principal para la recepción y distribución de los datos. Todas las señales entrantes primero pasan por este subbloque, que valida y organiza la información.
+
+- Desde Bluetooth_Datos los datos se dirigen a los otros tres subbloques según las funciones específicas:
+  - Bluetooth_Umbrales recibe las señales relacionadas con distancias y parámetros críticos. Este subbloque calcula los umbrales dinámicos que el robot utilizará para decisiones de navegación y seguridad. Convierte las entradas digitales en valores escalados y los asigna a las salidas correspondientes (Umbral_Lateral, Umbral_Frontal, Umbral_Abajo y Umbral_Trajectoria).
+  - Bluetooth_Velocidad se conecta para procesar los comandos de movimiento. A partir de los datos recibidos de Bluetooth_Datos traduce las señales digitales en parámetros de velocidad lineal (V) y angular (W) que el robot utilizará para desplazarse.
+  - Bluetooth_Trayectoria toma los datos correspondientes a los waypoints para generar la lista de puntos de paso que definirán la trayectoria que el robot debe seguir. La salida principal de este subbloque es la lista Waypoints que se utiliza en la navegación.
+ 
 
 
 
