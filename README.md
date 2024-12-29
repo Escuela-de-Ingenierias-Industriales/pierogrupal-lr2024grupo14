@@ -265,7 +265,7 @@ Con esta información, el bloque genera las siguientes salidas:
 
 El bloque "Sistema_Anticolision" está formado por varios subbloques que trabajan juntos para analizar las condiciones del entorno y tomar las decisiones necesarias:
 
-#### Subbloque "Bits_Colision"
+#### Subbloque "Bits_Colision"
 Este subbloque toma los datos de los sensores y los compara con los valores de los umbrales establecidos (UmbralFrontal,UmbralLateral,UmbralCaida). 
 Básicamente, convierte las lecturas continuas de los sensores en señales binarias (0 o 1) que indican la presencia o ausencia de riesgo. Por ejemplo:
 
