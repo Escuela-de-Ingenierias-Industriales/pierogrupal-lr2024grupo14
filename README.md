@@ -304,14 +304,19 @@ Para transferir nuestro código a la placa Arduino (evitando la necesidad de que
 <img src="https://github.com/user-attachments/assets/b7f81aff-8a07-4cd5-a936-d2518e8590bf" alt="imagen" width="300"/>
 </p>
 <br><br>
+
 ## Desarrollo del código.
+
 ---
+
 Ya con los fundamentos sobre como usar las interrupciones, el Matlab y el simulink empezamos a desarrollar todo el código necesario para lograr la navegación reactiva.
 Al principio, lo primero que hicimos fueron las actividades del test de motores, de LEDs y de sensores. 
 Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en el repositorio, nos centraremos unicaente en los que utilizamos finalmente en nuestro proyecto.
 Hablaremos  ahora, de nuestro testTotal, un test que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos que puedan haber en su recorrido, con el añadido de que, gracias a un componente bluetooth, se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas desempeñando una funcion vital para el perfecto desempeño del Piero.
+
 ### Trayectoria
+
 El bloque "Trayectoria" se encarga de calcular y supervisar el movimiento del robot entre una serie de puntos de paso o waypoints. 
 Su objetivo principal es determinar la velocidad y orientación necesarias para que el robot se dirija al siguiente waypoint en la secuencia hasta que se alcancen todos ellos. 
 Este bloque juega un papel crucial en la navegación del robot, ya que traduce la información sobre la posición actual del robot y los objetivos definidos en una trayectoria eficiente y controlada.
