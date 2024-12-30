@@ -45,7 +45,7 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 	<img src="https://github.com/user-attachments/assets/fc06e6f1-2265-43b0-b6dc-e3e6b4f56709" alt="motor con rueda" width="200"/>
 </p>
 <p align="center">
-	<img src="https://cdn.discordapp.com/attachments/1250034242201849910/1323363479423291422/image.png?ex=67743dc8&is=6772ec48&hm=749dc1c1722ca175fafe8c41f6b874ba4d989b38ae63a0caf0af5c29c0726b17&" alt="lca1010a](https://github.com/user-attachments/assets/0c6cc2c1-5139-4d9e-a8e4-08744dde88be" width="200"/>
+	<img src="https://cdn.discordapp.com/attachments/1250034242201849910/1323363479423291422/image.png?ex=67743dc8&is=6772ec48&hm=749dc1c1722ca175fafe8c41f6b874ba4d989b38ae63a0caf0af5c29c0726b17&" alt="lca1010a](https://github.com/user-attachments/assets/0c6cc2c1-5139-4d9e-a8e4-08744dde88be" width="300"/>
 </p>
 
 - **Motores con encoders y ruedas (x2)**: El motor DC funciona con voltajes entre 5V a 12V, el torque y velocidad de salida varían de acuerdo al voltaje aplicado. Al trabajar con el voltaje nominal de 12V, la velocidad angular de salida será de 170 RPM (revoluciones por minuto). El dispositivo está compuesto de tres partes: el motor DC, la caja reductora y el encoder de cuadratura. La caja reductora de metal cumple la función de reducir la velocidad de entrada y aumentar el torque de salida. El encoder sirve como un sensor de velocidad y sentido de giro, funciona utilizando dos sensores de efecto Hall. El voltaje de alimentación del encoder es de 3.3V a 5V en corriente continua(DC). Estos motores son fundamentales para el desplazamiento del robot y conforman la base de su sistema de movimiento, los enconders que vienen con estos motores son esenciales para ubicar de forma precisa el robot en tiempo real.  Además contamos con una rueda caster para estabilizar su base. <br><br>
@@ -66,26 +66,35 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 <img src="https://github.com/user-attachments/assets/48ce2882-181b-4222-862f-62d08f6ef41d" alt="sensor ultrasonidos" width="200"/>
 </p>
 
-
 - **Sensores de Distancia Ultrasonidos**: Los sensores de distancia son esenciales para detectar obstáculos y prevenir colisiones durante el desplazamiento del robot. Los sensores de ultrasonido ofrecen una cobertura amplia pero poca precisión.<br><br>
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/630676de-b5b8-4d26-be37-59a526c30c9f" alt="pack baterías" width="200"/>
 </p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/eba3c2f0-3491-45df-99ed-b09ac7372d22" alt="Opera Instantánea_2024-12-30_190246_www google com" width="200"/>
+</p>
 
-- **Baterías y Porta Baterías**: Para el suministro de energía, se emplean baterías del tipo 18650, las cuales son recargables y presentan una adecuada combinación entre capacidad y tamaño. El soporte de baterías facilita una instalación segura y organizada, conectándose al Arduino mediante un interruptor para regular el encendido y apagado del sistema.<br><br>
+
+- **Baterías y Porta Baterías**: Para el suministro de energía, se emplean baterías de 3,7V y 3400 mAh del tipo 18650, las cuales son recargables y presentan una adecuada combinación entre capacidad y tamaño. El soporte de baterías facilita una instalación segura y organizada, conectándose al Arduino mediante un interruptor para regular el encendido y apagado del sistema.<br><br>
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/1efdb843-4632-4274-a111-10ac87f57a30" alt="voltímetro" width="200"/>
 </p>
 
-- **Voltímetro**: Es un elemento pequeño pero imprescindible para supervisar la descarga de la batería en tiempo real. <br><br>
+- **Indicador de voltaje**: Es un elemento pequeño pero imprescindible para supervisar la descarga de la batería en tiempo real. <br><br>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/065ba332-55cf-44b6-8df2-2efa3bf48f66" alt="image" width="200"/>
+</p>
+
+- **Sensor de voltaje**: Este módulo se basa en los principios de diseño de un divisor resistivo, puede reducir el voltaje de la conexión del terminal de entrada cinco veces, voltaje de entrada analógica de hasta 5V, entonces el voltaje de entrada del módulo de detección de voltaje no puede ser mayor que 5V × 5 = 25V (3,3 V si se utiliza el sistema, El voltaje de entrada no excede 3.3Vx5 = 16,5 V). Debido a que los chips AVR se utilizan en 10 AD, la resolución de simulación de este módulo es de 0,00489 V (5V / 1023), por lo que el módulo de detección de voltaje detecta que el voltaje mínimo de entrada es 0,00489 V × 5 = 0,02445 V. <br><br>
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/2c65bff1-1a82-42d9-8c63-773507afdd6f" alt="cables dupont" width="200"/>
 </p>
 
-- **Cables Du Pont y Conexiones**: El cableado correcto es esencial en el proceso de montaje. El uso de cables Du Pont hace que sea más fácil conectar los diferentes módulos al Arduino.<br> 
+- **Cables Du Pont y Conexiones**: El cableado correcto es esencial en el proceso de montaje. El uso de cables Du Pont hace que sea más fácil conectar los diferentes módulos al Arduino. Principalmente se han utilizado cables Macho-Hembra<br> 
 
 ## Cableado del Robot PIERO
 ### El cableado del robot es una de las partes más cruciales que demanda mayor concentración. Garantizar la adecuada conexión de las piezas es clave para el correcto funcionamiento del robot. A continuación, se resaltan algunos puntos clave:
