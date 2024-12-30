@@ -299,9 +299,9 @@ Una vez dentro, accedemos a la pestaña “Hardware Implementation” y rellenam
 
 Para simular nuestro proyecto en Simulink deberemos elegir el modo de simulación externo (para ejecutar nuestro programa en el hardware Arduino). Deberemos poner también el tiempo de simulación en infinito.
  
-Para transferir nuestro código a la placa Arduino (evitando la necesidad de que la placa no tenga que estar siempre conectada a Simulink) hay que pulsar el botón de "Build Deployed and start".
+Para transferir nuestro código a la placa Arduino (evitando la necesidad de que la placa no tenga que estar siempre conectada a Simulink) hay que pulsar el botón de "Build, Deploy & start".
 <p align="center">
-<img src="https://github.com/user-attachments/assets/b7f81aff-8a07-4cd5-a936-d2518e8590bf" alt="imagen" width="400"/>
+<img src="https://github.com/user-attachments/assets/b7f81aff-8a07-4cd5-a936-d2518e8590bf" alt="imagen" width="300"/>
 </p>
 <br><br>
 ## Desarrollo del código.
