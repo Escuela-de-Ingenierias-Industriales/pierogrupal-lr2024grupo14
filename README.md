@@ -180,14 +180,14 @@ Una vez llegaron los nuevos cables ya pudimos soldarlos y empalmarlos correctame
 </p>
 <br><br>
 
-Ya con estos cables conseguimos un prototipo precario al Piero que buscábamos, todavía nos daba fallos en conexiones y por eso tuvimos un estancamiento largo en esta parte.
+Ya con estos cables conseguimos un prototipo al Piero que buscábamos, pero todavía nos daba fallos en conexiones y por eso tuvimos un estancamiento largo en esta parte.
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/8834bb77-62a1-4729-9757-7464b78d31ef" alt="Conexionado 7" width="300"/>
 </p>
 <br><br>
 
-Fue con este conexionado, en las pruebas con el código, que pudimos ver que una de las ruedas no giraba, y que no era fallo del código. Es por eso que desconectamos todo y lo volvimos a rehacer para ver que pines no estaban funcionando como debian
+En las pruebas con el código, que pudimos ver que una de las ruedas no giraba, y que no era fallo del código. Después de medir voltaje en los pines del Arduino para ver que todo funcionara con normalidad y que se correspondía con lo programado, nos dimos cuenta de que teníamos unos pines estropeados que proporcionaban un voltaje ficticio. Es por eso que desconectamos todo y lo volvimos a rehacer, cambiando parte del pinout (la foto de arriba del pinout es la actualizad).
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/f596e851-56ee-4958-b1ab-bdf04dd6aa27" alt="Conexionado 8" width="300"/>
@@ -206,16 +206,17 @@ Y al fin conseguimos que todo estuviera bien cableado.
 ***
 
 # Estudio de la programación IDE del Arduino Mega
-### Arduino dispone de dos tipos de eventos en los que definir interrupciones. Por un lado tenemos las interrupciones de timers. Por otro lado, tenemos las interrupciones de hardware, que responden a eventos ocurridos en ciertos pines físicos.
 
-Dentro de las interrupciones de hardware, que son las que nos ocupan en esta entrada, Arduino es capaz de detectar los siguientes eventos.
+ Arduino dispone de dos tipos de eventos en los que definir interrupciones. Por un lado tenemos las interrupciones de timers. Por otro lado, tenemos las interrupciones de hardware, que responden a eventos ocurridos en ciertos pines físicos.
+
+Dentro de las interrupciones de hardware, que son las que nos ocupan en esta entrada, Arduino es capaz de detectar los siguientes eventos:
 
 * `RISING`, ocurre en el flanco de subida de `LOW` a `HIGH`.
 * `FALLING`, ocurre en el flanco de bajada de `HIGH` a `LOW `.
 * `CHANGING`, ocurre cuando el pin cambia de estado (`rising` + `falling`)
 * `LOW`, se ejecuta continuamente mientras está en estado `LOW`.
 
-Los pines susceptibles de generar interrupciones varían en función del modelo de Arduino. El Arduino Mega dispone de 6 interrupciones, en los pines 2, 3, 21, 20, 19 y 18 respectivamente.
+Los pines susceptibles de generar interrupciones varían en función del modelo de Arduino. El Arduino Mega 2560 dispone de 6 interrupciones, en los pines 2, 3, 21, 20, 19 y 18 respectivamente.
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/f010aa3b-ab0f-4f4c-bba4-5fd6604493bb" alt="Arduino-Mega-Pinout" width="700"/>
@@ -230,25 +231,25 @@ Frecuentemente la función de la ISR se limitará a activar un flag, incrementar
 Para poder modificar una variable externa a la ISR dentro de la misma debemos declararla como “volatile”. El indicador “volatile” indica al compilador que la variable tiene que ser consultada siempre antes de ser usada, dado que puede haber sido modificada de forma ajena al flujo normal del programa.
 
 Las interrupciones tienen efectos en la medición del tiempo de Arduino, tanto fuera como dentro de la ISR, porque Arduino emplea interrupciones de tipo Timer para actualizar la medición del tiempo.
-Durante la ejecución de una interrupción Arduino no actualiza el valor de la función `millis` y `micros`.
+Durante la ejecución de una interrupción, Arduino no actualiza el valor de la función `millis` y `micros`.
 
 Dentro de la ISR el resto de interrupciones están desactivadas. Esto supone:
-* La función `millis` no actualiza su valor, por lo que no podemos utilizarla para medir el tiempo dentro de la ISR. 
-* Como consecuencia, la función delay() no funciona, ya que basa su funcionamiento en la función `millis()`.
+* La función `millis()` no actualiza su valor, por lo que no podemos utilizarla para medir el tiempo dentro de la ISR. 
+* Como consecuencia, la función `delay()` no funciona, ya que basa su funcionamiento en la función `millis()`.
 * La función `micros()` actualiza su valor dentro de una ISR, pero empieza a dar mediciones de tiempo inexactas pasado el rango de 500us.
-* En consecuencia, la función `delayMicroseconds` funciona en ese rango de tiempo, aunque debemos evitar su uso porque no deberíamos introducir esperas dentro de una ISR.
+* En consecuencia, la función `delayMicroseconds()` funciona en ese rango de tiempo, aunque debemos evitar su uso porque no deberíamos introducir esperas dentro de una ISR.
 
 ## Creación de interrupciones en Arduino
 Para definir una interrupción en Arduino usamos la función:
 `attachInterrupt(interrupt, ISR, mode);`
 
 Donde interrupt es el número de la interrupción que estamos definiendo, ISR la función de callback asociada, y mode una de las opciones disponibles (FALLING, RISING, CHANGE y LOW).
-No obstante, es más limpio emplear la función digitalPinToInterrupt(), que convierte un Pin a la interrupción equivalente.
+No obstante, es más limpio emplear la función `digitalPinToInterrupt()`, que convierte un Pin a la interrupción equivalente.
 `attachInterrupt(digitalPinToInterrupt(pin), ISR, mode);`
 
 Otras funcionas interesantes para la gestión de interrupciones son:
 * `DetachInterrupt(interrupt)`, anula la interrupción.
-* `NoInterrupts()`, desactiva la ejecución de interrupciones hasta nueva orde.
+* `NoInterrupts()`, desactiva la ejecución de interrupciones hasta nueva orden.
 * `Interrupts()`, reactiva las interrupciones.
 
 
@@ -271,12 +272,17 @@ Ventajas del uso de Simulink para la programación en Arduino:
 * Ajuste y optimización interactivos de parámetros mientras el algoritmo se ejecuta en el dispositivo
 * Modificación fácil de algoritmos para su ejecución en otras plataformas de hardware comerciales de bajo coste
 
-
+<br><br>
 ### Programación en Arduino Mediante Matlab y Simulink
-Para empezar a operar nuestro Arduino en el software de Matlab deberemos instalarnos dos paquetes de soporte. Para ello realizaremos los tres siguientes pasos.
+Para empezar a operar nuestro Arduino en el software de Matlab deberemos instalarnos dos paquetes de soporte. Para ello realizaremos los tres siguientes pasos:
 1. Abriremos el software Matlab
 2. Accederemos a “Home”  > "Adds-Ons" > "Get Adds-Ons"
 3. Instalamos los dos siguientes Adds-Ons:
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/93e0f456-99da-4a42-b864-97f34a10600c" alt="imagen" width="700"/>
+</p>
+
  
 Una vez instalados, separaremos la configuración de nuestro Arduino dependiendo de si utilizamos Matlab o Simulink
 Matlab
