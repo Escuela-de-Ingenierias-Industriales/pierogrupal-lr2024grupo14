@@ -326,17 +326,17 @@ Este bloque juega un papel crucial en la navegación del robot, ya que traduce l
 
 Para lograr este objetivo, el bloque recibe las siguientes entradas:
 
-- * **Waypoints** *: Una matriz donde cada fila representa las coordenadas(x,y) de un waypoint al que el robot debe dirigirse.
-- * **Umbral_Trajectoria** *: Una distancia umbral que determina cuándo el robot se considera lo suficientemente cerca de un waypoint para avanzar al siguiente.
-- * **Pose** *: La posición actual del robot, especificada en un vector [x,y].
-- * **V_in** *: La velocidad de entrada actual del robot.
-- * **i_act** *: El índice del waypoint actual que está siguiendo el robot.
+- `Waypoints`: Una matriz donde cada fila representa las coordenadas(x,y) de un waypoint al que el robot debe dirigirse.
+- `Umbral_Trajectoria`: Una distancia umbral que determina cuándo el robot se considera lo suficientemente cerca de un waypoint para avanzar al siguiente.
+- `Pose`: La posición actual del robot, especificada en un vector [x,y].
+- `V_in`: La velocidad de entrada actual del robot.
+- `i_act`: El índice del waypoint actual que está siguiendo el robot.
 
 Con esta información, el bloque calcula y actualiza las siguientes salidas:
 
-- * **V_out** *: La velocidad del robot después de procesar la trayectoria.
-- * **o** *: La orientación del robot, calculada para dirigirse al siguiente waypoint.
-- * **i_prox** *: El índice actualizado del siguiente waypoint al que debe dirigirse el robot.
+- `V_out`: La velocidad del robot después de procesar la trayectoria.
+- `o`: La orientación del robot, calculada para dirigirse al siguiente waypoint.
+- `i_prox`: El índice actualizado del siguiente waypoint al que debe dirigirse el robot.
 
 El funcionamiento interno del bloque toma como punto de partida la posición actual del robot (`Pose`) y el siguiente waypoint en la lista (`Waypoints[iprox]`). 
 Primero, se calcula la distancia entre ambas posiciones mediante la fórmula euclidiana (\( d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \)). 
@@ -365,15 +365,15 @@ Este bloque ajusta la velocidad y la orientación del robot en tiempo real, bas�
 
 Para cumplir este objetivo, el bloque "Sistema_Anticolision" recibe las siguientes entradas:
 
-- * **Velocidad** *: La velocidad lineal actual del robot, que puede modificarse en función de las condiciones detectadas.
-- * **UmbralFrontal** *: Distancia mínima al frente que, si se supera, se considera que hay riesgo de colisión frontal.
-- * **UmbralLateral** *: Distancia mínima a los lados que, si se supera, indica riesgo de colisión lateral.
-- * **UmbralCaida** *: Distancia mínima hacia abajo que, si se supera, identifica un posible riesgo de caída.
+- `Velocidad`: La velocidad lineal actual del robot, que puede modificarse en función de las condiciones detectadas.
+- `UmbralFrontal`: Distancia mínima al frente que, si se supera, se considera que hay riesgo de colisión frontal.
+- `UmbralLateral`: Distancia mínima a los lados que, si se supera, indica riesgo de colisión lateral.
+- `UmbralCaida`: Distancia mínima hacia abajo que, si se supera, identifica un posible riesgo de caída.
 
 Con esta información, el bloque genera las siguientes salidas:
 
-- * **V (Velocidad Lineal)** *: La velocidad lineal ajustada del robot tras procesar las condiciones de riesgo.
-- * **W (Velocidad Angular)** *: La velocidad angular ajustada para modificar la orientación del robot y evitar colisiones o caídas.
+- `V (Velocidad Lineal)`: La velocidad lineal ajustada del robot tras procesar las condiciones de riesgo.
+- `W (Velocidad Angular)`: La velocidad angular ajustada para modificar la orientación del robot y evitar colisiones o caídas.
 
 El bloque "Sistema_Anticolision" está formado por varios subbloques que trabajan juntos para analizar las condiciones del entorno y tomar las decisiones necesarias:
 <br><br>
@@ -463,13 +463,13 @@ Este bloque es realmente necesario si queremos que el PIERO siga la trayectoria 
 
 Para lograr esto, el bloque recibe las siguientes entradas:
 
-- * **m/s_control** *: Un vector que contiene la velocidad lineal y angular del robot, calculadas en el bloque anterior (Control_Velocidad).
-- * **L** *: La distancia entre las ruedas izquierda y derecha del robot, necesaria para los cálculos cinemáticos.
+- `m/s_control`: Un vector que contiene la velocidad lineal y angular del robot, calculadas en el bloque anterior (Control_Velocidad).
+- `L`: La distancia entre las ruedas izquierda y derecha del robot, necesaria para los cálculos cinemáticos.
 
 Con esta información, el bloque genera las siguientes salidas:
 
-- * **x, y** *: Las coordenadas globales del robot en el plano.
-- * **o** *: La orientación del robot en radianes, relativa al sistema global de coordenadas.
+- `x, y`: Las coordenadas globales del robot en el plano.
+- `o`: La orientación del robot en radianes, relativa al sistema global de coordenadas.
 
 El funcionamiento interno del bloque se basa en el modelo cinemático del robot. 
 En primer lugar, las velocidades lineales y angulares se utilizan para calcular las velocidades globales (`Vx`, `Vy`, `W`) mediante transformaciones trigonométricas que tienen en cuenta la orientación actual del robot (`o`).
@@ -494,15 +494,15 @@ Su objetivo principal es procesar la información recibida a través del canal B
 
 Para lograr este objetivo, el bloque recibe las siguientes entradas:
 
-- * **Entradas de datos Bluetooth** *: Señales digitales representadas por valores binarios provenientes del módulo Bluetooth.
-- * **Señal de habilitación (Enable)** *: Un indicador que activa o desactiva el procesamiento del bloque.
+- `Entradas de datos Bluetooth`: Señales digitales representadas por valores binarios provenientes del módulo Bluetooth.
+- `Señal de habilitación (Enable)`: Un indicador que activa o desactiva el procesamiento del bloque.
 
 Con esta información, el bloque calcula y actualiza las siguientes salidas:
 
-- * **Umbral_Lateral, Umbral_Frontal, Umbral_Abajo y Umbral_Trajectoria** *: Parámetros ajustables que definen las distancias críticas para evitar colisiones y guiar el movimiento.
-- * **V y W** *: Velocidades lineales y angulares para el control dinámico del robot.
-- * **Waypoints** *: Lista de puntos de paso que el robot debe seguir en su trayectoria.
-- * **Movimiento trayectoria** *: Señales específicas que modifican otros aspectos del comportamiento del robot.
+- `Umbral_Lateral, Umbral_Frontal, Umbral_Abajo y Umbral_Trajectoria`: Parámetros ajustables que definen las distancias críticas para evitar colisiones y guiar el movimiento.
+- `V y W`: Velocidades lineales y angulares para el control dinámico del robot.
+- `Waypoints`: Lista de puntos de paso que el robot debe seguir en su trayectoria.
+- `Movimiento trayectoria`: Señales específicas que modifican otros aspectos del comportamiento del robot.
 
 Dentro del bloque Bluetooth_Total, la información se organiza y procesa en 4 subbloques principales. 
 El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
@@ -532,9 +532,9 @@ Para unir estos subbloques explicados y dar una idea general y completa del cód
 
 1. Entrada de Datos y Configuración:
 El modelo comienza con las entradas generales del sistema, que incluyen:
-- * **Waypoints:** * Representan la lista de coordenadas que el robot debe seguir.
-- * **Umbrales:** * Parámetros para evitar colisiones y ajustar el comportamiento en función de la proximidad a obstáculos.
-- * **Señal de habilitación:** * Activa el funcionamiento general del sistema.
+- `Waypoints:` Representan la lista de coordenadas que el robot debe seguir.
+- `Umbrales:` Parámetros para evitar colisiones y ajustar el comportamiento en función de la proximidad a obstáculos.
+- `Señal de habilitación:` Activa el funcionamiento general del sistema.
 Las cuales se pueden introducir o manualmente antes de cargar el código en el PIERO o por bluetooth desde el dispositivo móvil.
 
 2. Bloques Principales:
