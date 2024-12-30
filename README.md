@@ -317,7 +317,6 @@ Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo co
 
 <br>
 
-
 - ### Trayectoria
 
 El bloque "Trayectoria" se encarga de calcular y supervisar el movimiento del robot entre una serie de puntos de paso o waypoints. 
@@ -354,7 +353,7 @@ Finalmente, actualiza las salidas `Vout` y `o` para controlar el movimiento del 
 Si no quedan más waypoints, la función garantiza que el robot se detenga, asignando cero a la velocidad y la orientación.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/b7234d2f-fae2-4463-92fb-c331d2b9c5c7" alt="Trayectoria" width="300"/>
+<img src="https://github.com/user-attachments/assets/b7234d2f-fae2-4463-92fb-c331d2b9c5c7" alt="Trayectoria" width="800"/>
 </p>
 <br><br>
 
