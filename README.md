@@ -94,14 +94,14 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 <img src="https://github.com/user-attachments/assets/2c65bff1-1a82-42d9-8c63-773507afdd6f" alt="cables dupont" width="200"/>
 </p>
 
-- **Cables Du Pont y Conexiones**: El cableado correcto es esencial en el proceso de montaje. El uso de cables Du Pont hace que sea más fácil conectar los diferentes módulos al Arduino. Principalmente se han utilizado cables Macho-Hembra<br> 
+- **Cables Du Pont y Conexiones**: El cableado correcto es esencial en el proceso de montaje. El uso de cables Du Pont hace que sea más fácil conectar los diferentes módulos al Arduino. Principalmente se han utilizado cables Macho-Hembra<br> <br>
 
 ## Cableado del Robot PIERO
  El cableado del robot es una de las partes más cruciales que demanda mayor concentración. Garantizar la adecuada conexión de las piezas es clave para el correcto funcionamiento del robot. A continuación, se resaltan algunos puntos clave:
 
 - **Conexión de los Motores al Driver L298N**: Los motores se enlazan al controlador a través de las clavijas de salida del motor del L298N. Este controlador también se conecta a los pines de control del Arduino (generalmente pines digitales).Asimismo, es necesario enlazar el módulo de alimentación para asegurar que los motores cuenten con la cantidad adecuada de energía.
 
-- **Conexión de Sensores**: Los sensores de ultrasonido son conectados a los pines digitales del Arduino. Configurar adecuadamente los pines de entrada y salida y programar Arduino de forma eficiente es crucial para la lectura de datos.
+- **Conexión de Sensores**: Los sensores de ultrasonido son conectados a los pines digitales del Arduino. Configurar adecuadamente los pines de entrada y salida y programar el Arduino de forma eficiente es crucial para la lectura de datos.
 
 - **Baterías y Sistema de Alimentación**: Se conectan las baterías al Arduino y a los motores mediante un sistema de distribución de energía que cuenta con un interruptor y un voltímetro. Esto no solo hace más sencillo encender y apagar al robot, sino que también permite vigilar constantemente el estado de la batería.
 
