@@ -284,26 +284,26 @@ Para empezar a operar nuestro Arduino en el software de Matlab deberemos instala
 </p>
 
  
-Una vez instalados, separaremos la configuración de nuestro Arduino dependiendo de si utilizamos Matlab o Simulink
-Matlab
+Una vez instalados, separaremos la configuración de nuestro Arduino dependiendo de si utilizamos Matlab o Simulink.
 Para establecer la conexión entre Matlab y nuestra placa deberemos poner el siguiente comando:
 
 `a = arduino()`. Se utilizará si hemos conectado al ordenador un hardware Arduino oficial
 
 `a = arduino('COM3','Uno')`. Se utilizara si el hardware no es oficial. “COM3” es el puerto del ordenador y “Uno” es el modelo del hardware.
-
-Los comandos que nos dan los “adds-ons” instalados son los siguientes
  
-
+<br><br>
 ### Simmulink
 Para establecer la conexión entre Simulink y nuestra placa deberemos pulsar el botón “Model Configuration Parameters Button”
  
-Una vez dentro, accedemos a la pestaña “Hardware Implementation” y rellenamos el hueco de “Hardware Board” con el nombre de nuestra placa.
+Una vez dentro, accedemos a la pestaña “Hardware Implementation” y rellenamos el hueco de “Hardware Board” con el nombre de nuestra placa. Además, debemos ajustar los baudios, todas las opciones a 115200.
 
 Para simular nuestro proyecto en Simulink deberemos elegir el modo de simulación externo (para ejecutar nuestro programa en el hardware Arduino). Deberemos poner también el tiempo de simulación en infinito.
  
-Para transferir nuestro código a la placa Arduino (evitando la necesidad de que la placa no tenga que estar siempre conectada a Simulink)
- 
+Para transferir nuestro código a la placa Arduino (evitando la necesidad de que la placa no tenga que estar siempre conectada a Simulink) hay que pulsar el botón de "Build Deployed and start".
+<p align="center">
+<img src="https://github.com/user-attachments/assets/b7f81aff-8a07-4cd5-a936-d2518e8590bf" alt="imagen" width="400"/>
+</p>
+<br><br>
 ## Desarrollo del código.
 ---
 Ya con los fundamentos sobre como usar las interrupciones, el Matlab y el simulink empezamos a desarrollar todo el código necesario para lograr la navegación reactiva.
