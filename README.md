@@ -315,7 +315,7 @@ Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en e
 Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios. Además, hemos añadido dun componente bluetooth para que se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo con una funcion vital para el perfecto desempeño del PIERO.
 
-<br><br>
+<br>
 
 
 - ### Trayectoria
@@ -339,7 +339,7 @@ Con esta información, el bloque calcula y actualiza las siguientes salidas:
 - `i_prox`: El índice actualizado del siguiente waypoint al que debe dirigirse el robot.
 
 El funcionamiento interno del bloque toma como punto de partida la posición actual del robot (`Pose`) y el siguiente waypoint en la lista (`Waypoints[iprox]`). 
-Primero, se calcula la distancia entre ambas posiciones mediante la fórmula euclidiana (\( d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \)). 
+Primero, se calcula la distancia entre ambas posiciones mediante la fórmula euclidiana d = √((x_2 - x_1)^2 + (y_2 - y_1)^2). 
 Con esta distancia, se evalúa si el robot se encuentra lo suficientemente cerca del waypoint (es decir, si está dentro del umbral definido por `Umbral_Trajectoria`). 
 Si la distancia supera el umbral, el bloque calcula la orientación necesaria para que el robot avance hacia el waypoint y ajusta la velocidad de salida (`Vout`) en función de la velocidad de entrada (`Vin`). 
 
@@ -376,7 +376,7 @@ Con esta información, el bloque genera las siguientes salidas:
 - `W (Velocidad Angular)`: La velocidad angular ajustada para modificar la orientación del robot y evitar colisiones o caídas.
 
 El bloque "Sistema_Anticolision" está formado por varios subbloques que trabajan juntos para analizar las condiciones del entorno y tomar las decisiones necesarias:
-<br><br>
+<br>
 
 #### Subbloque "Bits_Colision"
 Este subbloque toma los datos de los sensores y los compara con los valores de los umbrales establecidos (`UmbralFrontal`,`UmbralLateral`,`UmbralCaida`). 
@@ -386,7 +386,7 @@ Básicamente, convierte las lecturas continuas de los sensores en señales binar
 - Un valor `0` indica que no hay riesgo de colisión en esa dirección.
 
 De esta forma, las señales binarias son un resumen claro y directo del estado del entorno, lo que facilita la toma de decisiones en los siguientes subbloques.
-<br><br>
+<br>
 
 #### Subbloque "ME_Colision"
 El subbloque "ME_Colision" utiliza un diagrama de estados implementado con la herramienta Stateflow para traducir las señales binarias de "Bits_Colision" en acciones concretas. 
@@ -417,20 +417,20 @@ Este bloque está formado por dos partes principales: "Vel_Ruedas", que calcula 
 
 Dentro del Controlador_BC, también se encuentra el modelo del robot, que conecta los motores y los sensores (encoders) para medir la distancia recorrida. 
 Esto permite que el sistema sea preciso y funcione bien en todo momento.
+<br>
 
-<br><br>
 #### Vel_Ruedas
 El subbloque Vel_Ruedas es el encargado de calcular las velocidades individuales de las ruedas izquierda (`V_Left`) y derecha (`V_Right`) a partir de los datos de entrada: la velocidad lineal del robot (`V`), la velocidad angular (`W`), y la distancia entre ruedas (`L`). 
 Este cálculo se realiza mediante las siguientes fórmulas, basadas en el modelo cinemático diferencial del robot:
 
-- `\(V_{Left} = V − \frac{(W⋅L)}{2}\)`
-- `\(V_{Right} = V + \frac{(W⋅L)}{2}\)`
+- `V_{Left} = V − (W⋅L)/2`
+- `V_{Right} = V + (W⋅L)/2`
   
 La lógica del subbloque toma `V` como base para ambas ruedas y luego ajusta cada una según la velocidad angular y la distancia entre las ruedas. 
 Este cálculo permite que el robot pueda girar y avanzar de manera precisa.
 
 El resultado de este subbloque son las velocidades independientes para cada rueda, que se envían al siguiente subbloque para ser ajustadas y ejecutadas.
-<br><br>
+<br>
 
 #### Controlador_BC
 El subbloque "Controlador_BC" ajusta las velocidades calculadas en "Vel_Ruedas" mediante un controlador PID, asegurando que el robot alcance la velocidad deseada de forma estable y precisa. 
@@ -507,16 +507,10 @@ Con esta información, el bloque calcula y actualiza las siguientes salidas:
 Dentro del bloque Bluetooth_Total, la información se organiza y procesa en 4 subbloques principales. 
 El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 - Bluetooth_Datos sirve como nodo principal para la recepción y distribución de los datos. Todas las señales entrantes primero pasan por este subbloque, que valida y organiza la información.
-
 - Desde Bluetooth_Datos los datos se dirigen a los otros tres subbloques según las funciones específicas:
-  <br>
-  
   - Bluetooth_Umbrales recibe las señales relacionadas con distancias y parámetros críticos. Este subbloque calcula los umbrales dinámicos que el robot utilizará para decisiones de navegación y seguridad. Convierte las entradas digitales en valores escalados y los asigna a las salidas correspondientes (`Umbral_Lateral`, `Umbral_Frontal`, `Umbral_Abajo` y `Umbral_Trajectoria`).
-  <br>
-  
   - Bluetooth_Velocidad se conecta para procesar los comandos de movimiento. A partir de los datos recibidos de Bluetooth_Datos traduce las señales digitales en parámetros de velocidad lineal (`V`) y angular (`W`) que el robot utilizará para desplazarse.
   <br>
-  
   - Bluetooth_Trayectoria toma los datos correspondientes a los waypoints para generar la lista de puntos de paso que definirán la trayectoria que el robot debe seguir. La salida principal de este subbloque es la lista Waypoints que se utiliza en la navegación.
 
 <p align="center">
@@ -539,19 +533,10 @@ Las cuales se pueden introducir o manualmente antes de cargar el código en el P
 
 2. Bloques Principales:
 El modelo está compuesto por varios bloques que trabajan de manera coordinada para cumplir los objetivos de navegación y control del robot:
-<br>
 	- Bluetooth_Total: Procesa la información recibida desde el módulo Bluetooth, permitiendo la comunicación entre el robot y un dispositivo externo. Es responsable de traducir los comandos en datos que el sistema pueda usar, como umbrales, velocidades y waypoints.
- <br>
- 
 	- Trayectoria: Toma como entrada los waypoints, la posición actual del robot y los umbrales, y calcula la trayectoria óptima hacia el siguiente punto. Determina la velocidad y orientación necesarias para que el robot alcance cada waypoint en secuencia.
-<br>
-
 	- Control_Velocidad: Ajusta la velocidad de las ruedas del robot para que siga las instrucciones definidas por el bloque de trayectoria. Utiliza controladores internos para garantizar que la velocidad sea precisa y adaptada a las necesidades del robot.
-<br>
-
 	- Odometría: A partir de la velocidad de las ruedas, calcula la posición y orientación actual del robot. Proporciona información clave para el bloque de trayectoria y para cualquier monitoreo del robot.
-<br>
-
 	- Salida de Motores: Convierte las instrucciones generadas por el bloque de control de velocidad en señales PWM que controlan directamente los motores del robot.
 
 Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga y esquive los obstaculos que se le crucen por el camino de la manera más precisa posible. 
