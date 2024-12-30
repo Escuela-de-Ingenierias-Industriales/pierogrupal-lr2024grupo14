@@ -37,7 +37,7 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 
 ## Estudio de las Partes del Robot PIERO: Dispositivos y Cableado
 
-  En esta etapa inicial de la investigación sobre el robot PIERO, nos hemos dedicado a explorar de manera detallada los elementos fundamentales y la instalación del cableado requerido para ensamblar y operar el robot. Impresiona ver cómo cada uno de los dispositivos que conforman al Piero es crucial para el correcto movimiento e interacción del este con su entorno, y de cómo, a pesar de la aparente complejidad del modelo visto en clase, su cableado y conexión son bastante sencillos.
+  En esta etapa inicial de la investigación sobre el robot PIERO, nos hemos dedicado a explorar de manera detallada los elementos fundamentales y la instalación del cableado requerido para ensamblar y operar el robot. Cada uno de los dispositivos que conforman al Piero es de suma para el correcto movimiento e interacción del éste con su entorno.
 
 ### Componentes Principales del Robot PIERO
 
@@ -45,19 +45,21 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 	<img src="https://github.com/user-attachments/assets/fc06e6f1-2265-43b0-b6dc-e3e6b4f56709" alt="motor con rueda" width="200"/>
 </p>
 
-- **Motores con Ruedas (x2)**: Los motores son de corriente continua de 12V y 170 RPM. Estos motores son fundamentales para el desplazamiento del robot y conforman la base de su sistema de movimiento.  Además contamos con una rueda caster para estabilizar su base. <br><br>
+- **Motores con encoders y ruedas (x2)**: El motor DC funciona con voltajes entre 5V a 12V, el torque y velocidad de salida varían de acuerdo al voltaje aplicado. Al trabajar con el voltaje nominal de 12V, la velocidad angular de salida será de 170 RPM (revoluciones por minuto). El dispositivo está compuesto de tres partes: el motor DC, la caja reductora y el encoder de cuadratura. La caja reductora de metal cumple la función de reducir la velocidad de entrada y aumentar el torque de salida. El encoder sirve como un sensor de velocidad y sentido de giro, funciona utilizando dos sensores de efecto Hall. El voltaje de alimentación del encoder es de 3.3V a 5V en corriente continua(DC). Estos motores son fundamentales para el desplazamiento del robot y conforman la base de su sistema de movimiento, los enconders que vienen con estos motores son esenciales para ubicar de forma precisa el robot en tiempo real.  Además contamos con una rueda caster para estabilizar su base. <br><br>
 
 <p align="center">
 	<img src="https://github.com/user-attachments/assets/0c6cc2c1-5139-4d9e-a8e4-08744dde88be" alt="lca1010a" width="200"/>
 </p>
-
+<p align="center">
+	<img src="https://cdn.discordapp.com/attachments/1250034242201849910/1323363479423291422/image.png?ex=67743dc8&is=6772ec48&hm=749dc1c1722ca175fafe8c41f6b874ba4d989b38ae63a0caf0af5c29c0726b17&" alt="lca1010a](https://github.com/user-attachments/assets/0c6cc2c1-5139-4d9e-a8e4-08744dde88be" width="200"/>
+</p>
 - **Arduino Mega 2560**:  Es el cerebro del robot. La característica más destacada del Arduino Mega 2560 es su habilidad para controlar numerosas entradas y salidas gracias al gran abanico de pines con los que cuenta. Esto posibilita la conexión sin dificultades de múltiples sensores y actuadores.<br><br>
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/97a91e1a-5f60-451e-8ca8-12479732a0c2" alt="driver" width="200"/>
 </p>
 
-- **Driver de Potencia L298N**: Este elemento tiene la responsabilidad de manejar los motores. Actúa como un puente H que proporciona control de velocidad y rotación del motor mediante PWM (modulación de ancho de pulso).<br><br>
+- **Driver de Potencia L298N**: Este elemento tiene la responsabilidad de manejar los motores. Actúa como un puente H que proporciona control de velocidad y rotación del motor mediante PWM (modulación de ancho de pulso).Este driver permite regular la salida tanto para dispositivos que requieran una entrada de 12V como aquellos que necesiten 5V. <br><br>
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/48ce2882-181b-4222-862f-62d08f6ef41d" alt="sensor ultrasonidos" width="200"/>
