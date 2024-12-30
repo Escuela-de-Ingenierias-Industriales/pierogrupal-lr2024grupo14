@@ -26,8 +26,9 @@
 
 ## Presentación
   
-  Somos el grupo 14 de la asignatura de Laboratorio de robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. <p><p>
-  Este proyecto combina diseño, montaje, programación e integración de sistemas para crear una plataforma capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
+  Somos el grupo 14 de la asignatura de Laboratorio de Robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. Este proyecto combina diseño, montaje y programación con el fin de crear un disositivo capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
+
+  --imagen del Piero fachero--
 
 ## Introducción
 En esta asignatura, se nos planteó el desafío de construir y programar un robot móvil llamado PIERO, diseñado para desplazarse de manera autónoma y evitar obstáculos. Este proyecto busca aplicar conceptos de robótica, integración de hardware y desarrollo de software en un entorno práctico.
