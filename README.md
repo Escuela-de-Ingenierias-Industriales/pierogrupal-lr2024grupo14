@@ -159,47 +159,47 @@ Para esta parte empezaos haciendo un Excel que nos serviría de guía para saber
 Así, pudimos empezar con el conexionado.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/a553416c-72b7-4060-9b21-a6164f28e597" alt="Conexionado 1" width="200"/>
-<img src="https://github.com/user-attachments/assets/b4d016d5-d037-4014-aaea-2c029640bd24" alt="Conexionado 2" width="200"/>
-<img src="https://github.com/user-attachments/assets/ad38c3d4-b7dd-4d28-aa11-24efd3594903" alt="Conexionado 3" width="200"/>
+<img src="https://github.com/user-attachments/assets/a553416c-72b7-4060-9b21-a6164f28e597" alt="Conexionado 1" width="300"/>
+<img src="https://github.com/user-attachments/assets/b4d016d5-d037-4014-aaea-2c029640bd24" alt="Conexionado 2" width="300"/>
+<img src="https://github.com/user-attachments/assets/ad38c3d4-b7dd-4d28-aa11-24efd3594903" alt="Conexionado 3" width="300"/>
 </p>
 <br><br>
 
 Aunque, a decir verdad, esta fue la parte en la que tuvimos más problemas, el mayor causante de estos fueron los cable que venían por defecto en los componentes que pedimos, estos cables eran muy frágiles y con mala conducción, es por eso que tuvimos que quitar algunos y sustituirlos por otros cables de nuestra elección, empalmar unos cables con otros e incluso utilizar celo para que no se desconectaran.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/92601a6c-eba4-436c-9877-da2651aa6569" alt="Conexionado 4" width="200"/>
+<img src="https://github.com/user-attachments/assets/92601a6c-eba4-436c-9877-da2651aa6569" alt="Conexionado 4" width="300"/>
 </p>
 <br><br>
 
-Una vez llegaron los nuevos cables ya pudimos soldarlos y empalmarlos correctamente
+Una vez llegaron los nuevos cables ya pudimos soldarlos y empalmarlos correctamente. Debido a la mala conexión de la protoboard de la que disponiamos no nos arriesgamos a meter 12V y  5V por los posibles daños al crearse vibraciones producidas por el movimiento del robot. Para ello, decidimos comprar PCBs de circuito impreso de doble cara para poder diseñarla a nuestro gusto y poder conectar los 12V y la tierra correspondiente.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/b89ed0cb-19db-45fa-9c05-f4854520a7d9" alt="Conexionado 5" width="200"/>
-<img src="https://github.com/user-attachments/assets/52d61136-9872-4759-a25c-204c8c8fa5d7" alt="Conexionado 6" width="200"/>
+<img src="https://github.com/user-attachments/assets/b89ed0cb-19db-45fa-9c05-f4854520a7d9" alt="Conexionado 5" width="300"/>
+<img src="https://github.com/user-attachments/assets/52d61136-9872-4759-a25c-204c8c8fa5d7" alt="Conexionado 6" width="300"/>
 </p>
 <br><br>
 
 Ya con estos cables conseguimos un prototipo precario al Piero que buscábamos, todavía nos daba fallos en conexiones y por eso tuvimos un estancamiento largo en esta parte.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/8834bb77-62a1-4729-9757-7464b78d31ef" alt="Conexionado 7" width="200"/>
+<img src="https://github.com/user-attachments/assets/8834bb77-62a1-4729-9757-7464b78d31ef" alt="Conexionado 7" width="300"/>
 </p>
 <br><br>
 
 Fue con este conexionado, en las pruebas con el código, que pudimos ver que una de las ruedas no giraba, y que no era fallo del código. Es por eso que desconectamos todo y lo volvimos a rehacer para ver que pines no estaban funcionando como debian
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/f596e851-56ee-4958-b1ab-bdf04dd6aa27" alt="Conexionado 8" width="200"/>
-<img src="https://github.com/user-attachments/assets/56b57d6a-1880-47e4-964d-289ad4dc6a52" alt="Conexionado 9" width="200"/>
-<img src="https://github.com/user-attachments/assets/754d84b9-d4f4-48e0-8c8a-5bdae4b4c528" alt="Conexionado 10" width="200"/>
+<img src="https://github.com/user-attachments/assets/f596e851-56ee-4958-b1ab-bdf04dd6aa27" alt="Conexionado 8" width="300"/>
+<img src="https://github.com/user-attachments/assets/56b57d6a-1880-47e4-964d-289ad4dc6a52" alt="Conexionado 9" width="300"/>
+<img src="https://github.com/user-attachments/assets/754d84b9-d4f4-48e0-8c8a-5bdae4b4c528" alt="Conexionado 10" width="300"/>
 </p>
 <br><br>
 
 Y al fin conseguimos que todo estuviera bien cableado.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/c16be8fc-df80-4a7a-8ead-c76eff1c19ca" alt="Conexionado 11" width="200"/>
+<img src="https://github.com/user-attachments/assets/c16be8fc-df80-4a7a-8ead-c76eff1c19ca" alt="Conexionado 11" width="300"/>
 </p>
 <br><br>
 
