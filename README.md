@@ -309,10 +309,10 @@ Para transferir nuestro código a la placa Arduino (evitando la necesidad de que
 
 ---
 
-Ya con los fundamentos sobre como usar las interrupciones, el Matlab y el simulink empezamos a desarrollar todo el código necesario para lograr la navegación reactiva.
-Al principio, lo primero que hicimos fueron las actividades del test de motores, de LEDs y de sensores. 
-Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en el repositorio, nos centraremos unicaente en los que utilizamos finalmente en nuestro proyecto.
-Hablaremos  ahora, de nuestro testTotal, un test que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos que puedan haber en su recorrido, con el añadido de que, gracias a un componente bluetooth, se pueda controlar el robot desde el movil.
+Ya con los fundamentos sobre como usar las interrupciones, Matlab y simulink, empezamos a desarrollar todo el código necesario para lograr la navegación reactiva.
+Al principio, lo primero que hicimos fueron las actividades del test de motores, LEDs y  sensores. 
+Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en el repositorio, nos centraremos únicamente en los que utilizamos finalmente en nuestro proyecto.
+Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios, además, con el añadido de que, gracias a un componente bluetooth, se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas desempeñando una funcion vital para el perfecto desempeño del Piero.
 
 ### Trayectoria
