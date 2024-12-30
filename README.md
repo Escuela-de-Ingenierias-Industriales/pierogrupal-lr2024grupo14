@@ -31,8 +31,8 @@
   --imagen del Piero fachero--
 
 ## Introducción
-En esta asignatura, se nos planteó el desafío de construir y programar un robot móvil llamado PIERO, diseñado para desplazarse de manera autónoma y evitar obstáculos. Este proyecto busca aplicar conceptos de robótica, integración de hardware y desarrollo de software en un entorno práctico.
-PIERO es una plataforma de tracción diferencial equipada con dos motores eléctricos y sensores que le permiten interpretar el entorno. Nuestra tarea consistió en caracterizar sus componentes, desarrollar el software necesario para que pueda seguir consignas de velocidad lineal y angular, y probar su capacidad para resolver un reto concreto: partiendo de un punto determinado, salir del laboratorio evitando obstáculos.
+En esta asignatura se nos planteó el desafío de construir y programar un robot móvil llamado PIERO, diseñado para desplazarse de manera autónoma y evitar obstáculos. Este proyecto busca aplicar conceptos de robótica, integración de hardware y desarrollo de software en un entorno práctico.
+PIERO es un robot de accionamiento diferencial con dos motores electricos, una rueda caster y sensores que le permiten interpretar el entorno. Nuestra tarea consistió en caracterizar sus componentes, desarrollar el software necesario para que pueda seguir consignas de velocidad lineal y angular, y probar su capacidad para resolver un reto concreto: partiendo de un punto determinado, salir del laboratorio evitando obstáculos.
 
 
 ## Estudio de las Partes del Robot PIERO: Dispositivos y Cableado
