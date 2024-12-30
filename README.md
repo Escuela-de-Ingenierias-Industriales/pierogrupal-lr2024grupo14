@@ -111,35 +111,35 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 Una vez entendidas las funciones de cada componente y habiendo estudiado su conexionado nos dispusimos a montarlo por nuestra cuenta sobre un túper de plástico:
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/7dcbb292-c408-4090-8af7-696aa969e9ce" alt="Foto 1" width="300"/>
+<img src="https://github.com/user-attachments/assets/214a9444-8e65-4567-8313-7f9e135281a2" alt="Foto 1" width="300"/>
 </p>
 <br><br>
 
 Lo primero fue idear donde colocar cada dispositivo. Los motores y la caster fueron los primeros en añadirse. Para la rueda caster utilizamos tornillos de diámetro 4 mm y para las ruedas motoras, debido a su disposición, elegimos poner bridas que posteriormente se cortarian.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/795fa7de-bc00-4727-bda8-6a95b4cdf083" alt="Foto 2" width="300"/>
+<img src="https://github.com/user-attachments/assets/b4aa51e1-3f78-446d-ae9c-2cfc883ec827" alt="Foto 2" width="300"/>
 </p>
 <br><br>
 
 Ya con los motores colocados, lo siguiente fue poner la placa Arduino, el portabaterías, el driver y la protoboard donde mejor se pudieran manejar, aun así, en la imagen se puede apreciar que estaban de forma temporal para poder probar distintos lugares y ver cómo se manejaban en estos.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/44ea9486-413e-4977-b52c-203c5a792e92" alt="Foto 3" width="300"/>
+<img src="https://github.com/user-attachments/assets/44ea9486-413e-4977-b52c-203c5a792e92" alt="Foto 3" width="400"/>
 </p>
 <br><br>
 
 El siguiente paso fue idear donde sería mejor poner los sensores de ultrasonidos y también ponerlos de forma temporal con alambres.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/a067525a-b45b-4e66-91af-381737e7e4de" alt="Foto 4" width="300"/>
+<img src="https://github.com/user-attachments/assets/416c5a5b-8d32-471c-8732-158616a87031" alt="Foto 4" width="400"/>
 </p>
 <br><br>
 
 Y por último, antes de pasar al cableado, fue distribuir y poner los distintos leds que usaríamos. 
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/1ca3f5e6-371b-4c1c-b586-75649f501777" alt="Foto 5" width="300"/>
+<img src="https://github.com/user-attachments/assets/8c412997-c6ba-48c8-815f-42cee2f8c519" alt="Foto 5" width="400"/>
 </p>
 <br><br>
 
