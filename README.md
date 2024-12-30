@@ -280,7 +280,7 @@ Para empezar a operar nuestro Arduino en el software de Matlab deberemos instala
 3. Instalamos los dos siguientes Adds-Ons:
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/93e0f456-99da-4a42-b864-97f34a10600c" alt="imagen" width="700"/>
+<img src="https://github.com/user-attachments/assets/93e0f456-99da-4a42-b864-97f34a10600c" alt="imagen" width="1100"/>
 </p>
 
  
