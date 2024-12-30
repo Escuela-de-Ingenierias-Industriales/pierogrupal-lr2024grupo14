@@ -26,7 +26,7 @@
 
 ## Presentación
   
-  Somos el grupo 14 de la asignatura de Laboratorio de robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. 
+  Somos el grupo 14 de la asignatura de Laboratorio de robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. <p><p>
   Este proyecto combina diseño, montaje, programación e integración de sistemas para crear una plataforma capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
 
 ## Introducción
