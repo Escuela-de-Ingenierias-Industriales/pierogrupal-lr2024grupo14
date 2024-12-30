@@ -80,6 +80,11 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 - **Baterías y Porta Baterías**: Para el suministro de energía, se emplean baterías de 3,7V y 3400 mAh del tipo 18650, las cuales son recargables y presentan una adecuada combinación entre capacidad y tamaño. El soporte de baterías facilita una instalación segura y organizada, conectándose al Arduino mediante un interruptor para regular el encendido y apagado del sistema.<br><br>
 
 <p align="center">
+<img src="https://github.com/user-attachments/assets/3a20e2b5-511a-4cbd-ba71-4c37b3aeb141" alt="Bluetooth" width="200"/>
+</p>
+- **Placa Bluetooth**: Esta es la funcionalidad que hemos añadido al proyecto.<br><br>
+
+<p align="center">
 <img src="https://github.com/user-attachments/assets/1efdb843-4632-4274-a111-10ac87f57a30" alt="voltímetro" width="200"/>
 </p>
 
@@ -148,7 +153,7 @@ Y por último, antes de pasar al cableado, fue distribuir y poner los distintos 
 Para esta parte empezaos haciendo un Excel que nos serviría de guía para saber quéƒ pines del Arduino ya estábamos usando y para que se utilizaban. Este Excel se tuvo que cambiar a lo largo del proyecto un par de veces debido a fallos del propio Arduino.
 <br>
 <p align="center">
-	<img src="https://github.com/user-attachments/assets/f9117647-93f7-4d72-912f-2c43e8f36339" alt="pinouts" width="800"/>
+	<img src="https://github.com/user-attachments/assets/e321d71c-54ed-425e-883b-f56e3cb35bd0" alt="pinouts" width="800"/>
 </p>
 
 Así, pudimos empezar con el conexionado.
