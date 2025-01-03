@@ -21,6 +21,9 @@
     - [Bluetooth Total](#bluetooth-total)
     - [Programa General del PIERO](#programa-general-del-PIERO)
 8. [Resultados Prácticos](#resultados-prácticos)
+   -[Prueba de evitar colisiones](#prueba-de-evitar-colisiones)
+   -[Prueba Anticaída](#prueba-anticaída)
+   -[Prueba de seguimiento de trayectoria](#prueba-de-seguimiento-de-trayectoria)
 9. [Conclusiones](#conclusiones)
 10. [Autoevaluación](#autoevaluación)
 <br><br>
@@ -531,11 +534,6 @@ Para la comunicación Bluetooth del robot PIERO, hemos utilizado el módulo HM-1
   
 El sistema incluye funcionalidades avanzadas como la reinicialización de la posición y ángulo del robot al inicio de cada nueva trayectoria, facilitando la programación de múltiples trayectorias consecutivas sin perder el punto de referencia. Esta implementación no solo optimiza la navegación reactiva del robot, sino que también permite ajustes dinámicos a través del móvil, haciendo que el sistema sea altamente interactivo y adaptable.
 
-La siguiente imagen es un conceptual de como trabaja la aplicación
-<p align="center">
-<img src="https://github.com/user-attachments/assets/cac9b089-5ac1-4ce3-b236-2b745677909a" alt="comandos" width="400"/>
-</p>
-
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/4cb7d9bd-bcbb-4a7f-a796-31a1341abd63" alt="Bluetooth" width="800"/>
@@ -574,31 +572,26 @@ Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga 
 
 Una vez implementado el código nos dispusimos a comprobar su funcionamiento. 
 Los resultados de estas pruebas, después de todos los inconvenientes encontrados y de todos los errores cometidos, son muy satisfasctorios. 
-El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
+El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos:
 
 <br><br>
 
-
-
-
+- ### Prueba de evitar colisiones
 
 https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
 
 
-Ese es la prueba de evitar colisiones. 
+- ### Prueba Anticaída
 
 <br><br>
 
 https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 
-Prueba Anticaída
-Este otro vídeo es la prueba para ver que no se cae de la mesa.
 
+- ### Prueba de seguimiento de trayectoria
 
 
 https://github.com/user-attachments/assets/5f756aeb-399f-415a-8cfe-dfe6288214d1
-
-
 
 
 
