@@ -514,7 +514,6 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 - Desde Bluetooth_Datos los datos se dirigen a los otros tres subbloques según las funciones específicas:
   - Bluetooth_Umbrales recibe las señales relacionadas con distancias y parámetros críticos. Este subbloque calcula los umbrales dinámicos que el robot utilizará para decisiones de navegación y seguridad. Convierte las entradas digitales en valores escalados y los asigna a las salidas correspondientes (`Umbral_Lateral`, `Umbral_Frontal`, `Umbral_Abajo` y `Umbral_Trajectoria`).
   - Bluetooth_Velocidad se conecta para procesar los comandos de movimiento. A partir de los datos recibidos de Bluetooth_Datos traduce las señales digitales en parámetros de velocidad lineal (`V`) y angular (`W`) que el robot utilizará para desplazarse.
-  <br>
   - Bluetooth_Trayectoria toma los datos correspondientes a los waypoints para generar la lista de puntos de paso que definirán la trayectoria que el robot debe seguir. La salida principal de este subbloque es la lista Waypoints que se utiliza en la navegación.
 
 
