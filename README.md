@@ -512,6 +512,11 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
   <br>
   - Bluetooth_Trayectoria toma los datos correspondientes a los waypoints para generar la lista de puntos de paso que definirán la trayectoria que el robot debe seguir. La salida principal de este subbloque es la lista Waypoints que se utiliza en la navegación.
 
+En la foto adjunta abajo se ven los tipos de comando q se pueden enviar (FFFF, FFAA y AAFF)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/ede84af0-de8f-453b-aa0b-c9f9700859f7" alt="comandos" width="800"/>
+</p>
+
 <p align="center">
 <img src="https://github.com/user-attachments/assets/4cb7d9bd-bcbb-4a7f-a796-31a1341abd63" alt="Bluetooth" width="800"/>
 </p>
@@ -557,11 +562,22 @@ El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
 
 
 
+<p align="center">
+	https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
+</p>
 
-https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
-
-Ese es la prueba de evitar colisiones. En esta prueba podemos ver que se choca en un momento (porque la colisión es una pata y es muy fina) se ve como consigue evitarlo al final.
+Ese es la prueba de evitar colisiones. 
+En esta prueba podemos ver que se choca en un momento (porque la colisión es una pata y es muy fina) se ve como consigue evitarlo al final.
 Los comandos que se ven son los de umbrales (AAFF) y los umbrales van de 0 a 1 metro siendo 1 metro FF y 0, 00.
+También se utilizan los comandos de movimiento (FFFF)
+<br><br>
+
+<p align="center">
+	https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
+</p>
+
+Prueba Anticaída
+Este otro vídeo es la prueba para ver que no se cae de la mesa.
 
 
 ## Conclusiones:
