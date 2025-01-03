@@ -129,9 +129,6 @@ Lo primero fue idear donde colocar cada dispositivo. Los motores y la caster fue
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/4ba2bad3-c811-44bf-ad49-5e47cd3fb5cc" alt="Foto 1.5" width="300"/>
-</p>
-
-<p align="center">
 <img src="https://github.com/user-attachments/assets/b4aa51e1-3f78-446d-ae9c-2cfc883ec827" alt="Foto 2" width="300"/>
 </p>
 <br><br>
