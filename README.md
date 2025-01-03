@@ -583,17 +583,14 @@ https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
 
 - ### Prueba Anticaída
 
-<br><br>
-
 https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 
 
 - ### Prueba de seguimiento de trayectoria
-
-
+  
 https://github.com/user-attachments/assets/5f756aeb-399f-415a-8cfe-dfe6288214d1
 
-
+<br><br>
 
 ## Conclusiones:
 
