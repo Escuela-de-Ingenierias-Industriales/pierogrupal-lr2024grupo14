@@ -554,6 +554,16 @@ El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
 --insertar video--
 <br><br>
 
+
+
+https://github.com/user-attachments/assets/8a03b163-1f4c-4cb8-a32d-610648b8e4fe
+
+Ese es el de evitar colisiones
+Aunque se vea q se choca en un momento (porque la colisión es una pata y es muy fina) se ve como consigue evitarlo al final
+Los comandos q se ven son los de umbrales (AAFF) y los umbrales van de 0 a 1 metro siendo 1 metro FF y 0, 00 (creo q es así, pero confirmadlo en las ganancias de los subsidtemas de bluetooth_umbrales y demás)
+En todas las ganancias esta puesto algo como a/255
+Eso hace q cuando se ponga FF se de el valor de "a" y cuando se ponga 00 sea el valor de 0
+
 ## Conclusiones:
 
 A pesar de haber sido un trabajo un tanto tedioso, ya sea por el manejo de los cables, sus uniones y empalmes, o por los ajustes del código (para que lograra hacer lo que se nos pide), hemos aprendido bastante al poner en práctica lo que hemos estado viendo teóricamente en la asignatura. 
@@ -561,6 +571,9 @@ Si tuviésemos que cambiar algo, simplemente sería el software de diseño de c�
 <br><br>
 
 ## Autoevaluación:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/03783c57-9509-43e2-a45a-32eb62841742" alt="trabajandoenequipo" width="800"/>
+</p>
 
 Como grupo consideramos que hemos trabajado de la forma más equitativa posible. Hemos intentado siempre estar juntos para trabajar a la vez en todos los ámbitos, ya sea en el Readme, montando el PIERO o escribiendo el código. Es por esto que a los tres nos damos el mismo porcentaje de nota un 33,33%. 
 Teniendo todo lo explicado en el Readme, como proyecto, le pondríamos a nuestro PIERO un 8, ya que pensamos que hay cosas que se pueden mejorar, pero sí hemos logrado muy bien el objetivo y hemos aprendido de nuestros errores.
