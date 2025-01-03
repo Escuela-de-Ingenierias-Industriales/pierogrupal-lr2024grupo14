@@ -128,6 +128,10 @@ Una vez entendidas las funciones de cada componente y habiendo estudiado su cone
 Lo primero fue idear donde colocar cada dispositivo. Los motores y la caster fueron los primeros en añadirse. Para la rueda caster utilizamos tornillos de diámetro 4 mm y para las ruedas motoras, debido a su disposición, elegimos poner bridas que posteriormente se cortarian.
 
 <p align="center">
+<img src="https://github.com/user-attachments/assets/4ba2bad3-c811-44bf-ad49-5e47cd3fb5cc" alt="Foto 1.5" width="300"/>
+</p>
+
+<p align="center">
 <img src="https://github.com/user-attachments/assets/b4aa51e1-3f78-446d-ae9c-2cfc883ec827" alt="Foto 2" width="300"/>
 </p>
 <br><br>
