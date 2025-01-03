@@ -561,9 +561,9 @@ El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
 
 
 
-<p align="center">
+
 https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
-</p>
+
 
 Ese es la prueba de evitar colisiones. 
 En esta prueba podemos ver que se choca en un momento (porque la colisión es una pata y es muy fina) se ve como consigue evitarlo al final.
@@ -571,9 +571,7 @@ Los comandos que se ven son los de umbrales (AAFF) y los umbrales van de 0 a 1 m
 También se utilizan los comandos de movimiento (FFFF)
 <br><br>
 
-<p align="center">
 https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
-</p>
 
 Prueba Anticaída
 Este otro vídeo es la prueba para ver que no se cae de la mesa.
