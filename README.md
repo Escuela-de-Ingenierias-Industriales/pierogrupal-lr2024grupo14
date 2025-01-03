@@ -28,12 +28,14 @@
   
   Somos el grupo 14 de la asignatura de Laboratorio de Robótica 2024/25 formado por Iván Calvo Santos, Lucía Ortiz Miranda y Jorge Espiau Bhawnani.  Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. Este proyecto combina diseño, montaje y programación con el fin de crear un disositivo capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
 
-  --imagen del PIERO fachero--
+https://github.com/user-attachments/assets/7ee8f823-3e0f-42a8-8685-78d87df7f507
+
 <br><br>
 ## Introducción
 En esta asignatura se nos planteó el desafío de construir y programar un robot móvil llamado PIERO, diseñado para desplazarse de manera autónoma y evitar obstáculos. Este proyecto busca aplicar conceptos de robótica, integración de hardware y desarrollo de software en un entorno práctico.
 PIERO es un robot de accionamiento diferencial con dos motores electricos, una rueda caster y sensores que le permiten interpretar el entorno. Nuestra tarea consistió en caracterizar sus componentes, desarrollar el software necesario para que pueda seguir consignas de velocidad lineal y angular, y probar su capacidad para resolver un reto concreto: partiendo de un punto determinado, salir del laboratorio evitando obstáculos.
 <br><br>
+
 
 ## Estudio de las Partes del Robot PIERO: Dispositivos y Cableado
 
@@ -512,10 +514,28 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
   <br>
   - Bluetooth_Trayectoria toma los datos correspondientes a los waypoints para generar la lista de puntos de paso que definirán la trayectoria que el robot debe seguir. La salida principal de este subbloque es la lista Waypoints que se utiliza en la navegación.
 
-En la foto adjunta abajo se ven los tipos de comando q se pueden enviar (FFFF, FFAA y AAFF)
+
 <p align="center">
-<img src="https://github.com/user-attachments/assets/ede84af0-de8f-453b-aa0b-c9f9700859f7" alt="comandos" width="800"/>
+<img src="https://github.com/user-attachments/assets/ede84af0-de8f-453b-aa0b-c9f9700859f7" alt="comandos" width="700"/>
 </p>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/0f0c3ffa-6066-4b4d-944e-84e5c5d8d642" alt="comandos" width="400"/>
+</p>
+
+Para la comunicación Bluetooth del robot PIERO, hemos utilizado el módulo HM-10, conectado a través de la aplicación nRF Connect en un dispositivo Android. Esta configuración permite enviar y recibir comandos en forma de bytes desde el móvil, los cuales son procesados en el entorno de Simulink mediante el bloque Serial Receive. Existen tres tipos principales de comandos:
+
+- `FFFF` para establecer comandos de velocidad.
+- `FFAA` para definir trayectorias enviando cuatro bytes que representan las coordenadas de los puntos de la trayectoria (por ejemplo, `98949898` representa `x=1` y `y=0`).
+- `AAFF` para modificar los umbrales del robot en tiempo real.
+  
+El sistema incluye funcionalidades avanzadas como la reinicialización de la posición y ángulo del robot al inicio de cada nueva trayectoria, facilitando la programación de múltiples trayectorias consecutivas sin perder el punto de referencia. Esta implementación no solo optimiza la navegación reactiva del robot, sino que también permite ajustes dinámicos a través del móvil, haciendo que el sistema sea altamente interactivo y adaptable.
+
+La siguiente imagen es un conceptual de como trabaja la aplicación
+<p align="center">
+<img src="https://github.com/user-attachments/assets/cac9b089-5ac1-4ce3-b236-2b745677909a" alt="comandos" width="400"/>
+</p>
+
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/4cb7d9bd-bcbb-4a7f-a796-31a1341abd63" alt="Bluetooth" width="800"/>
@@ -566,15 +586,20 @@ https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
 
 
 Ese es la prueba de evitar colisiones. 
-En esta prueba podemos ver que se choca en un momento (porque la colisión es una pata y es muy fina) se ve como consigue evitarlo al final.
-Los comandos que se ven son los de umbrales (AAFF) y los umbrales van de 0 a 1 metro siendo 1 metro FF y 0, 00.
-También se utilizan los comandos de movimiento (FFFF)
+
 <br><br>
 
 https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 
 Prueba Anticaída
 Este otro vídeo es la prueba para ver que no se cae de la mesa.
+
+
+
+https://github.com/user-attachments/assets/5f756aeb-399f-415a-8cfe-dfe6288214d1
+
+
+
 
 
 ## Conclusiones:
