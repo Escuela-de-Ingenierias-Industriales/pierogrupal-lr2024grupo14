@@ -105,7 +105,7 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 ## Cableado del Robot PIERO
  El cableado del robot es una de las partes más cruciales que demanda mayor concentración. Garantizar la adecuada conexión de las piezas es clave para el correcto funcionamiento del robot. A continuación, se resaltan algunos puntos clave:
 
-- **Conexión de los Motores al Driver L298N**: Los motores se enlazan al controlador a través de las clavijas de salida del motor del L298N. Este controlador también se conecta a los pines de control del Arduino (generalmente pines digitales).Asimismo, es necesario enlazar el módulo de alimentación para asegurar que los motores cuenten con la cantidad adecuada de energía.
+- **Conexión de los Motores al Driver L298N**: Los motores se enlazan al controlador a través de las clavijas de salida del motor del L298N. Este controlador también se conecta a los pines de control del Arduino (generalmente pines digitales).Asimismo, es necesario enlazar el módulo de alimentación para asegurar que los motores cuenten con la cantidad adecuada de Esquivando Cenergía.
 
 - **Conexión de Sensores**: Los sensores de ultrasonido son conectados a los pines digitales del Arduino. Configurar adecuadamente los pines de entrada y salida y programar el Arduino de forma eficiente es crucial para la lectura de datos.
 
@@ -556,13 +556,13 @@ El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
 
 
 
-https://github.com/user-attachments/assets/8a03b163-1f4c-4cb8-a32d-610648b8e4fe
 
-Ese es el de evitar colisiones
-Aunque se vea q se choca en un momento (porque la colisión es una pata y es muy fina) se ve como consigue evitarlo al final
-Los comandos q se ven son los de umbrales (AAFF) y los umbrales van de 0 a 1 metro siendo 1 metro FF y 0, 00 (creo q es así, pero confirmadlo en las ganancias de los subsidtemas de bluetooth_umbrales y demás)
-En todas las ganancias esta puesto algo como a/255
-Eso hace q cuando se ponga FF se de el valor de "a" y cuando se ponga 00 sea el valor de 0
+
+https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
+
+Ese es la prueba de evitar colisiones. En esta prueba podemos ver que se choca en un momento (porque la colisión es una pata y es muy fina) se ve como consigue evitarlo al final.
+Los comandos que se ven son los de umbrales (AAFF) y los umbrales van de 0 a 1 metro siendo 1 metro FF y 0, 00.
+
 
 ## Conclusiones:
 
