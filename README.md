@@ -556,14 +556,13 @@ Una vez implementado el código nos dispusimos a comprobar su funcionamiento.
 Los resultados de estas pruebas, después de todos los inconvenientes encontrados y de todos los errores cometidos, son muy satisfasctorios. 
 El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos
 
---insertar video--
 <br><br>
 
 
 
 
 <p align="center">
-	https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
+https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
 </p>
 
 Ese es la prueba de evitar colisiones. 
@@ -573,7 +572,7 @@ También se utilizan los comandos de movimiento (FFFF)
 <br><br>
 
 <p align="center">
-	https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
+https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 </p>
 
 Prueba Anticaída
