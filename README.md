@@ -21,9 +21,9 @@
     - [Bluetooth Total](#bluetooth-total)
     - [Programa General del PIERO](#programa-general-del-PIERO)
 8. [Resultados Prácticos](#resultados-prácticos)
-   -[Prueba de evitar colisiones](#prueba-de-evitar-colisiones)
-   -[Prueba Anticaída](#prueba-anticaída)
-   -[Prueba de seguimiento de trayectoria](#prueba-de-seguimiento-de-trayectoria)
+   - [Prueba de evitar colisiones](#prueba-de-evitar-colisiones)
+   - [Prueba Anticaída](#prueba-anticaída)
+   - [Prueba de seguimiento de trayectoria](#prueba-de-seguimiento-de-trayectoria)
 9. [Conclusiones](#conclusiones)
 10. [Autoevaluación](#autoevaluación)
 <br><br>
