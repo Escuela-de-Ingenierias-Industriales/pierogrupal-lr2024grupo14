@@ -327,7 +327,7 @@ Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo co
 
 El bloque "Trayectoria" se encarga de calcular y supervisar el movimiento del robot entre una serie de puntos de paso o waypoints. 
 Su objetivo principal es determinar la velocidad y orientación necesarias para que el robot se dirija al siguiente waypoint en la secuencia, hasta que se alcancen todos ellos. 
-Este bloque juega un papel crucial en la navegación del robot, ya que traduce la información sobre la posición actual del robot y los objetivos definidos en una trayectoria eficiente y controlada.
+Este bloque juega un papel crucial en la navegación del robot, ya que traduce la información sobre la posición actual del robot y los objetivos definidos en una trayectoria eficiente y controlada. Además, los switches sirven para controlar el contador `i` del bloque de código `Matlab Function`, y así poder reiniciar los waypoints.
 
 Para lograr este objetivo, el bloque recibe las siguientes entradas:
 
@@ -484,6 +484,7 @@ Estas velocidades globales se integran a lo largo del tiempo para actualizar la 
 2. Integración de las velocidades: Las velocidades globales se integran para calcular los incrementos en las coordenadas `x` e `y`, así como los cambios en la orientación `o`.
 3. Actualización de las coordenadas globales: Los valores calculados se suman a la posición previa para obtener la nueva posición global.
 
+
 Dentro del bloque, para facilitar el diseño y la comprensión se encuentra el subbloque MCD (Modelo Cinemático Directo). Este subbloque realiza la transformación de velocidades locales a globales utilizando las entradas `m/s_control` y `L`.
 
 Finalmente, el bloque incluye una representación visual mediante un gráfico XY Graph, que muestra en tiempo real la trayectoria del robot en el plano. Esto permite monitorear y analizar el movimiento del robot de manera intuitiva.
@@ -529,7 +530,7 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 Para la comunicación Bluetooth del robot PIERO, hemos utilizado el módulo HM-10, conectado a través de la aplicación nRF Connect en un dispositivo Android. Esta configuración permite enviar y recibir comandos en forma de bytes desde el móvil, los cuales son procesados en el entorno de Simulink mediante el bloque Serial Receive. Existen tres tipos principales de comandos:
 
 - `FFFF` para establecer comandos de velocidad.
-- `FFAA` para definir trayectorias enviando cuatro bytes que representan las coordenadas de los puntos de la trayectoria (por ejemplo, `98949898` representa `x=1` y `y=0`).
+- `FFAA` para definir trayectorias enviando cuatro bytes que representan las coordenadas de los puntos de la trayectoria (por ejemplo, `x=1` y `y=0` es 98, 94 es `x=1` y `y=-4`, ya que si `x=0` y `y=0`, es 88).
 - `AAFF` para modificar los umbrales del robot en tiempo real.
   
 El sistema incluye funcionalidades avanzadas como la reinicialización de la posición y ángulo del robot al inicio de cada nueva trayectoria, facilitando la programación de múltiples trayectorias consecutivas sin perder el punto de referencia. Esta implementación no solo optimiza la navegación reactiva del robot, sino que también permite ajustes dinámicos a través del móvil, haciendo que el sistema sea altamente interactivo y adaptable.
