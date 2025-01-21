@@ -472,7 +472,7 @@ Con los datos obtenidos, empleamos la herramienta "System Identification" de Sim
 
 Tras evaluar diversas opciones, seleccionamos la función de transferencia que tiene 2 polos y 0 ceros (denominada como la 20). Aunque el modelo con un cero (la función 21) ofrece una aproximación más precisa, añadir ceros a la función de transferencia complica el diseño del controlador PID, por lo que optamos por la simplicidad y eficiencia del modelo con solo polos. De esta forma, garantizamos que el controlador sea robusto y funcional sin incrementar innecesariamente su complejidad.
 
--comprobación del controlador
+- comprobación del controlador
 
 https://github.com/user-attachments/assets/575621c9-d498-43b9-855a-b69645adddec
 
