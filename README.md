@@ -25,7 +25,7 @@
    - [Prueba Anticaída](#prueba-anticaída)
    - [Prueba de seguimiento de trayectoria](#prueba-de-seguimiento-de-trayectoria)
    - [Prueba avanzar 10 baldosas](#prueba_avanzar_10_baldosas)
-   - [Prueba trayectoria circular](#prueba_trayectoria_circular).
+   - [Prueba trayectoria circular](#prueba_trayectoria_circular)
 9. [Conclusiones](#conclusiones)
 10. [Autoevaluación](#autoevaluación)
 <br><br>
