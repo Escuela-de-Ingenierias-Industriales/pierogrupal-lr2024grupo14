@@ -50,7 +50,7 @@ PIERO es un robot de accionamiento diferencial con dos motores electricos, una r
 	<img src="https://github.com/user-attachments/assets/fc06e6f1-2265-43b0-b6dc-e3e6b4f56709" alt="motor con rueda" width="200"/>
 </p>
 <p align="center">
-	<img src="https://cdn.discordapp.com/attachments/1250034242201849910/1323363479423291422/image.png?ex=67743dc8&is=6772ec48&hm=749dc1c1722ca175fafe8c41f6b874ba4d989b38ae63a0caf0af5c29c0726b17&" alt="lca1010a](https://github.com/user-attachments/assets/0c6cc2c1-5139-4d9e-a8e4-08744dde88be" width="300"/>
+	<img src="https://cdn.discordapp.com/attachments/1250034242201849910/1323363479423291422/image.png?ex=67743dc8&is=6772ec48&hm=749dc1c1722ca175fafe8c41f6b874ba4d989b38ae63a0caf0af5c29c0726b17&" alt="lca" width="300"/>
 </p>
 
 - **Motores con encoders y ruedas (x2)**: El motor DC funciona con voltajes entre 5V a 12V, el torque y velocidad de salida varían de acuerdo al voltaje aplicado. Al trabajar con el voltaje nominal de 12V, la velocidad angular de salida será de 170 RPM (revoluciones por minuto). El dispositivo está compuesto de tres partes: el motor DC, la caja reductora y el encoder de cuadratura. La caja reductora de metal cumple la función de reducir la velocidad de entrada y aumentar el torque de salida. El encoder sirve como un sensor de velocidad y sentido de giro, funciona utilizando dos sensores de efecto Hall. El voltaje de alimentación del encoder es de 3.3V a 5V en corriente continua(DC). Estos motores son fundamentales para el desplazamiento del robot y conforman la base de su sistema de movimiento, los enconders que vienen con estos motores son esenciales para ubicar de forma precisa el robot en tiempo real.  Además contamos con una rueda caster para estabilizar su base. <br><br>
@@ -444,7 +444,32 @@ Este ajuste se realiza generando señales PWM (modulación por ancho de pulso) q
 1. PID: Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
 Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error.
 
-- Los parámetros del PID (proporcional, integral y derivativo) están configurados para obtener un control suave y eficiente.
+Para implementar un controlador PID en nuestro sistema, primero es necesario determinar su función de transferencia, que en este caso relaciona la entrada (PWM) con la salida (velocidad en m/s). Para ello, utilizamos el sistema "Obtener_Valores_PieroHW", el cual nos permite introducir un valor PWM y obtener la velocidad resultante del robot. Esto se realiza midiendo la respuesta del sistema ante un "step" de PWM, que queda representado por la línea gris en las imágenes correspondientes.
+
+Con los datos obtenidos, empleamos la herramienta "System Identification" de Simulink, que nos permite estimar una función de transferencia ajustada a las características del sistema. Esta herramienta ofrece la flexibilidad de configurar el número de ceros y polos que deseamos en la función de transferencia, lo que nos permite encontrar el modelo más adecuado.
+
+-Para la rueda izquierda
+<p align="center">
+<img src="https://github.com/user-attachments/assets/1f50f41b-e633-4b26-b07b-2b0efa41dafd" alt="izq1" width="300"/>
+<img src="https://github.com/user-attachments/assets/7975e314-5714-4422-8f2a-31c67a2e9f28" alt="izq2" width="300"/>
+<img src="https://github.com/user-attachments/assets/2885d5e9-4ba8-48ee-b03c-31a7717119cf" alt="izq3" width="300"/>
+<img src="https://github.com/user-attachments/assets/8f0fb74f-0cc1-4eb2-957b-7954fafc54eb" alt="izq4" width="300"/>
+</p>
+
+-Para la rueda derecha
+<p align="center">
+<img src="https://github.com/user-attachments/assets/ee02a819-fb3f-44e0-9bb7-046e95df5db9" alt="der1" width="300"/>
+<img src="https://github.com/user-attachments/assets/669d7d1f-1dba-452c-9d1e-9a54e6186294" alt="der2" width="300"/>
+<img src="https://github.com/user-attachments/assets/8ff71b87-e04f-453b-8741-aefc9e6e767d" alt="der3" width="300"/>
+<img src="https://github.com/user-attachments/assets/9909c351-125d-4eb7-9a99-34e8db0c6893" alt="der4" width="300"/>
+</p>
+
+Tras evaluar diversas opciones, seleccionamos la función de transferencia que tiene 2 polos y 0 ceros (denominada como la 20). Aunque el modelo con un cero (la función 21) ofrece una aproximación más precisa, añadir ceros a la función de transferencia complica el diseño del controlador PID, por lo que optamos por la simplicidad y eficiencia del modelo con solo polos. De esta forma, garantizamos que el controlador sea robusto y funcional sin incrementar innecesariamente su complejidad.
+
+-comprobación del controlador
+
+https://github.com/user-attachments/assets/575621c9-d498-43b9-855a-b69645adddec
+
 
 2. Mi_Piero: Este bloque modela el comportamiento físico del robot, simulando cómo los motores convierten las señales PWM en movimiento. Contiene:
 
@@ -455,6 +480,20 @@ Cada PID compara la velocidad deseada con la velocidad actual, calculando la dif
 	- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
 	- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/2e687be6-8a16-43f7-868f-ae259cc7876d" alt="Ganancia encoders" width="800"/>
+</p>
+
+Como se puede apreciar, tenemos dos ganancias distintas, esto es debido a los fallos inherentes de las piezas pedidas, una de ellas gira ligeramente más que la otra.
+Para determinar las ganancias, comenzamos girando manualmente una de las ruedas del robot una vuelta completa y registramos el número de pulsos mostrados en el display del encoder. Posteriormente, aplicamos la fórmula para calcular la ganancia:
+
+`Ganancia = 2*pi*r/Pulsos_una_vuelta`
+
+Donde 𝑟 es el radio de la rueda, y Pulsos_una_vuelta representa el número de pulsos que se generan al completar una vuelta completa de la rueda.
+
+Repetimos este procedimiento para ambas ruedas, asegurándonos de dar una vuelta exacta en cada caso. Los pulsos generados por cada rueda se visualizan mediante un display configurado en Simulink. Sin embargo, durante el proceso observamos que uno de los encoders siempre registraba más pulsos que el otro al realizar una vuelta completa. Esto podría deberse a diferencias en la calibración de los encoders o variaciones en el hardware.
+
+Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ganancias respectivas, asegurando que ambas entreguen lecturas consistentes y precisas durante el funcionamiento del robot.
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/8db81343-ce3b-441f-b5cf-ff93c8000fb6" alt="controlvelocidad" width="800"/>
@@ -590,6 +629,19 @@ https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 - ### Prueba de seguimiento de trayectoria
   
 https://github.com/user-attachments/assets/5f756aeb-399f-415a-8cfe-dfe6288214d1
+
+
+- ### Prueba avanzar 10 baldosas
+
+https://github.com/user-attachments/assets/350bd845-e4a3-4ac6-aad6-4c441525449a
+
+
+- ### Prueba trayectoria circular
+
+
+https://github.com/user-attachments/assets/6427d975-f33c-4852-8bc5-7db2bab975b4
+
+
 
 <br><br>
 
