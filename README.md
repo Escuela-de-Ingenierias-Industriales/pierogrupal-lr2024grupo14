@@ -450,18 +450,22 @@ Para implementar un controlador PID en nuestro sistema, primero es necesario det
 
 Con los datos obtenidos, empleamos la herramienta "System Identification" de Simulink, que nos permite estimar una función de transferencia ajustada a las características del sistema. Esta herramienta ofrece la flexibilidad de configurar el número de ceros y polos que deseamos en la función de transferencia, lo que nos permite encontrar el modelo más adecuado.
 
--Para la rueda izquierda
+- Para la rueda izquierda
 <p align="center">
 <img src="https://github.com/user-attachments/assets/1f50f41b-e633-4b26-b07b-2b0efa41dafd" alt="izq1" width="300"/>
 <img src="https://github.com/user-attachments/assets/7975e314-5714-4422-8f2a-31c67a2e9f28" alt="izq2" width="300"/>
+</p>
+<p align="center">
 <img src="https://github.com/user-attachments/assets/2885d5e9-4ba8-48ee-b03c-31a7717119cf" alt="izq3" width="300"/>
 <img src="https://github.com/user-attachments/assets/8f0fb74f-0cc1-4eb2-957b-7954fafc54eb" alt="izq4" width="300"/>
 </p>
 
--Para la rueda derecha
+- Para la rueda derecha
 <p align="center">
 <img src="https://github.com/user-attachments/assets/ee02a819-fb3f-44e0-9bb7-046e95df5db9" alt="der1" width="300"/>
 <img src="https://github.com/user-attachments/assets/669d7d1f-1dba-452c-9d1e-9a54e6186294" alt="der2" width="300"/>
+</p>
+<p align="center">
 <img src="https://github.com/user-attachments/assets/8ff71b87-e04f-453b-8741-aefc9e6e767d" alt="der3" width="300"/>
 <img src="https://github.com/user-attachments/assets/9909c351-125d-4eb7-9a99-34e8db0c6893" alt="der4" width="300"/>
 </p>
