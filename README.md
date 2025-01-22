@@ -513,7 +513,7 @@ Este bloque es realmente necesario si queremos que el PIERO siga la trayectoria 
 
 Para lograr esto, el bloque recibe las siguientes entradas:
 
-- `m/s_control`: Un vector que contiene la velocidad lineal y angular del robot, calculadas en el bloque anterior (Control_Velocidad).
+- `m/s_control`: Un vector que contiene la velocidad de cada rueda, calculadas en el bloque anterior (Control_Velocidad).
 - `L`: La distancia entre las ruedas izquierda y derecha del robot, necesaria para los cálculos cinemáticos.
 
 Con esta información, el bloque genera las siguientes salidas:
