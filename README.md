@@ -784,8 +784,9 @@ Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ga
 </p>
 Este sistema está formado por el sistema Controlador_BA que tiene la siguiente estructura:
 <p align="center">
-<img src="https://github.com/user-attachments/assets/1ad74f63-e6b4-4215-ac78-bc3727c791af" alt="Controlador BA"/>
+<img src="https://github.com/user-attachments/assets/b2080bfc-9c6a-465d-8ae4-8410763f9510" alt="Controlador BA"/>
 </p>
+
 Para obtener los valores de las LUTs, usando el sistema Obtener_Valores_PieroHW:
 <p align="center">
 <img src="https://github.com/user-attachments/assets/6351e610-8ffe-4bbc-bd81-8a7fa06248c1" alt="Obtener valores piero"/>
@@ -802,13 +803,14 @@ Estos son los valores que les introducimos a las LUTs.
 
  - LUT BA Izq:
 <p align="center">
-<img src="https://github.com/user-attachments/assets/697168d5-b347-4564-9219-fd213e6fbfdd" alt="LUT Izq"/>
+<img src="https://github.com/user-attachments/assets/7b98f021-166a-472b-92c7-8d467a1ecb8a" alt="LUT Izq"/>
 </p>
 <br>
 
+
  - LUT BA Der:
 <p align="center">
-<img src="https://github.com/user-attachments/assets/5b628a5b-278e-4c86-b87a-9fdc1b8c5871" alt="LUT der"/>
+<img src="https://github.com/user-attachments/assets/e605a0e5-ee38-4836-a81b-add9ab8f6c41" alt="LUT der"/>
 </p>
 <br>
 
