@@ -958,7 +958,7 @@ https://github.com/user-attachments/assets/674c6188-b06b-4add-a9f2-528656a343ef
 <br><br>
 
 - ### Prueba avanzar 10 baldosas
-
+Hemos usado una libreta para marcar la distancia de 10 baldosas.
 <p align="center">
 <img src="https://github.com/user-attachments/assets/4f7bf2e8-292e-4a8e-a0ca-f5ef5a167473" alt="prueba 100 baldosas"/>
 </p>
@@ -968,9 +968,18 @@ https://github.com/user-attachments/assets/350bd845-e4a3-4ac6-aad6-4c441525449a
 <br><br>
 
 - ### Prueba trayectoria circular
+Para esta prueba hemos usado el siguiente sistema, donde los subsistemas son los mismos que hemos explicado anteriormente:
+
 <p align="center">
 <img src="https://github.com/user-attachments/assets/bb4663d9-044e-45db-9299-b7fa5c0858da" alt="prueba circular"/>
 </p>
+<br>
+
+Si comprobamos el resultado con el XY Graph, obtenemos la siguiente imagen:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/24a80546-d1a7-439b-ae05-5a99c5f62175" alt="gráfico circular"/>
+</p>
+<br>
 
 https://github.com/user-attachments/assets/6427d975-f33c-4852-8bc5-7db2bab975b4
 
