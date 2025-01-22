@@ -682,6 +682,13 @@ Contiene:
 
 Para implementar un controlador PID en nuestro sistema, primero es necesario determinar su función de transferencia, que en este caso relaciona la entrada (PWM) con la salida (velocidad en m/s). Para ello, utilizamos el sistema "Obtener_Valores_PieroHW", el cual nos permite introducir un valor PWM y obtener la velocidad resultante del robot. Esto se realiza midiendo la respuesta del sistema ante un "step" de PWM.
 
+El programa Obtener_Valores_PieroHW tiene la siguiente estructura:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/6351e610-8ffe-4bbc-bd81-8a7fa06248c1" alt="Obtener valores piero"/>
+</p>
+<br>
+El bloque Mi_Piero se ha explicado anteriormente. Con esto obtenemos la siguiente gráfica que nos va a permitir obtener los valores que introducimos en la aplicación System Identification. Con esto vamos a poder estimar la función de transferencia.
+
 <p align="center">
 <img src="https://github.com/user-attachments/assets/7c8b5226-c0e3-4f2c-9014-e5f1bf726345" alt="PID ruedas"/>
 </p>
