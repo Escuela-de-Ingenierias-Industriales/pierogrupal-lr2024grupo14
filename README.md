@@ -443,7 +443,31 @@ El resultado de este subbloque son las velocidades independientes para cada rued
 El subbloque "Controlador_BC" ajusta las velocidades calculadas en "Vel_Ruedas" mediante un controlador PID, asegurando que el robot alcance la velocidad deseada de forma estable y precisa. 
 Este ajuste se realiza generando señales PWM (modulación por ancho de pulso) que controlan la potencia de los motores. Dentro de este subbloque encontramos:
 
-1. PID: Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
+1. Mi_Piero: Este bloque modela el comportamiento físico del robot, simulando cómo los motores convierten las señales PWM en movimiento. Contiene:
+
+- FTs_Piero: Modela la dinámica de los motores a través de funciones de transferencia específicas para cada rueda (izquierda y derecha), transformando las señales PWM en velocidades lineales simuladas.
+
+- PierroHW: Conecta las señales de control con el hardware del robot.
+
+	- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
+	- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/2e687be6-8a16-43f7-868f-ae259cc7876d" alt="Ganancia encoders" width="800"/>
+</p>
+
+Como se puede apreciar, tenemos dos ganancias distintas, esto es debido a los fallos inherentes de las piezas pedidas, una de ellas gira ligeramente más que la otra.
+Para determinar las ganancias, comenzamos girando manualmente una de las ruedas del robot una vuelta completa y registramos el número de pulsos mostrados en el display del encoder. Posteriormente, aplicamos la fórmula para calcular la ganancia:
+
+`Ganancia = 2*pi*r/Pulsos_una_vuelta`
+
+Donde 𝑟 es el radio de la rueda, y Pulsos_una_vuelta representa el número de pulsos que se generan al completar una vuelta completa de la rueda.
+
+Repetimos este procedimiento para ambas ruedas, asegurándonos de dar una vuelta exacta en cada caso. Los pulsos generados por cada rueda se visualizan mediante un display configurado en Simulink. Sin embargo, durante el proceso observamos que uno de los encoders siempre registraba más pulsos que el otro al realizar una vuelta completa. Esto podría deberse a diferencias en la calibración de los encoders o variaciones en el hardware.
+
+Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ganancias respectivas, asegurando que ambas entreguen lecturas consistentes y precisas durante el funcionamiento del robot.
+
+2. PID: Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
 Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error.
 
 Para implementar un controlador PID en nuestro sistema, primero es necesario determinar su función de transferencia, que en este caso relaciona la entrada (PWM) con la salida (velocidad en m/s). Para ello, utilizamos el sistema "Obtener_Valores_PieroHW", el cual nos permite introducir un valor PWM y obtener la velocidad resultante del robot. Esto se realiza midiendo la respuesta del sistema ante un "step" de PWM, que queda representado por la línea gris en las imágenes correspondientes.
@@ -476,30 +500,6 @@ Tras evaluar diversas opciones, seleccionamos la función de transferencia que t
 
 https://github.com/user-attachments/assets/575621c9-d498-43b9-855a-b69645adddec
 
-
-2. Mi_Piero: Este bloque modela el comportamiento físico del robot, simulando cómo los motores convierten las señales PWM en movimiento. Contiene:
-
-- FTs_Piero: Modela la dinámica de los motores a través de funciones de transferencia específicas para cada rueda (izquierda y derecha), transformando las señales PWM en velocidades lineales simuladas.
-
-- PierroHW: Conecta las señales de control con el hardware del robot.
-
-	- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
-	- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
-
-<p align="center">
-<img src="https://github.com/user-attachments/assets/2e687be6-8a16-43f7-868f-ae259cc7876d" alt="Ganancia encoders" width="800"/>
-</p>
-
-Como se puede apreciar, tenemos dos ganancias distintas, esto es debido a los fallos inherentes de las piezas pedidas, una de ellas gira ligeramente más que la otra.
-Para determinar las ganancias, comenzamos girando manualmente una de las ruedas del robot una vuelta completa y registramos el número de pulsos mostrados en el display del encoder. Posteriormente, aplicamos la fórmula para calcular la ganancia:
-
-`Ganancia = 2*pi*r/Pulsos_una_vuelta`
-
-Donde 𝑟 es el radio de la rueda, y Pulsos_una_vuelta representa el número de pulsos que se generan al completar una vuelta completa de la rueda.
-
-Repetimos este procedimiento para ambas ruedas, asegurándonos de dar una vuelta exacta en cada caso. Los pulsos generados por cada rueda se visualizan mediante un display configurado en Simulink. Sin embargo, durante el proceso observamos que uno de los encoders siempre registraba más pulsos que el otro al realizar una vuelta completa. Esto podría deberse a diferencias en la calibración de los encoders o variaciones en el hardware.
-
-Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ganancias respectivas, asegurando que ambas entreguen lecturas consistentes y precisas durante el funcionamiento del robot.
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/8db81343-ce3b-441f-b5cf-ff93c8000fb6" alt="controlvelocidad" width="800"/>
