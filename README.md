@@ -473,7 +473,6 @@ Este diseño permite que el sistema informe visualmente sobre posibles riesgos o
 <br><br>
 
 - ### Control Velocidad
-<br><br>
 <p align="center">
 <img src="https://github.com/user-attachments/assets/332f9b1f-0377-4b8e-83ab-5a0514e5e184" alt="controlvelocidad"/>
 </p>
@@ -488,8 +487,6 @@ Esto permite que el sistema sea preciso y funcione bien en todo momento.
 <br>
 
 #### Vel_Ruedas
-
-<br><br>
 <p align="center">
 <img src="https://github.com/user-attachments/assets/52e15257-3b69-464b-97cf-9a70be4245e2" alt="vel_ruedas"/>
 </p>
@@ -508,8 +505,6 @@ El resultado de este subbloque son las velocidades independientes para cada rued
 <br>
 
 #### Sistema_Controlado_BC
-
-<br><br>
 <p align="center">
 <img src="https://github.com/user-attachments/assets/79d956dd-f410-413b-ab20-bdd2efe35353" alt="sistema_controlado_bc"/>
 </p>
