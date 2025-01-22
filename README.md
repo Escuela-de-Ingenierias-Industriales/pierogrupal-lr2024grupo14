@@ -422,17 +422,18 @@ Finalmente, actualiza las salidas `Vout` y `o` para controlar el movimiento del 
 Si no quedan más waypoints, la función garantiza que el robot se detenga, asignando cero a la velocidad y la orientación.
 
 La función que hemos implementado es la siguiente:
-`function [v_out,o,i_prox] = fcn(umbral_waypoint,waypoints,v_in,pose,i_act)`
+<br>
+`function [v_out,o,i_prox] = fcn(umbral_waypoint,waypoints,v_in,pose,i_act)
 
-`i_prox = i_act + 1;`
+i_prox = i_act + 1;
 
-`x_pose = pose(1);`
-`y_pose = pose(2);`
+x_pose = pose(1);
+y_pose = pose(2);
 
-`% Si sigue habiendo waypoints -> Se mueve
-if(size(waypoints,1) >= i_prox)`
-   ` x_waypoint = waypoints(i_prox,1);
-    y_waypoint = waypoints(i_prox,2);`
+% Si sigue habiendo waypoints -> Se mueve
+if(size(waypoints,1) >= i_prox)
+    x_waypoint = waypoints(i_prox,1);
+    y_waypoint = waypoints(i_prox,2);
     
     dist = sqrt((x_waypoint-x_pose)^2+(y_waypoint-y_pose)^2);
    
@@ -470,13 +471,13 @@ if(size(waypoints,1) >= i_prox)`
     end
     
 
-`% Si ya no hay mas waypoints -> se para el robot.
+% Si ya no hay mas waypoints -> se para el robot.
 else
     v_out = 0;
     o = pose(3);
     i_prox = i_act;
-`
-`end`
+
+end`
 
 
 - ### Sistema Anticolisión
