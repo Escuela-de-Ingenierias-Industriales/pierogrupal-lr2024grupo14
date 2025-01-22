@@ -495,15 +495,13 @@ Con el bloque de la odometría me da el ángulo que tiene el robot actualmente. 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/e5735ddd-83e2-46e7-a48a-7131c4b88731" alt="Valores del PID de trayectoria"/>
 </p>
-<br>
-
-<p align="center">
-<img src="https://github.com/user-attachments/assets/78285e78-fc44-42c2-bff9-dfa9170c5571" alt="Valores PI trayectoria"/>
-</p>
 <br><br>
 
 
 - ### Sistema Anticolisión
+
+
+
 El bloque "Sistema_Anticolision" es una parte clave del sistema de navegación del robot. 
 Su propósito es garantizar que el robot pueda moverse de forma segura, reaccionando rápidamente a posibles colisiones o caídas. 
 Este bloque ajusta la velocidad y la orientación del robot en tiempo real, basándose en los datos de los sensores y en ciertos umbrales predefinidos que indican riesgos.
@@ -667,20 +665,6 @@ Cada PID compara la velocidad deseada con la velocidad actual, calculando la dif
 </p>
 <br><br>
 
-- Imagen del bloque PID de la rueda izquierda
-<p align="center">
-<img src="https://github.com/user-attachments/assets/d8093fcc-d48f-4da5-9e27-1c708c4883e7" alt="pid_izquierdo"/>
-</p>
-<br><br>
-
-- Imagen del bloque PID de la rueda derecha
-<p align="center">
-<img src="https://github.com/user-attachments/assets/45212823-5362-420f-9f50-a2d7d7375a0c" alt="pid_derecha"/>
-</p>
-<br><br>
-
-
-
 Para implementar un controlador PID en nuestro sistema, primero es necesario determinar su función de transferencia, que en este caso relaciona la entrada (PWM) con la salida (velocidad en m/s). Para ello, utilizamos el sistema "Obtener_Valores_PieroHW", el cual nos permite introducir un valor PWM y obtener la velocidad resultante del robot. Esto se realiza midiendo la respuesta del sistema ante un "step" de PWM.
 
 <p align="center">
@@ -768,6 +752,13 @@ https://github.com/user-attachments/assets/82c5fba7-cbe7-4960-9b40-68a3af7f7ea3
 
 
 - ### Odometría
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/3abe216b-caa6-47e4-a551-c13360d67bee" alt="Odometria"/>
+</p>
+<br>
+
+
 El bloque "Odometría" es el encargado de estimar la posición y orientación del robot en el espacio global mientras éste se desplaza. 
 Su objetivo principal es calcular las coordenadas globales (`x`,`y`) y la orientación (`o`) del robot basándose en su velocidad y orientación actuales. 
 Este bloque es realmente necesario si queremos que el PIERO siga la trayectoria de la forma más precisa posible.
@@ -793,11 +784,14 @@ Estas velocidades globales se integran a lo largo del tiempo para actualizar la 
 
 Dentro del bloque, para facilitar el diseño y la comprensión se encuentra el subbloque MCD (Modelo Cinemático Directo). Este subbloque realiza la transformación de velocidades locales a globales utilizando las entradas `m/s_control` y `L`.
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/46b40aaf-f952-4433-84b5-6cd17f9375d9" alt="Subsistema MCD"/>
+</p>
+<br>
+
 Finalmente, el bloque incluye una representación visual mediante un gráfico XY Graph, que muestra en tiempo real la trayectoria del robot en el plano. Esto permite monitorear y analizar el movimiento del robot de manera intuitiva.
 
-<p align="center">
-<img src="https://github.com/user-attachments/assets/e68c2e19-0592-4e3b-abeb-6b6a1fd04c47" alt="Odometria" width="800"/>
-</p>
+
 <br><br>
 
 - ### Bluetooth Total
