@@ -808,7 +808,7 @@ Estos son los valores que les introducimos a las LUTs.
 El subsistema Mi_piero está explicado anteriormente. Sin embargo, queremos que nuestro controlador esté en bucle cerrado para que compruebe constantemente el error de la velocidad de salida. Por lo que realizamos un control en bucle cerrado que vamos a explicar a continuación.
 
 Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
-Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error.
+Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error. Los parámetros de cada uno de los PIDs se han obtenido mediante la aplicación PID Tuner.
 
 
 - Imagen del subsistema PID
