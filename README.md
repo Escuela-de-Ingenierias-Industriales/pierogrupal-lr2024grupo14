@@ -423,7 +423,9 @@ Si no quedan más waypoints, la función garantiza que el robot se detenga, asig
 
 La función que hemos implementado es la siguiente:
 <br>
-`function [v_out,o,i_prox] = fcn(umbral_waypoint,waypoints,v_in,pose,i_act)
+<pre>
+<code>
+function [v_out,o,i_prox] = fcn(umbral_waypoint,waypoints,v_in,pose,i_act)
 
 i_prox = i_act + 1;
 
@@ -477,7 +479,10 @@ else
     o = pose(3);
     i_prox = i_act;
 
-end`
+end
+</code>
+</pre>
+
 
 
 - ### Sistema Anticolisión
