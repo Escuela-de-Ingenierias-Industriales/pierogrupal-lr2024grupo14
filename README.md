@@ -39,6 +39,8 @@ Somos el grupo 14 de la asignatura de Laboratorio de Robótica 2024/25 formado p
 <p align="center">
 	<img src="https://github.com/user-attachments/assets/dfeb176c-7327-4ce5-afa6-8ceadfbb84b2" alt="Nuestro PIERO" width="400"/> 
 
+https://github.com/user-attachments/assets/4b7aaf1d-b11d-4f0d-a7fe-ae252d0c7349
+
 
 <br><br>
 ## Introducción
@@ -331,9 +333,19 @@ Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en e
 ### Estudio de la plataforma robótica móvil PIERO y navegación reactiva básica en Simulink
 Habiendo hecho previamente el estudio de la plataforma robótica móvil, hemos realizado un programa básico en el que nuestro PIERO va a girar cada vez que detecte un obstáculo. 
 
+Al principio, se nos pedía una tarea en la que el PIERO evitase paredes sin tener controladores. Para ello había que meterle una velocidad cualquiera y que cuando detectase un obstáculo (una pared o similar), lo esquivase. Para ello hicimos el siguiente programa:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/26aa7fc0-4800-4e28-b5b8-f4c048beea30" alt="Evita paredes"/>
+</p>
+<br>
+Los subsistemas usados están explicados más adelante.
+<br>
 
+- Video Evita Paredes
 
-FALTAN COSAS
+https://github.com/user-attachments/assets/324cfe03-0829-4512-b191-3ab5e9f98cb4
+
+<br>
 
 
 Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios. Además, hemos añadido dun componente bluetooth para que se pueda controlar el robot desde el movil.
@@ -866,14 +878,7 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 </p>
 <br>
 
-
-
-
-
-<p align="center">
-<img src="https://github.com/user-attachments/assets/ede84af0-de8f-453b-aa0b-c9f9700859f7" alt="comandos" width="700"/>
-</p>
-
+- Imagen de la aplicación
 <p align="center">
 <img src="https://github.com/user-attachments/assets/0f0c3ffa-6066-4b4d-944e-84e5c5d8d642" alt="comandos" width="400"/>
 </p>
@@ -886,6 +891,9 @@ Para la comunicación Bluetooth del robot PIERO, hemos utilizado el módulo HM-1
   
 El sistema incluye funcionalidades avanzadas como la reinicialización de la posición y ángulo del robot al inicio de cada nueva trayectoria, facilitando la programación de múltiples trayectorias consecutivas sin perder el punto de referencia. Esta implementación no solo optimiza la navegación reactiva del robot, sino que también permite ajustes dinámicos a través del móvil, haciendo que el sistema sea altamente interactivo y adaptable.
 
+https://github.com/user-attachments/assets/5f756aeb-399f-415a-8cfe-dfe6288214d1
+
+https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
 
 <br><br>
 
@@ -927,28 +935,29 @@ El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos:
 
 <br><br>
 
-- ### Prueba de evitar colisiones
-
-https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
-
 
 - ### Prueba Anticaída
+El sistema de esta prueba se encuentra en el sistema Anticolisión
 
 https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 
 
-- ### Prueba de seguimiento de trayectoria
-  
-https://github.com/user-attachments/assets/5f756aeb-399f-415a-8cfe-dfe6288214d1
+- ### Prueba de seguimiento de trayectoria (3 giros de 90º y saliendo de la clase)
+El sistema de esta prueba es lo que denominamos como test total.
+
+https://github.com/user-attachments/assets/4b7aaf1d-b11d-4f0d-a7fe-ae252d0c7349
 
 
 - ### Prueba avanzar 10 baldosas
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/4f7bf2e8-292e-4a8e-a0ca-f5ef5a167473" alt="prueba 100 baldosas"/>
+</p>
 
 https://github.com/user-attachments/assets/350bd845-e4a3-4ac6-aad6-4c441525449a
 
 
 - ### Prueba trayectoria circular
-
 
 https://github.com/user-attachments/assets/6427d975-f33c-4852-8bc5-7db2bab975b4
 
