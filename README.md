@@ -493,7 +493,7 @@ Con el bloque de la odometría me da el ángulo que tiene el robot actualmente. 
 
 - Valores del PID
 <p align="center">
-<img src="https://github.com/user-attachments/assets/e5735ddd-83e2-46e7-a48a-7131c4b88731="Valores del PID de trayectoria"/>
+<img src="https://github.com/user-attachments/assets/e5735ddd-83e2-46e7-a48a-7131c4b88731" alt="Valores del PID de trayectoria"/>
 </p>
 <br>
 
