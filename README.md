@@ -382,6 +382,12 @@ Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo co
 
 - ### Trayectoria
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/fcb39e4f-f192-4c5e-98fd-d10a6b97cf25" alt="Trayectoria"/>
+</p>
+<br><br>
+
+
 El bloque "Trayectoria" se encarga de calcular y supervisar el movimiento del robot entre una serie de puntos de paso o waypoints. 
 Su objetivo principal es determinar la velocidad y orientación necesarias para que el robot se dirija al siguiente waypoint en la secuencia, hasta que se alcancen todos ellos. 
 Este bloque juega un papel crucial en la navegación del robot, ya que traduce la información sobre la posición actual del robot y los objetivos definidos en una trayectoria eficiente y controlada. Además, los switches sirven para controlar el contador `i` del bloque de código `Matlab Function`, y así poder reiniciar los waypoints.
@@ -415,10 +421,63 @@ Además, calcula la orientación requerida mediante la función `atan2`, que ase
 Finalmente, actualiza las salidas `Vout` y `o` para controlar el movimiento del robot, y ajusta `iprox` para garantizar que el robot siga avanzando correctamente por la trayectoria definida. 
 Si no quedan más waypoints, la función garantiza que el robot se detenga, asignando cero a la velocidad y la orientación.
 
-<p align="center">
-<img src="https://github.com/user-attachments/assets/b7234d2f-fae2-4463-92fb-c331d2b9c5c7" alt="Trayectoria" width="800"/>
-</p>
-<br><br>
+La función que hemos implementado es la siguiente:
+`function [v_out,o,i_prox] = fcn(umbral_waypoint,waypoints,v_in,pose,i_act)`
+
+`i_prox = i_act + 1;`
+
+`x_pose = pose(1);`
+`y_pose = pose(2);`
+
+`% Si sigue habiendo waypoints -> Se mueve
+if(size(waypoints,1) >= i_prox)`
+   ` x_waypoint = waypoints(i_prox,1);
+    y_waypoint = waypoints(i_prox,2);`
+    
+    dist = sqrt((x_waypoint-x_pose)^2+(y_waypoint-y_pose)^2);
+   
+    % Como atan2 da un ángulo entre pi y -pi, cuando el robot va hacia
+    % atrás en x, hay problemas. Por eso todo esto.
+    o = atan2(y_waypoint-y_pose,x_waypoint-x_pose);
+
+    if (i_prox == 1 && x_waypoint < 0 && y_waypoint == 0)
+        o_aux = -sign(o)*(2*pi+o);
+        if(abs(o_aux-pose(3)) > pi/4)
+            o = pi;
+            v_out = 0;
+        else
+            o = o_aux;
+            v_out = v_in;
+        end
+    else
+        if (x_waypoint < waypoints(i_prox-1,1) && y_waypoint == waypoints(i_prox-1,2))
+            o_aux = -sign(o)*(2*pi+o);
+            if(abs(o_aux-pose(3)) > pi/4)
+                o = pi;
+                v_out = 0;
+            else
+                o = o_aux;
+                v_out = v_in;
+            end
+        else
+            v_out = v_in;
+        end
+    end
+
+    % Si está lejos de waypoint -> Sigue yendo al mismo waypoint
+    if (dist > umbral_waypoint)
+       i_prox = i_prox - 1;
+    end
+    
+
+`% Si ya no hay mas waypoints -> se para el robot.
+else
+    v_out = 0;
+    o = pose(3);
+    i_prox = i_act;
+`
+`end`
+
 
 - ### Sistema Anticolisión
 El bloque "Sistema_Anticolision" es una parte clave del sistema de navegación del robot. 
