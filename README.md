@@ -578,15 +578,95 @@ A continuación, se ha comprobado que los datos recogidos por la simulación son
 
 Tras evaluar diversas opciones, seleccionamos la función de transferencia que tiene 2 polos y 0 ceros (denominada como la 20). Aunque el modelo con un cero (la función 21) ofrece una aproximación más precisa, añadir ceros a la función de transferencia complica el diseño del controlador PID, por lo que optamos por la simplicidad y eficiencia del modelo con solo polos. De esta forma, garantizamos que el controlador sea robusto y funcional sin incrementar innecesariamente su complejidad.
 
-- comprobación del controlador
+- Comprobación del controlador
+El primer video muestra como reacciona el sistema ante esfuerzos cortos, es decir, aplicar resistencias durante corto tiempo a las ruedas.
+https://github.com/user-attachments/assets/9ddf1e7d-75d3-40ea-9754-cb8f7adaa74a
+Al haber un delay entre el scope y los estímulos que le proporcionamos, los videos son muy largos. Se verá que primero va el estímulo y pasado un rato, se ve cómo se modifica el valor en pantalla.
+<br><br>
+El segundo video muestra como se le aplica un esfuerzo durante un largo periodo de tiempo a cada rueda para ver cómo se estabiliza la velocidad (es la ventana de abajo del scope)
+https://github.com/user-attachments/assets/82c5fba7-cbe7-4960-9b40-68a3af7f7ea3
 
-https://github.com/user-attachments/assets/575621c9-d498-43b9-855a-b69645adddec
+<br><br> 
 
-
+- Imagen del subsistema Control_Velocidad
 <p align="center">
-<img src="https://github.com/user-attachments/assets/8db81343-ce3b-441f-b5cf-ff93c8000fb6" alt="controlvelocidad" width="800"/>
+<img src="https://github.com/user-attachments/assets/332f9b1f-0377-4b8e-83ab-5a0514e5e184" alt="controlvelocidad"/>
 </p>
 <br><br>
+
+- Imagen del subsistema Vel_Ruedas
+<p align="center">
+<img src="https://github.com/user-attachments/assets/52e15257-3b69-464b-97cf-9a70be4245e2" alt="vel_ruedas"/>
+</p>
+<br><br>
+
+- Imagen del subsistema Sistema_Controlado_BC
+<p align="center">
+<img src="https://github.com/user-attachments/assets/79d956dd-f410-413b-ab20-bdd2efe35353" alt="sistema_controlado_bc"/>
+</p>
+<br><br>
+
+- Imagen del subsistema PID
+<p align="center">
+<img src="https://github.com/user-attachments/assets/bc11a483-7c34-4821-af95-e5b2cd9b5bc4" alt="pid"/>
+</p>
+<br><br>
+
+- Imagen del bloque PID de la rueda izquierda
+<p align="center">
+<img src="https://github.com/user-attachments/assets/d8093fcc-d48f-4da5-9e27-1c708c4883e7" alt="pid_izquierdo"/>
+</p>
+<br><br>
+
+- Imagen del bloque PID de la rueda derecha
+<p align="center">
+<img src="https://github.com/user-attachments/assets/45212823-5362-420f-9f50-a2d7d7375a0c" alt="pid_derecha"/>
+</p>
+<br><br>
+
+- Imagen del subsistema Mi_Piero
+<p align="center">
+<img src="https://github.com/user-attachments/assets/93ac99c6-aad3-45e9-9591-f185a8016126" alt="mi_piero"/>
+</p>
+<br><br>
+
+- Imagen del subsistema FTs_Piero
+<p align="center">
+<img src="https://github.com/user-attachments/assets/cbc139ae-8208-4918-8155-76db8e06dbbd" alt="fts_piero"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/ae64e15a-49c5-4d2e-826a-da14c3b799ce" alt="fts_1"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f143e531-3e32-47d7-babd-c3256eab2da3" alt="fts_2"/>
+</p>
+<br><br>
+
+- Imagen del subsistema PieroHW
+<p align="center">
+<img src="https://github.com/user-attachments/assets/e0f70521-8737-4f7e-b294-cb888c061ad6" alt="piero_hw"/>
+</p>
+<br><br>
+
+- Imagen del subsistema Salida_Motores
+<p align="center">
+<img src="https://github.com/user-attachments/assets/76bf46f0-c8a8-49a8-9baa-34c875345446" alt="salida_motores"/>
+</p>
+<br><br>
+
+- Imagen del subsistema Encoder_A_Metros
+<p align="center">
+<img src="https://github.com/user-attachments/assets/46e6a71c-0b26-4722-b741-fca9d173413c" alt="encoders_a_metros"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/718c003e-a9bc-45c7-b65c-64641eb68939" alt="izq1"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/64c819f1-4da0-4c77-9f29-5994b5e83027" alt="drch1"/>
+</p>
+<br><br>
+
+
 
 - ### Odometría
 El bloque "Odometría" es el encargado de estimar la posición y orientación del robot en el espacio global mientras éste se desplaza. 
