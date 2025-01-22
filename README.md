@@ -483,6 +483,24 @@ end
 </code>
 </pre>
 
+Para este bloque hemos calculado los valores del PID de la siguiente manera:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/8a34d013-3cb8-402a-a59d-856227c1a4f4" alt="Cálcuo del PID de trayectoria"/>
+</p>
+<br><br>
+
+Con el bloque de la odometría me da el ángulo que tiene el robot actualmente. Con esto, calculamos el error del ángulo. Con esto se calculan los valores del PID. Los subsistemas que se han implementado para estos están explicados en los siguientes apartados.
+
+- Valores del PID
+<p align="center">
+<img src="https://github.com/user-attachments/assets/e5735ddd-83e2-46e7-a48a-7131c4b88731="Valores del PID de trayectoria"/>
+</p>
+<br>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/78285e78-fc44-42c2-bff9-dfa9170c5571" alt="Valores PI trayectoria"/>
+</p>
+<br><br>
 
 
 - ### Sistema Anticolisión
