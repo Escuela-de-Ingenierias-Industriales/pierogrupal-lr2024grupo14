@@ -389,6 +389,20 @@ Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga 
 
 
 - ### Trayectoria
+Inicialmente, probamos a hacer la trayectoria con el bloque Pure Pursuit, quedando el siguiente diagrama:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/39a8bc08-d31e-4891-9dba-38ef51d83d55" alt="Pure Pursuit"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/4a0eea9a-6078-483b-ae49-f11cca983bf7" alt="Pure Pursuit datos"/>
+</p>
+<br>
+
+Esto nos da lugar a errores como que al llegar al waypoint final el robot no para y se queda haciendo círculos, como se puede ver en el siguiente vídeo:
+
+https://github.com/user-attachments/assets/3b96f84e-9e5f-4348-87c3-030bae77b3fe
+
+Tras ver esto, hemos decidido hacer el bloque de trayectoria con una Matlab Function quedando de la siguiente manera:
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/fcb39e4f-f192-4c5e-98fd-d10a6b97cf25" alt="Trayectoria"/>
