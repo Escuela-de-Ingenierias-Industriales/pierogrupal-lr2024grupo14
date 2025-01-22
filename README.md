@@ -651,12 +651,6 @@ A continuación, se ha comprobado que los datos recogidos por la simulación son
 
 Tras evaluar diversas opciones, seleccionamos la función de transferencia que tiene 2 polos y 0 ceros (denominada como la 20). Aunque el modelo con un cero (la función 21) ofrece una aproximación más precisa, añadir ceros a la función de transferencia complica el diseño del controlador PID, por lo que optamos por la simplicidad y eficiencia del modelo con solo polos. De esta forma, garantizamos que el controlador sea robusto y funcional sin incrementar innecesariamente su complejidad.
 
-- Comprobación del controlador
-El primer video muestra como reacciona el sistema ante esfuerzos cortos, es decir, aplicar resistencias durante corto tiempo a las ruedas.
-https://github.com/user-attachments/assets/9ddf1e7d-75d3-40ea-9754-cb8f7adaa74a
-Al haber un delay entre el scope y los estímulos que le proporcionamos, los videos son muy largos. Se verá que primero va el estímulo y pasado un rato, se ve cómo se modifica el valor en pantalla.
-<br><br>
-
 - Parametros PID izquierdo
 <p align="center">
 <img src="https://github.com/user-attachments/assets/9a63c468-1974-4348-99dc-609c869bd753" alt="Valores Pid izquierdo"/>
@@ -674,7 +668,16 @@ Ambos tienen los mismo Tiempo de Establecimiento y el mismo overshoot y ambos t
 
 
 
+- Comprobación del controlador
+El primer video muestra como reacciona el sistema ante esfuerzos cortos, es decir, aplicar resistencias durante corto tiempo a las ruedas.
+
+https://github.com/user-attachments/assets/9ddf1e7d-75d3-40ea-9754-cb8f7adaa74a
+
+Al haber un delay entre el scope y los estímulos que le proporcionamos, los videos son muy largos. Se verá que primero va el estímulo y pasado un rato, se ve cómo se modifica el valor en pantalla.
+<br><br>
+
 El segundo video muestra como se le aplica un esfuerzo durante un largo periodo de tiempo a cada rueda para ver cómo se estabiliza la velocidad (es la ventana de abajo del scope)
+
 https://github.com/user-attachments/assets/82c5fba7-cbe7-4960-9b40-68a3af7f7ea3
 
 <br><br> 
