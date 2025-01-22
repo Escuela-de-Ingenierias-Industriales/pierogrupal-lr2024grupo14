@@ -13,30 +13,21 @@
 6. [Estudios Previos para el Desarrollo del Código](#estudios-previos-para-el-desarrollo-del-código)
     - [Estudio del Arduino Mega 2560 para su Programación con Simulink](#estudio-del-arduino-mega-2560-para-su-programación-con-simulink)
     - [Programación en Arduino mediante MATLAB y Simulink](#programación-en-arduino-mediante-matlab-y-simulink)
-7. [Toma de contacto con el código](#toma-de-contacto-con-el-código)
-    - [Estudio de la plataforma robótica móvil PIERO y navegación reactiva básica en Simulink](#estudio-de-la-plataforma-robótica-móvil-piero-y-navegación-reactiva-básica-en-Simulink)
-    - [Identificación y simulación de los sistemas motor, comunicaciones serie y generador de señales en Simulink](#identificación-y-simulación-de-los-sistemas-motor,-comunicaciones-serie-y-generador-de-señales-en-simulink)
-    - [Ajuste de los controladores de velocidad de PIERO](#ajuste-de-los-controladores-de-velocidad-de-piero)
-    - [Modelado cinemático, con control de orientación](#modelado-cinemático,-con-control-de-orientación)
-    - [Control de trayectorias con señales de relés y diagramas de estados](#control-de-trayectorias-con-señales-de-relés-y-diagramas-de-estados)
-    - [Seguimiento de trayectorias con persecución pura y programación con mfunction](#seguimiento-de-trayectorias-con-persecución-pura-y-programación-con-mfunction)
-    - [Seguimiento de trayectorias de aceleración limitada con evitación de obstáculos](#seguimiento-de-trayectorias-de-aceleración-limitada-con-evitación-de-obstáculos)
-    - [Elementos adicionales realizados](#elementos-adicionales-realizados)
-8. [Desarrollo del Código](#desarrollo-del-código)
+7. [Desarrollo del Código](#desarrollo-del-código)
     - [Trayectoria](#trayectoria)
     - [Sistema Anticolisión](#sistema-anticolisión)
     - [Control de Velocidad](#control-velocidad)
     - [Odometría](#odometría)
     - [Bluetooth Total](#bluetooth-total)
     - [Programa General del PIERO](#programa-general-del-PIERO)
-9. [Resultados Prácticos](#resultados-prácticos)
+8. [Resultados Prácticos](#resultados-prácticos)
    - [Prueba de evitar colisiones](#prueba-de-evitar-colisiones)
    - [Prueba Anticaída](#prueba-anticaída)
    - [Prueba de seguimiento de trayectoria](#prueba-de-seguimiento-de-trayectoria)
    - [Prueba avanzar 10 baldosas](#prueba_avanzar_10_baldosas)
    - [Prueba trayectoria circular](#prueba_trayectoria_circular)
-10. [Conclusiones](#conclusiones)
-11. [Autoevaluación](#autoevaluación)
+9. [Conclusiones](#conclusiones)
+10. [Autoevaluación](#autoevaluación)
 <br><br>
 ## Presentación
   
@@ -327,37 +318,7 @@ Para transferir nuestro código a la placa Arduino (evitando la necesidad de que
 </p>
 <br><br>
 
-## Toma de contacto con el código
 
----
-
-Este apartado va a seguir la rúbrica dada en el apartado de [Autoevaluación](https://eii.cv.uma.es/course/view.php?id=5085&section=3#tabs-tree-start) del Campus Virtual de la asignatura Laboratorio de Robótica:
-
-### Estudio de la plataforma robótica móvil PIERO y navegación reactiva básica en Simulink
-Habiendo hecho previamente el estudio de la plataforma robótica móvil, hemos realizado un programa básico en el que nuestro PIERO va a girar cada vez que detecte un obstáculo. 
-
-
-
-### Identificación y simulación de los sistemas motor, comunicaciones serie y generador de señales en Simulink
-
-
-
-### Ajuste de los controladores de velocidad de PIERO
-
-
-### Modelado cinemático, con control de orientación
-
-### Control de trayectorias con señales de relés y diagramas de estados
-
-### Seguimiento de trayectorias con persecución pura y programación con mfunction
-
-### Seguimiento de trayectorias de aceleración limitada con evitación de obstáculos
-
-### Elementos adicionales realizados
-
-
-
----
 
 ## Desarrollo del código.
 
@@ -372,13 +333,15 @@ Habiendo hecho previamente el estudio de la plataforma robótica móvil, hemos r
 
 
 
-
+FALTAN COSAS
 
 
 Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios. Además, hemos añadido dun componente bluetooth para que se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo con una funcion vital para el perfecto desempeño del PIERO.
 
-<br>
+<br><br>
+
+
 
 - ### Trayectoria
 
@@ -498,9 +461,13 @@ Con el bloque de la odometría me da el ángulo que tiene el robot actualmente. 
 <br><br>
 
 
+
 - ### Sistema Anticolisión
 
-
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f77578b1-c9d7-4267-97ab-9dea3658d104" alt="sistema anticolisión"/>
+</p>
+<br>
 
 El bloque "Sistema_Anticolision" es una parte clave del sistema de navegación del robot. 
 Su propósito es garantizar que el robot pueda moverse de forma segura, reaccionando rápidamente a posibles colisiones o caídas. 
@@ -531,6 +498,41 @@ Básicamente, convierte las lecturas continuas de los sensores en señales binar
 De esta forma, las señales binarias son un resumen claro y directo del estado del entorno, lo que facilita la toma de decisiones en los siguientes subbloques.
 <br>
 
+
+- Imagen del subsistema bits_colisión
+<p align="center">
+<img src="https://github.com/user-attachments/assets/761fba19-e890-4d3d-b7a0-848b261fa46b" alt="bits_colisión"/>
+</p>
+<br>
+ 
+- Valores del sensor de abajo
+<p align="center">
+<img src="https://github.com/user-attachments/assets/7618ce32-6dec-42e5-849b-a1515a1591f7" alt="sensor abajo"/>
+</p>
+<br>
+
+- Valores del sensor del centro
+<p align="center">
+<img src="https://github.com/user-attachments/assets/6394a75c-1e23-45c7-b830-9a3face75334" alt="sensor centro"/>
+</p>
+<br>
+
+
+- Valores del sensor de la izquierda
+<p align="center">
+<img src="https://github.com/user-attachments/assets/391790c7-32d1-43ce-87e9-9e14abc43831" alt="sensor izq"/>
+</p>
+<br>
+
+
+- Valores del sensor de la derecha
+<p align="center">
+<img src="https://github.com/user-attachments/assets/10fa137d-06d8-4051-b5f3-3fee55c055b0" alt="sensor derecha"/>
+</p>
+<br>
+
+
+
 #### Subbloque "ME_Colision"
 El subbloque "ME_Colision" utiliza un diagrama de estados implementado con la herramienta Stateflow para traducir las señales binarias de "Bits_Colision" en acciones concretas. 
 Este diagrama define una serie de estados y transiciones que controlan cómo el robot responde ante riesgos detectados:
@@ -541,6 +543,18 @@ Este diagrama define una serie de estados y transiciones que controlan cómo el 
 Por ejemplo, un estado como `GiroIzquierda` se activa si hay un obstáculo frontal y lateral derecho, y el diagrama lo acompaña de las velocidades lineal y angular necesarias para ejecutar el giro. 
 Las transiciones entre estados se activan según condiciones específicas, como `Choque==1` o `Caida==1`.
  <br><br>
+
+- Imagen de ME_Colisión
+<p align="center">
+<img src="https://github.com/user-attachments/assets/304307d1-9e5a-485a-b50c-e32a8e6298ad" alt="ME_Colision"/>
+</p>
+<br> 
+
+- Imagen de la máquina de estados usada en ME_Colisión
+<p align="center">
+<img src="https://github.com/user-attachments/assets/4e6e9006-6ea0-49c5-941a-12ad965471c0" alt="Máquina de estados"/>
+</p>
+<br>
  
 #### Subbloque "Leds_Colision"
 El subbloque "Leds_Colision" es el encargado de gestionar los LEDs RGB del robot para proporcionar una señal visual del estado actual. 
@@ -548,10 +562,13 @@ Los pines 40, 38 y 42 del Arduino están conectados a los colores rojo (R), verd
 
 Este diseño permite que el sistema informe visualmente sobre posibles riesgos o eventos importantes en tiempo real, lo que resulta útil tanto para la supervisión externa durante pruebas como para mejorar la interacción con el entorno.
 
+- Imagen del subsistema de Leds_colisión
 <p align="center">
-<img src="https://github.com/user-attachments/assets/ad7cc7b5-fe8d-4cad-aee5-38e9adecbdba" alt="TestColision" width="800"/>
+<img src="https://github.com/user-attachments/assets/a09d3e12-b407-4941-ac93-1200eea05755" alt="leds colisión"/>
 </p>
 <br><br>
+
+
 
 - ### Control Velocidad
 <p align="center">
