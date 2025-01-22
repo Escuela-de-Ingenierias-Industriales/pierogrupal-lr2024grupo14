@@ -952,7 +952,8 @@ https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 - ### Prueba de seguimiento de trayectoria (3 giros de 90º y saliendo de la clase)
 El sistema de esta prueba es lo que denominamos como test total.
 
-https://github.com/user-attachments/assets/4b7aaf1d-b11d-4f0d-a7fe-ae252d0c7349
+https://github.com/user-attachments/assets/674c6188-b06b-4add-a9f2-528656a343ef
+
 
 <br><br>
 
