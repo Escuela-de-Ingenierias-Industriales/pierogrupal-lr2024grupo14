@@ -795,6 +795,12 @@ Finalmente, el bloque incluye una representación visual mediante un gráfico XY
 <br><br>
 
 - ### Bluetooth Total
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f4492c12-9535-497f-a473-1a2bda156d87" alt="Bluetooth"/>
+</p>
+<br>
+
 El bloque Bluetooth_Total es el encargado de gestionar la comunicación entre el robot y un dispositivo externo mediante Bluetooth. Es la funcionalidad adicional que le hemos metido a la idea base del PIERO. 
 Su objetivo principal es procesar la información recibida a través del canal Bluetooth y traducirla en los parámetros de control que se utilizan en todo el proyecto, como umbrales, velocidades y waypoints. 
 
@@ -813,10 +819,38 @@ Con esta información, el bloque calcula y actualiza las siguientes salidas:
 Dentro del bloque Bluetooth_Total, la información se organiza y procesa en 4 subbloques principales. 
 El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 - Bluetooth_Datos sirve como nodo principal para la recepción y distribución de los datos. Todas las señales entrantes primero pasan por este subbloque, que valida y organiza la información.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/b1abfa28-ac8b-4000-a97f-a2279ed81477" alt="Bluetooth_Datos"/>
+</p>
+<br>
+
 - Desde Bluetooth_Datos los datos se dirigen a los otros tres subbloques según las funciones específicas:
+  
   - Bluetooth_Umbrales recibe las señales relacionadas con distancias y parámetros críticos. Este subbloque calcula los umbrales dinámicos que el robot utilizará para decisiones de navegación y seguridad. Convierte las entradas digitales en valores escalados y los asigna a las salidas correspondientes (`Umbral_Lateral`, `Umbral_Frontal`, `Umbral_Abajo` y `Umbral_Trajectoria`).
   - Bluetooth_Velocidad se conecta para procesar los comandos de movimiento. A partir de los datos recibidos de Bluetooth_Datos traduce las señales digitales en parámetros de velocidad lineal (`V`) y angular (`W`) que el robot utilizará para desplazarse.
   - Bluetooth_Trayectoria toma los datos correspondientes a los waypoints para generar la lista de puntos de paso que definirán la trayectoria que el robot debe seguir. La salida principal de este subbloque es la lista Waypoints que se utiliza en la navegación.
+
+- Imagen del subsistema Bluetooth_Umbrales
+<p align="center">
+<img src="https://github.com/user-attachments/assets/97076b39-13b7-489a-9179-dc36c596ccbc" alt="Bluetooth_Umbrales"/>
+</p>
+<br>
+
+- Imagen del subsistema Bluetooth_Velocidad
+<p align="center">
+<img src="https://github.com/user-attachments/assets/7da28d94-a1f9-45b9-8cc4-cee7aa62291e" alt="Bluetooth_Velocidad"/>
+</p>
+<br>
+
+- Imagen del subsistema Bluetooth_Velocidad
+<p align="center">
+<img src="https://github.com/user-attachments/assets/5c25076d-87e0-4c56-b6d3-7564b4b26da7" alt="Bluetooth_Trayectoria"/>
+</p>
+<br>
+
+
+
 
 
 <p align="center">
@@ -836,9 +870,6 @@ Para la comunicación Bluetooth del robot PIERO, hemos utilizado el módulo HM-1
 El sistema incluye funcionalidades avanzadas como la reinicialización de la posición y ángulo del robot al inicio de cada nueva trayectoria, facilitando la programación de múltiples trayectorias consecutivas sin perder el punto de referencia. Esta implementación no solo optimiza la navegación reactiva del robot, sino que también permite ajustes dinámicos a través del móvil, haciendo que el sistema sea altamente interactivo y adaptable.
 
 
-<p align="center">
-<img src="https://github.com/user-attachments/assets/4cb7d9bd-bcbb-4a7f-a796-31a1341abd63" alt="Bluetooth" width="800"/>
-</p>
 <br><br>
 
 
@@ -865,9 +896,11 @@ El modelo está compuesto por varios bloques que trabajan de manera coordinada p
 Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga y esquive los obstaculos que se le crucen por el camino de la manera más precisa posible. 
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/198976e8-1b47-4ea1-99a7-0d411dec6ce9" alt="Total" width="800"/>
+<img src="https://github.com/user-attachments/assets/7f174f3d-8dc0-471f-b393-7529585dd427" alt="Total"/>
 </p>
 <br><br>
+
+
 
 ## Resultados prácticos:
 
