@@ -995,7 +995,10 @@ https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 <br><br>
 
 - ### Prueba de seguimiento de trayectoria (3 giros de 90º y saliendo de la clase)
-El sistema de esta prueba es lo que denominamos como test total.
+El sistema de esta prueba es lo que denominamos como test total. Hemos metido la siguiente trayectoria:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/6895ab66-853f-4a71-a0ec-fbdcd22fa891" alt="salir de la clase"/>
+</p>
 
 https://github.com/user-attachments/assets/674c6188-b06b-4add-a9f2-528656a343ef
 
