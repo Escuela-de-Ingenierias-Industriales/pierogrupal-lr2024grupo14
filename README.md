@@ -661,6 +661,24 @@ El primer video muestra como reacciona el sistema ante esfuerzos cortos, es deci
 https://github.com/user-attachments/assets/9ddf1e7d-75d3-40ea-9754-cb8f7adaa74a
 Al haber un delay entre el scope y los estímulos que le proporcionamos, los videos son muy largos. Se verá que primero va el estímulo y pasado un rato, se ve cómo se modifica el valor en pantalla.
 <br><br>
+
+- Parametros PID izquierdo
+<p align="center">
+<img src="https://github.com/user-attachments/assets/9a63c468-1974-4348-99dc-609c869bd753" alt="Valores Pid izquierdo"/>
+</p>
+
+- Parametros PID derecho
+<p align="center">
+<img src="https://github.com/user-attachments/assets/fdfce343-f082-4cfe-a0e5-a7951d9e5903" alt="Valores Pid derecho"/>
+</p>
+
+Ambos tienen los mismo Tiempo de Establecimiento y el mismo overshoot y ambos tienen saturación (no pueden pasar de +- 255 de señal pwm).
+<p align="center">
+<img src="https://github.com/user-attachments/assets/3987e823-41be-4d00-ac03-84a97be4e074" alt="Valores Pid comunes"/>
+</p>
+
+
+
 El segundo video muestra como se le aplica un esfuerzo durante un largo periodo de tiempo a cada rueda para ver cómo se estabiliza la velocidad (es la ventana de abajo del scope)
 https://github.com/user-attachments/assets/82c5fba7-cbe7-4960-9b40-68a3af7f7ea3
 
