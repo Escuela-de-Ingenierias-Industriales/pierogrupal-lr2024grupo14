@@ -13,21 +13,30 @@
 6. [Estudios Previos para el Desarrollo del Código](#estudios-previos-para-el-desarrollo-del-código)
     - [Estudio del Arduino Mega 2560 para su Programación con Simulink](#estudio-del-arduino-mega-2560-para-su-programación-con-simulink)
     - [Programación en Arduino mediante MATLAB y Simulink](#programación-en-arduino-mediante-matlab-y-simulink)
-7. [Desarrollo del Código](#desarrollo-del-código)
+7. [Toma de contacto con el código](#toma-de-contacto-con-el-código)
+    - [Estudio de la plataforma robótica móvil PIERO y navegación reactiva básica en Simulink](#estudio-de-la-plataforma-robótica-móvil-piero-y-navegación-reactiva-básica-en-Simulink)
+    - [Identificación y simulación de los sistemas motor, comunicaciones serie y generador de señales en Simulink](#identificación-y-simulación-de-los-sistemas-motor,-comunicaciones-serie-y-generador-de-señales-en-simulink)
+    - [Ajuste de los controladores de velocidad de PIERO](#ajuste-de-los-controladores-de-velocidad-de-piero)
+    - [Modelado cinemático, con control de orientación](#modelado-cinemático,-con-control-de-orientación)
+    - [Control de trayectorias con señales de relés y diagramas de estados](#control-de-trayectorias-con-señales-de-relés-y-diagramas-de-estados)
+    - [Seguimiento de trayectorias con persecución pura y programación con mfunction](#seguimiento-de-trayectorias-con-persecución-pura-y-programación-con-mfunction)
+    - [Seguimiento de trayectorias de aceleración limitada con evitación de obstáculos](#seguimiento-de-trayectorias-de-aceleración-limitada-con-evitación-de-obstáculos)
+    - [Elementos adicionales realizados](#elementos-adicionales-realizados)
+8. [Desarrollo del Código](#desarrollo-del-código)
     - [Trayectoria](#trayectoria)
     - [Sistema Anticolisión](#sistema-anticolisión)
     - [Control de Velocidad](#control-velocidad)
     - [Odometría](#odometría)
     - [Bluetooth Total](#bluetooth-total)
     - [Programa General del PIERO](#programa-general-del-PIERO)
-8. [Resultados Prácticos](#resultados-prácticos)
+9. [Resultados Prácticos](#resultados-prácticos)
    - [Prueba de evitar colisiones](#prueba-de-evitar-colisiones)
    - [Prueba Anticaída](#prueba-anticaída)
    - [Prueba de seguimiento de trayectoria](#prueba-de-seguimiento-de-trayectoria)
    - [Prueba avanzar 10 baldosas](#prueba_avanzar_10_baldosas)
    - [Prueba trayectoria circular](#prueba_trayectoria_circular)
-9. [Conclusiones](#conclusiones)
-10. [Autoevaluación](#autoevaluación)
+10. [Conclusiones](#conclusiones)
+11. [Autoevaluación](#autoevaluación)
 <br><br>
 ## Presentación
   
@@ -318,6 +327,38 @@ Para transferir nuestro código a la placa Arduino (evitando la necesidad de que
 </p>
 <br><br>
 
+## Toma de contacto con el código
+
+---
+
+Este apartado va a seguir la rúbrica dada en el apartado de [Autoevaluación](https://eii.cv.uma.es/course/view.php?id=5085&section=3#tabs-tree-start) del Campus Virtual de la asignatura Laboratorio de Robótica:
+
+### Estudio de la plataforma robótica móvil PIERO y navegación reactiva básica en Simulink
+Habiendo hecho previamente el estudio de la plataforma robótica móvil, hemos realizado un programa básico en el que nuestro PIERO va a girar cada vez que detecte un obstáculo. 
+
+
+
+### Identificación y simulación de los sistemas motor, comunicaciones serie y generador de señales en Simulink
+
+
+
+### Ajuste de los controladores de velocidad de PIERO
+
+
+### Modelado cinemático, con control de orientación
+
+### Control de trayectorias con señales de relés y diagramas de estados
+
+### Seguimiento de trayectorias con persecución pura y programación con mfunction
+
+### Seguimiento de trayectorias de aceleración limitada con evitación de obstáculos
+
+### Elementos adicionales realizados
+
+
+
+---
+
 ## Desarrollo del código.
 
 ---
@@ -325,6 +366,15 @@ Para transferir nuestro código a la placa Arduino (evitando la necesidad de que
 Ya con los fundamentos sobre como usar las interrupciones, Matlab y simulink, empezamos a desarrollar todo el código necesario para lograr la navegación reactiva.
 Al principio, lo primero que hicimos fueron las actividades del test de motores, LEDs y  sensores. 
 Aunque hicimos algunas tareas para clase y unos cuantos códigos que están en el repositorio, nos centraremos únicamente en los que utilizamos finalmente en nuestro proyecto.
+
+### Estudio de la plataforma robótica móvil PIERO y navegación reactiva básica en Simulink
+Habiendo hecho previamente el estudio de la plataforma robótica móvil, hemos realizado un programa básico en el que nuestro PIERO va a girar cada vez que detecte un obstáculo. 
+
+
+
+
+
+
 Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios. Además, hemos añadido dun componente bluetooth para que se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo con una funcion vital para el perfecto desempeño del PIERO.
 
@@ -475,29 +525,56 @@ Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ga
 2. PID: Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
 Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error.
 
-Para implementar un controlador PID en nuestro sistema, primero es necesario determinar su función de transferencia, que en este caso relaciona la entrada (PWM) con la salida (velocidad en m/s). Para ello, utilizamos el sistema "Obtener_Valores_PieroHW", el cual nos permite introducir un valor PWM y obtener la velocidad resultante del robot. Esto se realiza midiendo la respuesta del sistema ante un "step" de PWM, que queda representado por la línea gris en las imágenes correspondientes.
+Para implementar un controlador PID en nuestro sistema, primero es necesario determinar su función de transferencia, que en este caso relaciona la entrada (PWM) con la salida (velocidad en m/s). Para ello, utilizamos el sistema "Obtener_Valores_PieroHW", el cual nos permite introducir un valor PWM y obtener la velocidad resultante del robot. Esto se realiza midiendo la respuesta del sistema ante un "step" de PWM.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/7c8b5226-c0e3-4f2c-9014-e5f1bf726345" alt="PID ruedas"/>
+</p>
 
 Con los datos obtenidos, empleamos la herramienta "System Identification" de Simulink, que nos permite estimar una función de transferencia ajustada a las características del sistema. Esta herramienta ofrece la flexibilidad de configurar el número de ceros y polos que deseamos en la función de transferencia, lo que nos permite encontrar el modelo más adecuado.
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/8daae83f-ae52-4f56-a1c1-1a28d3cf7ed4" alt="Datos rueda izquierda"/>
+</p>
+
+Hemos hecho lo mismo para la rueda derecha
+<p align="center">
+<img src="https://github.com/user-attachments/assets/bcd9a043-cf7d-402f-870c-f93bb0c63c10" alt="Datos rueda derecha"/>
+</p>
+
+A continuación, se ha comprobado que los datos recogidos por la simulación son válidos. El porcentaje que se puede ver a la derecha de cada imagen, indica cuánto se asemeja nuestra función de transferencia estimada a la señal real.
+
 - Para la rueda izquierda
 <p align="center">
-<img src="https://github.com/user-attachments/assets/1f50f41b-e633-4b26-b07b-2b0efa41dafd" alt="izq1" width="300"/>
-<img src="https://github.com/user-attachments/assets/7975e314-5714-4422-8f2a-31c67a2e9f28" alt="izq2" width="300"/>
+<img src="https://github.com/user-attachments/assets/5193e564-6549-4f7f-adeb-00210c24822d" alt="Izquierda general"/>
 </p>
+
 <p align="center">
-<img src="https://github.com/user-attachments/assets/2885d5e9-4ba8-48ee-b03c-31a7717119cf" alt="izq3" width="300"/>
-<img src="https://github.com/user-attachments/assets/8f0fb74f-0cc1-4eb2-957b-7954fafc54eb" alt="izq4" width="300"/>
+<img src="https://github.com/user-attachments/assets/636cf2f3-1156-44f4-af27-c64eeed3ba84" alt="izq1"/>
 </p>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/91d07eb5-07b9-45be-9554-0777e71d4ef7" alt="izq2"/>
+</p>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/396e2887-426c-4365-91bd-0bad76a05235" alt="izq3"/>
+</p>
+
 
 - Para la rueda derecha
 <p align="center">
-<img src="https://github.com/user-attachments/assets/ee02a819-fb3f-44e0-9bb7-046e95df5db9" alt="der1" width="300"/>
-<img src="https://github.com/user-attachments/assets/669d7d1f-1dba-452c-9d1e-9a54e6186294" alt="der2" width="300"/>
+<img src="https://github.com/user-attachments/assets/ce42ad95-de1d-4796-81ec-d4bd381d61ae" alt="Derecha general"/>
 </p>
+
 <p align="center">
-<img src="https://github.com/user-attachments/assets/8ff71b87-e04f-453b-8741-aefc9e6e767d" alt="der3" width="300"/>
-<img src="https://github.com/user-attachments/assets/9909c351-125d-4eb7-9a99-34e8db0c6893" alt="der4" width="300"/>
+<img src="https://github.com/user-attachments/assets/77b6ae9a-dd41-42fa-ad33-8a943af7a7c3" alt="dcha1"/>
 </p>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/c963a187-31b5-4987-ae6a-acd356be5251" alt="dcha2"/>
+</p>
+
 
 Tras evaluar diversas opciones, seleccionamos la función de transferencia que tiene 2 polos y 0 ceros (denominada como la 20). Aunque el modelo con un cero (la función 21) ofrece una aproximación más precisa, añadir ceros a la función de transferencia complica el diseño del controlador PID, por lo que optamos por la simplicidad y eficiencia del modelo con solo polos. De esta forma, garantizamos que el controlador sea robusto y funcional sin incrementar innecesariamente su complejidad.
 
