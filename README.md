@@ -703,21 +703,6 @@ A continuación, se ha comprobado que los datos recogidos por la simulación son
 
 Tras evaluar diversas opciones, seleccionamos la función de transferencia que tiene 2 polos y 0 ceros (denominada como la 20). Aunque el modelo con un cero (la función 21) ofrece una aproximación más precisa, añadir ceros a la función de transferencia complica el diseño del controlador PID, por lo que optamos por la simplicidad y eficiencia del modelo con solo polos. De esta forma, garantizamos que el controlador sea robusto y funcional sin incrementar innecesariamente su complejidad.
 
-- Parametros PID izquierdo
-<p align="center">
-<img src="https://github.com/user-attachments/assets/9a63c468-1974-4348-99dc-609c869bd753" alt="Valores Pid izquierdo"/>
-</p>
-
-- Parametros PID derecho
-<p align="center">
-<img src="https://github.com/user-attachments/assets/fdfce343-f082-4cfe-a0e5-a7951d9e5903" alt="Valores Pid derecho"/>
-</p>
-
-Ambos tienen los mismo Tiempo de Establecimiento y el mismo overshoot y ambos tienen saturación (no pueden pasar de +- 255 de señal pwm).
-<p align="center">
-<img src="https://github.com/user-attachments/assets/3987e823-41be-4d00-ac03-84a97be4e074" alt="Valores Pid comunes"/>
-</p>
-
 - PierroHW: Conecta las señales de control con el hardware del robot.
 	- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
 	- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
@@ -765,6 +750,21 @@ Cada PID compara la velocidad deseada con la velocidad actual, calculando la dif
 </p>
 <br><br>
 
+
+- Parametros PID izquierdo
+<p align="center">
+<img src="https://github.com/user-attachments/assets/9a63c468-1974-4348-99dc-609c869bd753" alt="Valores Pid izquierdo"/>
+</p>
+
+- Parametros PID derecho
+<p align="center">
+<img src="https://github.com/user-attachments/assets/fdfce343-f082-4cfe-a0e5-a7951d9e5903" alt="Valores Pid derecho"/>
+</p>
+
+Ambos tienen los mismo Tiempo de Establecimiento y el mismo overshoot y ambos tienen saturación (no pueden pasar de +- 255 de señal pwm).
+<p align="center">
+<img src="https://github.com/user-attachments/assets/3987e823-41be-4d00-ac03-84a97be4e074" alt="Valores Pid comunes"/>
+</p>
 
 
 
