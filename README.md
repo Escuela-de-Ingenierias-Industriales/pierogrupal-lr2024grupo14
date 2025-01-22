@@ -14,12 +14,12 @@
     - [Estudio del Arduino Mega 2560 para su Programación con Simulink](#estudio-del-arduino-mega-2560-para-su-programación-con-simulink)
     - [Programación en Arduino mediante MATLAB y Simulink](#programación-en-arduino-mediante-matlab-y-simulink)
 7. [Desarrollo del Código](#desarrollo-del-código)
+    - [Programa General del PIERO](#programa-general-del-PIERO)
     - [Trayectoria](#trayectoria)
     - [Sistema Anticolisión](#sistema-anticolisión)
     - [Control de Velocidad](#control-velocidad)
     - [Odometría](#odometría)
     - [Bluetooth Total](#bluetooth-total)
-    - [Programa General del PIERO](#programa-general-del-PIERO)
 8. [Resultados Prácticos](#resultados-prácticos)
    - [Prueba de evitar colisiones](#prueba-de-evitar-colisiones)
    - [Prueba Anticaída](#prueba-anticaída)
@@ -354,6 +354,34 @@ https://github.com/user-attachments/assets/324cfe03-0829-4512-b191-3ab5e9f98cb4
 Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios. Además, hemos añadido dun componente bluetooth para que se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo con una funcion vital para el perfecto desempeño del PIERO.
 
+<br><br>
+
+
+- ### **Programa General del PIERO**
+
+A continuación, explicaremos cada uno de los bloques que conforman nuestro código, todos ellos juntos, logran hacer que el robot tenga un control eficiente de su navegación reactiva, su velocidad y comunicación. 
+Para unir estos subbloques y dar una idea general y completa del código, podemos dar la siguiente explicación del flujo: 
+
+1. Entrada de Datos y Configuración:
+El modelo comienza con las entradas generales del sistema, que incluyen:
+- `Waypoints:` Representan la lista de coordenadas que el robot debe seguir.
+- `Umbrales:` Parámetros para evitar colisiones y ajustar el comportamiento en función de la proximidad a obstáculos.
+- `Señal de habilitación:` Activa el funcionamiento general del sistema.
+Las cuales se pueden introducir o manualmente antes de cargar el código en el PIERO o por bluetooth desde el dispositivo móvil.
+
+2. Bloques Principales:
+El modelo está compuesto por varios bloques que trabajan de manera coordinada para cumplir los objetivos de navegación y control del robot:
+	- Bluetooth_Total: Procesa la información recibida desde el módulo Bluetooth, permitiendo la comunicación entre el robot y un dispositivo externo. Es responsable de traducir los comandos en datos que el sistema pueda usar, como umbrales, velocidades y waypoints.
+	- Trayectoria: Toma como entrada los waypoints, la posición actual del robot y los umbrales, y calcula la trayectoria óptima hacia el siguiente punto. Determina la velocidad y orientación necesarias para que el robot alcance cada waypoint en secuencia.
+	- Control_Velocidad: Ajusta la velocidad de las ruedas del robot para que siga las instrucciones definidas por el bloque de trayectoria. Utiliza controladores internos para garantizar que la velocidad sea precisa y adaptada a las necesidades del robot.
+	- Odometría: A partir de la velocidad de las ruedas, calcula la posición y orientación actual del robot. Proporciona información clave para el bloque de trayectoria y para cualquier monitoreo del robot.
+	- Salida de Motores: Convierte las instrucciones generadas por el bloque de control de velocidad en señales PWM que controlan directamente los motores del robot.
+
+Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga y esquive los obstaculos que se le crucen por el camino de la manera más precisa posible. 
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/7f174f3d-8dc0-471f-b393-7529585dd427" alt="Total"/>
+</p>
 <br><br>
 
 
@@ -899,37 +927,9 @@ https://github.com/user-attachments/assets/5f756aeb-399f-415a-8cfe-dfe6288214d1
 
 https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
 
+
+
 <br><br>
-
-
-- ### **Programa General del PIERO**
-
-Ya hemos explicado cada uno de los bloques que conforman nuestro código, todos ellos juntos, logran hacer que el robot tenga un control eficiente de su navegación reactiva, su velocidad y comunicación. 
-Para unir estos subbloques explicados y dar una idea general y completa del código, podemos da las siguiente explicación del flujo: 
-
-1. Entrada de Datos y Configuración:
-El modelo comienza con las entradas generales del sistema, que incluyen:
-- `Waypoints:` Representan la lista de coordenadas que el robot debe seguir.
-- `Umbrales:` Parámetros para evitar colisiones y ajustar el comportamiento en función de la proximidad a obstáculos.
-- `Señal de habilitación:` Activa el funcionamiento general del sistema.
-Las cuales se pueden introducir o manualmente antes de cargar el código en el PIERO o por bluetooth desde el dispositivo móvil.
-
-2. Bloques Principales:
-El modelo está compuesto por varios bloques que trabajan de manera coordinada para cumplir los objetivos de navegación y control del robot:
-	- Bluetooth_Total: Procesa la información recibida desde el módulo Bluetooth, permitiendo la comunicación entre el robot y un dispositivo externo. Es responsable de traducir los comandos en datos que el sistema pueda usar, como umbrales, velocidades y waypoints.
-	- Trayectoria: Toma como entrada los waypoints, la posición actual del robot y los umbrales, y calcula la trayectoria óptima hacia el siguiente punto. Determina la velocidad y orientación necesarias para que el robot alcance cada waypoint en secuencia.
-	- Control_Velocidad: Ajusta la velocidad de las ruedas del robot para que siga las instrucciones definidas por el bloque de trayectoria. Utiliza controladores internos para garantizar que la velocidad sea precisa y adaptada a las necesidades del robot.
-	- Odometría: A partir de la velocidad de las ruedas, calcula la posición y orientación actual del robot. Proporciona información clave para el bloque de trayectoria y para cualquier monitoreo del robot.
-	- Salida de Motores: Convierte las instrucciones generadas por el bloque de control de velocidad en señales PWM que controlan directamente los motores del robot.
-
-Con todo esto conseguimos que nuestro robot al meterle una trayectoria, la siga y esquive los obstaculos que se le crucen por el camino de la manera más precisa posible. 
-
-<p align="center">
-<img src="https://github.com/user-attachments/assets/7f174f3d-8dc0-471f-b393-7529585dd427" alt="Total"/>
-</p>
-<br><br>
-
-
 
 ## Resultados prácticos:
 
@@ -945,12 +945,14 @@ El sistema de esta prueba se encuentra en el sistema Anticolisión
 
 https://github.com/user-attachments/assets/5fc0a8a3-feac-4729-8c7d-b6ef88b0056c
 
+<br><br>
 
 - ### Prueba de seguimiento de trayectoria (3 giros de 90º y saliendo de la clase)
 El sistema de esta prueba es lo que denominamos como test total.
 
 https://github.com/user-attachments/assets/4b7aaf1d-b11d-4f0d-a7fe-ae252d0c7349
 
+<br><br>
 
 - ### Prueba avanzar 10 baldosas
 
@@ -960,6 +962,7 @@ https://github.com/user-attachments/assets/4b7aaf1d-b11d-4f0d-a7fe-ae252d0c7349
 
 https://github.com/user-attachments/assets/350bd845-e4a3-4ac6-aad6-4c441525449a
 
+<br><br>
 
 - ### Prueba trayectoria circular
 <p align="center">
@@ -967,7 +970,6 @@ https://github.com/user-attachments/assets/350bd845-e4a3-4ac6-aad6-4c441525449a
 </p>
 
 https://github.com/user-attachments/assets/6427d975-f33c-4852-8bc5-7db2bab975b4
-
 
 
 <br><br>
