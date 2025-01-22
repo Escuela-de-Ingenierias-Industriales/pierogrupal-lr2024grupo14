@@ -39,7 +39,10 @@ Somos el grupo 14 de la asignatura de Laboratorio de Robótica 2024/25 formado p
 <p align="center">
 	<img src="https://github.com/user-attachments/assets/dfeb176c-7327-4ce5-afa6-8ceadfbb84b2" alt="Nuestro PIERO" width="400"/> 
 
-https://github.com/user-attachments/assets/4b7aaf1d-b11d-4f0d-a7fe-ae252d0c7349
+
+
+https://github.com/user-attachments/assets/06fce31a-1cc8-4662-9828-db3589afb73d
+
 
 
 <br><br>
