@@ -340,7 +340,7 @@ Habiendo hecho previamente el estudio de la plataforma robótica móvil, hemos r
 
 Al principio, se nos pedía una tarea en la que el PIERO evitase paredes sin tener controladores. Para ello había que meterle una velocidad cualquiera y que cuando detectase un obstáculo (una pared o similar), lo esquivase. Para ello hicimos el siguiente programa:
 <p align="center">
-<img src="https://github.com/user-attachments/assets/26aa7fc0-4800-4e28-b5b8-f4c048beea30" alt="Evita paredes"/>
+<img src="https://github.com/user-attachments/assets/e3e27b1b-0311-4ae0-ae65-e4123677bb1f" alt="Evita paredes"/>
 </p>
 <br>
 Los subsistemas usados están explicados más adelante.
