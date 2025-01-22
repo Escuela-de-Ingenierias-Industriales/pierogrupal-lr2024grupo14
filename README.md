@@ -166,12 +166,14 @@ Y por último, antes de pasar al cableado, fue distribuir y poner los distintos 
 </p>
 <br><br>
 
+
+
 ## Interconexionado.
 
 Para esta parte empezaos haciendo un Excel que nos serviría de guía para saber quéƒ pines del Arduino ya estábamos usando y para que se utilizaban. Este Excel se tuvo que cambiar a lo largo del proyecto un par de veces debido a fallos del propio Arduino.
 <br>
 <p align="center">
-	<img src="https://github.com/user-attachments/assets/e321d71c-54ed-425e-883b-f56e3cb35bd0" alt="pinouts" width="800"/>
+	<img src="https://github.com/user-attachments/assets/e321d71c-54ed-425e-883b-f56e3cb35bd0" alt="pinouts"/>
 </p>
 
 Así, pudimos empezar con el conexionado.
