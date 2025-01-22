@@ -473,6 +473,12 @@ Este diseño permite que el sistema informe visualmente sobre posibles riesgos o
 <br><br>
 
 - ### Control Velocidad
+<br><br>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/332f9b1f-0377-4b8e-83ab-5a0514e5e184" alt="controlvelocidad"/>
+</p>
+<br><br>
+
 El bloque Control_Velocidad se encarga de calcular y ajustar las velocidades necesarias para que el robot pueda moverse correctamente. 
 Para ello, utiliza como entradas la velocidad lineal (`V`), la velocidad angular (`W`) y la distancia entre las ruedas (`L`). 
 Este bloque está formado por dos partes principales: "Vel_Ruedas", que calcula la velocidad de cada rueda (izquierda y derecha), y "Controlador_BC", que ajusta estas velocidades usando un controlador PID y envía las señales necesarias para que los motores funcionen correctamente.
@@ -482,6 +488,13 @@ Esto permite que el sistema sea preciso y funcione bien en todo momento.
 <br>
 
 #### Vel_Ruedas
+
+<br><br>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/52e15257-3b69-464b-97cf-9a70be4245e2" alt="vel_ruedas"/>
+</p>
+<br><br>
+
 El subbloque Vel_Ruedas es el encargado de calcular las velocidades individuales de las ruedas izquierda (`V_Left`) y derecha (`V_Right`) a partir de los datos de entrada: la velocidad lineal del robot (`V`), la velocidad angular (`W`), y la distancia entre ruedas (`L`). 
 Este cálculo se realiza mediante las siguientes fórmulas, basadas en el modelo cinemático diferencial del robot:
 
@@ -494,24 +507,69 @@ Este cálculo permite que el robot pueda girar y avanzar de manera precisa.
 El resultado de este subbloque son las velocidades independientes para cada rueda, que se envían al siguiente subbloque para ser ajustadas y ejecutadas.
 <br>
 
-#### Controlador_BC
+#### Sistema_Controlado_BC
+
+<br><br>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/79d956dd-f410-413b-ab20-bdd2efe35353" alt="sistema_controlado_bc"/>
+</p>
+<br><br>
+
 El subbloque "Controlador_BC" ajusta las velocidades calculadas en "Vel_Ruedas" mediante un controlador PID, asegurando que el robot alcance la velocidad deseada de forma estable y precisa. 
 Este ajuste se realiza generando señales PWM (modulación por ancho de pulso) que controlan la potencia de los motores. Dentro de este subbloque encontramos:
 
-1. Mi_Piero: Este bloque modela el comportamiento físico del robot, simulando cómo los motores convierten las señales PWM en movimiento. Contiene:
+1. Mi_Piero: Este bloque modela el comportamiento físico del robot, simulando cómo los motores convierten las señales PWM en movimiento.
+
+<br><br>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/93ac99c6-aad3-45e9-9591-f185a8016126" alt="mi_piero"/>
+</p>
+<br><br>
+
+Contiene:
 
 - FTs_Piero: Modela la dinámica de los motores a través de funciones de transferencia específicas para cada rueda (izquierda y derecha), transformando las señales PWM en velocidades lineales simuladas.
 
-- PierroHW: Conecta las señales de control con el hardware del robot.
+<br><br>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/cbc139ae-8208-4918-8155-76db8e06dbbd" alt="fts_piero"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/ae64e15a-49c5-4d2e-826a-da14c3b799ce" alt="fts_1"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f143e531-3e32-47d7-babd-c3256eab2da3" alt="fts_2"/>
+</p>
+<br><br>
 
+- PierroHW: Conecta las señales de control con el hardware del robot.
 	- Salida_Motores: Genera las señales PWM para los motores, incluyendo las señales de habilitación necesarias.
 	- Encoder_A_Metros: Convierte las señales de los encoders en distancias recorridas, permitiendo la retroalimentación del sistema.
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/2e687be6-8a16-43f7-868f-ae259cc7876d" alt="Ganancia encoders" width="800"/>
+<img src="https://github.com/user-attachments/assets/e0f70521-8737-4f7e-b294-cb888c061ad6" alt="piero_hw"/>
 </p>
+<br><br>
 
-Como se puede apreciar, tenemos dos ganancias distintas, esto es debido a los fallos inherentes de las piezas pedidas, una de ellas gira ligeramente más que la otra.
+- Imagen del subsistema Salida_Motores
+<p align="center">
+<img src="https://github.com/user-attachments/assets/76bf46f0-c8a8-49a8-9baa-34c875345446" alt="salida_motores"/>
+</p>
+<br><br>
+
+- Imagen del subsistema Encoder_A_Metros
+<p align="center">
+<img src="https://github.com/user-attachments/assets/46e6a71c-0b26-4722-b741-fca9d173413c" alt="encoders_a_metros"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/718c003e-a9bc-45c7-b65c-64641eb68939" alt="izq1"/>
+</p>
+<p align="center">
+<img src="https://github.com/user-attachments/assets/64c819f1-4da0-4c77-9f29-5994b5e83027" alt="drch1"/>
+</p>
+<br><br>
+
+
 Para determinar las ganancias, comenzamos girando manualmente una de las ruedas del robot una vuelta completa y registramos el número de pulsos mostrados en el display del encoder. Posteriormente, aplicamos la fórmula para calcular la ganancia:
 
 `Ganancia = 2*pi*r/Pulsos_una_vuelta`
@@ -524,6 +582,26 @@ Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ga
 
 2. PID: Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
 Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error.
+
+- Imagen del subsistema PID
+<p align="center">
+<img src="https://github.com/user-attachments/assets/bc11a483-7c34-4821-af95-e5b2cd9b5bc4" alt="pid"/>
+</p>
+<br><br>
+
+- Imagen del bloque PID de la rueda izquierda
+<p align="center">
+<img src="https://github.com/user-attachments/assets/d8093fcc-d48f-4da5-9e27-1c708c4883e7" alt="pid_izquierdo"/>
+</p>
+<br><br>
+
+- Imagen del bloque PID de la rueda derecha
+<p align="center">
+<img src="https://github.com/user-attachments/assets/45212823-5362-420f-9f50-a2d7d7375a0c" alt="pid_derecha"/>
+</p>
+<br><br>
+
+
 
 Para implementar un controlador PID en nuestro sistema, primero es necesario determinar su función de transferencia, que en este caso relaciona la entrada (PWM) con la salida (velocidad en m/s). Para ello, utilizamos el sistema "Obtener_Valores_PieroHW", el cual nos permite introducir un valor PWM y obtener la velocidad resultante del robot. Esto se realiza midiendo la respuesta del sistema ante un "step" de PWM.
 
@@ -587,84 +665,6 @@ El segundo video muestra como se le aplica un esfuerzo durante un largo periodo 
 https://github.com/user-attachments/assets/82c5fba7-cbe7-4960-9b40-68a3af7f7ea3
 
 <br><br> 
-
-- Imagen del subsistema Control_Velocidad
-<p align="center">
-<img src="https://github.com/user-attachments/assets/332f9b1f-0377-4b8e-83ab-5a0514e5e184" alt="controlvelocidad"/>
-</p>
-<br><br>
-
-- Imagen del subsistema Vel_Ruedas
-<p align="center">
-<img src="https://github.com/user-attachments/assets/52e15257-3b69-464b-97cf-9a70be4245e2" alt="vel_ruedas"/>
-</p>
-<br><br>
-
-- Imagen del subsistema Sistema_Controlado_BC
-<p align="center">
-<img src="https://github.com/user-attachments/assets/79d956dd-f410-413b-ab20-bdd2efe35353" alt="sistema_controlado_bc"/>
-</p>
-<br><br>
-
-- Imagen del subsistema PID
-<p align="center">
-<img src="https://github.com/user-attachments/assets/bc11a483-7c34-4821-af95-e5b2cd9b5bc4" alt="pid"/>
-</p>
-<br><br>
-
-- Imagen del bloque PID de la rueda izquierda
-<p align="center">
-<img src="https://github.com/user-attachments/assets/d8093fcc-d48f-4da5-9e27-1c708c4883e7" alt="pid_izquierdo"/>
-</p>
-<br><br>
-
-- Imagen del bloque PID de la rueda derecha
-<p align="center">
-<img src="https://github.com/user-attachments/assets/45212823-5362-420f-9f50-a2d7d7375a0c" alt="pid_derecha"/>
-</p>
-<br><br>
-
-- Imagen del subsistema Mi_Piero
-<p align="center">
-<img src="https://github.com/user-attachments/assets/93ac99c6-aad3-45e9-9591-f185a8016126" alt="mi_piero"/>
-</p>
-<br><br>
-
-- Imagen del subsistema FTs_Piero
-<p align="center">
-<img src="https://github.com/user-attachments/assets/cbc139ae-8208-4918-8155-76db8e06dbbd" alt="fts_piero"/>
-</p>
-<p align="center">
-<img src="https://github.com/user-attachments/assets/ae64e15a-49c5-4d2e-826a-da14c3b799ce" alt="fts_1"/>
-</p>
-<p align="center">
-<img src="https://github.com/user-attachments/assets/f143e531-3e32-47d7-babd-c3256eab2da3" alt="fts_2"/>
-</p>
-<br><br>
-
-- Imagen del subsistema PieroHW
-<p align="center">
-<img src="https://github.com/user-attachments/assets/e0f70521-8737-4f7e-b294-cb888c061ad6" alt="piero_hw"/>
-</p>
-<br><br>
-
-- Imagen del subsistema Salida_Motores
-<p align="center">
-<img src="https://github.com/user-attachments/assets/76bf46f0-c8a8-49a8-9baa-34c875345446" alt="salida_motores"/>
-</p>
-<br><br>
-
-- Imagen del subsistema Encoder_A_Metros
-<p align="center">
-<img src="https://github.com/user-attachments/assets/46e6a71c-0b26-4722-b741-fca9d173413c" alt="encoders_a_metros"/>
-</p>
-<p align="center">
-<img src="https://github.com/user-attachments/assets/718c003e-a9bc-45c7-b65c-64641eb68939" alt="izq1"/>
-</p>
-<p align="center">
-<img src="https://github.com/user-attachments/assets/64c819f1-4da0-4c77-9f29-5994b5e83027" alt="drch1"/>
-</p>
-<br><br>
 
 
 
