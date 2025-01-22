@@ -883,7 +883,7 @@ El flujo de datos sigue un orden lógico que comienza de la siguiente manera:
 <img src="https://github.com/user-attachments/assets/0f0c3ffa-6066-4b4d-944e-84e5c5d8d642" alt="comandos" width="400"/>
 </p>
 
-Para la comunicación Bluetooth del robot PIERO, hemos utilizado el módulo HM-10, conectado a través de la aplicación nRF Connect en un dispositivo Android. Esta configuración permite enviar y recibir comandos en forma de bytes desde el móvil, los cuales son procesados en el entorno de Simulink mediante el bloque Serial Receive. Existen tres tipos principales de comandos:
+Para la comunicación Bluetooth del robot PIERO, hemos utilizado el módulo HM-10, que utiliza  Bluetooth 4.0, conectado a través de la aplicación nRF Connect en un dispositivo Android. Esta configuración permite enviar y recibir comandos en forma de bytes desde el móvil, los cuales son procesados en el entorno de Simulink mediante el bloque Serial Receive. Existen tres tipos principales de comandos:
 
 - `FFFF` para establecer comandos de velocidad.
 - `FFAA` para definir trayectorias enviando cuatro bytes que representan las coordenadas de los puntos de la trayectoria (por ejemplo, `x=1` y `y=0` es 98, 94 es `x=1` y `y=-4`, ya que si `x=0` y `y=0`, es 88).
@@ -958,6 +958,9 @@ https://github.com/user-attachments/assets/350bd845-e4a3-4ac6-aad6-4c441525449a
 
 
 - ### Prueba trayectoria circular
+<p align="center">
+<img src="https://github.com/user-attachments/assets/bb4663d9-044e-45db-9299-b7fa5c0858da" alt="prueba circular"/>
+</p>
 
 https://github.com/user-attachments/assets/6427d975-f33c-4852-8bc5-7db2bab975b4
 
