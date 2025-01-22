@@ -404,7 +404,9 @@ https://github.com/user-attachments/assets/3b96f84e-9e5f-4348-87c3-030bae77b3fe
 
 <br>
 Tras ver esto, hemos decidido hacer el bloque de trayectoria con una Matlab Function quedando de la siguiente manera:
-
+<p align="center">
+<img src="https://github.com/user-attachments/assets/8b02b621-487f-40b9-a5c9-ddbd8cdbe5ea" alt="Trayectoria"/>
+</p>
 <p align="center">
 <img src="https://github.com/user-attachments/assets/fcb39e4f-f192-4c5e-98fd-d10a6b97cf25" alt="Trayectoria"/>
 </p>
