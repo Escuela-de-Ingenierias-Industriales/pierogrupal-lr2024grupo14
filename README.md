@@ -402,6 +402,7 @@ Esto nos da lugar a errores como que al llegar al waypoint final el robot no par
 
 https://github.com/user-attachments/assets/3b96f84e-9e5f-4348-87c3-030bae77b3fe
 
+<br>
 Tras ver esto, hemos decidido hacer el bloque de trayectoria con una Matlab Function quedando de la siguiente manera:
 
 <p align="center">
