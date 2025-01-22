@@ -33,7 +33,12 @@
   
 Somos el grupo 14 de la asignatura de Laboratorio de Robótica 2024/25 formado por [Iván Calvo](https://github.com/IvanCS-Chenfu), [Lucía Ortiz](https://github.com/IvanCS-Chenfu) y [Jorge Espiau](https://github.com/JorgeEspiau). Como parte de este curso, se nos ha asignado el desarrollo de un robot móvil llamado PIERO. Este proyecto combina diseño, montaje y programación con el fin de crear un dispositivo capaz de desplazarse de manera autónoma y evitar obstáculos. A modo de adelanto, la siguiente imagen muestra el resultado final nuestro proyecto, un arduo trabajo lleno de inconvenientes y obstáculos en el que hemos puesto casi tres meses de empeño.
 
-https://github.com/user-attachments/assets/7ee8f823-3e0f-42a8-8685-78d87df7f507
+<p align="center">
+	<img src="https://github.com/user-attachments/assets/6d67505c-bbe4-4150-a839-e79d018be690" alt="Componentes del grupo 14" width="400"/>
+
+<p align="center">
+	<img src="https://github.com/user-attachments/assets/dfeb176c-7327-4ce5-afa6-8ceadfbb84b2" alt="Nuestro PIERO" width="400"/> 
+
 
 <br><br>
 ## Introducción
