@@ -771,8 +771,45 @@ Repetimos este procedimiento para ambas ruedas, asegurándonos de dar una vuelta
 
 Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ganancias respectivas, asegurando que ambas entreguen lecturas consistentes y precisas durante el funcionamiento del robot.
 
-2. PID: Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
+2. PID: Antes de explicar este bloque, vamos a comentar cómo hicimos un control en bucle abierto para comprobar que si le metíamos una velocidad al robot, no devuelve la velocidad que queremos. Nuestro sistema de bucle abierto es el siguiente:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/b3a89b8a-42c8-447a-a9b0-972b65ee556e" alt="bucle abierto"/>
+</p>
+Este sistema está formado por el sistema Controlador_BA que tiene la siguiente estructura:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/1ad74f63-e6b4-4215-ac78-bc3727c791af" alt="Controlador BA"/>
+</p>
+Para obtener los valores de las LUTs, usando el sistema Obtener_Valores_PieroHW:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/6351e610-8ffe-4bbc-bd81-8a7fa06248c1" alt="Obtener valores piero"/>
+</p>
+<br>
+
+Obtenemos la siguiente gráfica:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/45bf1eb8-9bb5-4a32-b557-e9bb47aaa91c" alt="grafica valores luts ba"/>
+</p>
+<br>
+
+Estos son los valores que les introducimos a las LUTs.
+
+ - LUT BA Izq:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/697168d5-b347-4564-9219-fd213e6fbfdd" alt="LUT Izq"/>
+</p>
+<br>
+
+ - LUT BA Der:
+<p align="center">
+<img src="https://github.com/user-attachments/assets/5b628a5b-278e-4c86-b87a-9fdc1b8c5871" alt="LUT der"/>
+</p>
+<br>
+
+El subsistema Mi_piero está explicado anteriormente. Sin embargo, queremos que nuestro controlador esté en bucle cerrado para que compruebe constantemente el error de la velocidad de salida. Por lo que realizamos un control en bucle cerrado que vamos a explicar a continuación.
+
+Este componente contiene dos controladores PID, uno para la rueda izquierda y otro para la derecha. 
 Cada PID compara la velocidad deseada con la velocidad actual, calculando la diferencia (error) y ajustando la señal PWM para reducir este error.
+
 
 - Imagen del subsistema PID
 <p align="center">
