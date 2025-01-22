@@ -342,7 +342,7 @@ Al principio, se nos pedía una tarea en la que el PIERO evitase paredes sin ten
 </p>
 <br>
 Los subsistemas usados están explicados más adelante.
-<br>
+<br><br>
 
 - Video Evita Paredes
 
