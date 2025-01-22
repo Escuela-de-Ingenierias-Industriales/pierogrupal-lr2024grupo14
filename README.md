@@ -353,7 +353,7 @@ https://github.com/user-attachments/assets/324cfe03-0829-4512-b191-3ab5e9f98cb4
 <br>
 
 
-Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios. Además, hemos añadido dun componente bluetooth para que se pueda controlar el robot desde el movil.
+Hablaremos ahora, de nuestro testTotal, un archivo que junta las librerias necesarias para, no solo hacer que el robot esquive obstaculos, sino para lograr que el robot siga una trayectoria esquivando los obstaculos necesarios. Además, hemos añadido un componente bluetooth para que se pueda controlar el robot desde el movil.
 Este test esta compuesto por cinco librerias, cada una de ellas contribuyendo con una funcion vital para el perfecto desempeño del PIERO.
 
 <br><br>
@@ -778,7 +778,7 @@ Repetimos este procedimiento para ambas ruedas, asegurándonos de dar una vuelta
 
 Finalmente, utilizamos los valores obtenidos para cada rueda para ajustar sus ganancias respectivas, asegurando que ambas entreguen lecturas consistentes y precisas durante el funcionamiento del robot.
 
-2. PID: Antes de explicar este bloque, vamos a comentar cómo hicimos un control en bucle abierto para comprobar que si le metíamos una velocidad al robot, no devuelve la velocidad que queremos. Nuestro sistema de bucle abierto es el siguiente:
+2. PID: Antes de explicar este bloque, vamos a comentar cómo hicimos un control en bucle abierto para comprobar que si le metíamos una velocidad al robot, nos devuelve la velocidad que queremos. Nuestro sistema de bucle abierto es el siguiente:
 <p align="center">
 <img src="https://github.com/user-attachments/assets/b3a89b8a-42c8-447a-a9b0-972b65ee556e" alt="bucle abierto"/>
 </p>
@@ -981,9 +981,8 @@ https://github.com/user-attachments/assets/7abba03a-3ade-438d-89d5-c365054659f7
 
 Una vez implementado el código nos dispusimos a comprobar su funcionamiento. 
 Los resultados de estas pruebas, después de todos los inconvenientes encontrados y de todos los errores cometidos, son muy satisfasctorios. 
-El robot logra totalmente seguir la trayectoria dada esquivando los obstaculos:
 
-<br><br>
+<br>
 
 
 - ### Prueba Anticaída
